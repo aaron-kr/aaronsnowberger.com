@@ -1,0 +1,11 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Keep CNAME (auto-created by GitHub Pages custom domain setup)
+# !CNAME
