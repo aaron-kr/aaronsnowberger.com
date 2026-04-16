@@ -1,0 +1,169 @@
+# ══════════════════════════════════════════════════════════════
+#  Testimonials — auto-advancing slider
+#  Used by: _includes/testimonials.html
+#
+#  category:    ac (Academic) | svc (Client)
+#  badge_class: ac | sv
+#  photo:       path relative to site root (assets/img/testimonials/)
+#               Leave blank to show initials avatar.
+#  linkedin:    Full URL or leave blank
+# ══════════════════════════════════════════════════════════════
+
+- name: "Donald Larson"
+  initial: "DL"
+  photo: "assets/img/testimonials/donald-larson.jpg"
+  role_en: "Program Director<br>Full Sail University"
+  role_ko: "Full Sail University<br>MFA 학과장"
+  badge: "Academic"
+  badge_class: "ac"
+  category: "ac"
+  linkedin: "https://linkedin.com/in/"
+  quote_en: >
+    Aaron was an exceptional student in our online Media Design MFA program.
+    Even though he lived half-way around the globe, he participated in live
+    sessions, connected with his fellow students, and produced a stunning
+    capstone project that continues to be one of the best examples of student
+    work from our program. I highly recommend Aaron as a person who is
+    motivated, dedicated, and exceptional in not only meeting but consistently
+    exceeding expectations.
+  quote_ko: >
+    Aaron은 온라인 미디어 디자인 석사 과정에서 탁월한 학생이었습니다.
+    지구 반대편에 살면서도 라이브 세션에 참가하고 최고의 캡스톤 작품을 완성했습니다.
+    기대를 꾸준히 뛰어넘는 그를 강력히 추천합니다.
+
+- name: "Colleen Cleveland"
+  initial: "CC"
+  photo: "assets/img/testimonials/colleen-cleveland.jpg"
+  role_en: "Professor<br>Full Sail University"
+  role_ko: "Full Sail University 교수"
+  badge: "Academic"
+  badge_class: "ac"
+  category: "ac"
+  linkedin: ""
+  quote_en: >
+    Aaron is one of those rare students whom a teacher could learn from and
+    expand on their own knowledge. Through him, I was able to broaden my
+    international knowledge base of design. His time management is impeccable,
+    even with the differential in time zones. I would recommend Aaron to
+    employers internationally as one dedicated to his work as well as his
+    passions — which in many cases are one and the same.
+  quote_ko: >
+    Aaron은 교사도 배울 수 있는 보기 드문 학생입니다. 그를 통해 디자인에 대한
+    국제적 지식을 넓힐 수 있었습니다. 시간대 차이에도 불구하고 시간 관리가 탁월합니다.
+    국제적으로 추천합니다.
+
+- name: "Elena Maria Rogalle"
+  initial: "ER"
+  photo: "assets/img/testimonials/elena-rogalle.jpg"
+  role_en: "Professor, Full Sail University<br>Effective Copywriting"
+  role_ko: "Full Sail University 교수<br>카피라이팅 담당"
+  badge: "Academic"
+  badge_class: "ac"
+  category: "ac"
+  linkedin: ""
+  quote_en: >
+    Aaron earned superior grades in my Effective Copywriting course. He always
+    went above and beyond in his assignments and continually brought something
+    new and innovative to the discourse. Aaron is always interested in
+    supporting others — I would highly recommend him, and he will be a positive
+    addition to any organization.
+  quote_ko: >
+    제 강의에서 최우수 성적을 받았으며, 항상 기대 이상을 보여주고 끊임없이 새로운
+    아이디어를 가져왔습니다. 어떤 조직에도 긍정적인 기여를 할 것입니다.
+
+- name: "Leon Rose"
+  initial: "LR"
+  photo: "assets/img/testimonials/leon-rose.jpg"
+  role_en: "Owner<br>Duet English Hagwon"
+  role_ko: "Duet English 학원 원장"
+  badge: "Client"
+  badge_class: "sv"
+  category: "svc"
+  linkedin: ""
+  quote_en: >
+    Mr. Snowberger delivered more than he promised and has a lifelong customer
+    in me. He was patient and helpful as I asked numerous questions and
+    requested numerous changes — working with me every step of the way. I was
+    left with not only an excellent virtual space for my business, but full
+    confidence that I am not alone if any problems arise.
+  quote_ko: >
+    스노우버거 씨는 약속 이상을 제공했고 저는 평생 고객이 되었습니다.
+    수많은 질문과 변경 요청에도 인내심 있게 모든 단계에서 함께해 주었습니다.
+
+- name: "PD Martin"
+  initial: "PM"
+  photo: "assets/img/testimonials/pd-martin.jpg"
+  role_en: "Crime Fiction Author"
+  role_ko: "범죄 소설 작가"
+  badge: "Client"
+  badge_class: "sv"
+  category: "svc"
+  linkedin: "https://linkedin.com/in/"
+  quote_en: >
+    I enjoyed working with Aaron during all parts of the development process —
+    from initial mock-ups to finalised designs and HTML code. Probably the best
+    part was how well he followed my original spec in the very first mock-ups,
+    incorporating all the elements I'd requested. He was also very responsive
+    to changes throughout the design process.
+  quote_ko: >
+    초기 목업부터 최종 디자인과 HTML 코드까지 모든 과정이 즐거웠습니다.
+    첫 목업에서부터 제 사양을 완벽히 반영해 주었고, 변경 요청에도 신속하게 대응해 주었습니다.
+
+- name: "Scott Carpenter"
+  initial: "SC"
+  photo: "assets/img/testimonials/scott-carpenter.jpg"
+  role_en: "Owner<br>Scottalk Adult ESL Academy"
+  role_ko: "Scottalk 성인 영어 학원 원장"
+  badge: "Client"
+  badge_class: "sv"
+  category: "svc"
+  linkedin: ""
+  quote_en: >
+    Aaron did a great job creating an inventive logo, business card, and
+    pamphlet for my burgeoning business. We've had great communication along
+    the way, and he always had things done faster than expected. I look forward
+    to working with Aaron in the future as I continue to grow my business.
+  quote_ko: >
+    로고, 명함, 팸플릿을 훌륭하게 제작해 주었습니다. 커뮤니케이션도 원활했고
+    항상 예상보다 빠르게 완성해 주었습니다. 사업이 성장함에 따라 앞으로도
+    계속 함께 일하고 싶습니다.
+
+- name: "Steven O'Hara"
+  initial: "SO"
+  photo: "assets/img/testimonials/steven-ohara.jpg"
+  role_en: "Bubble Ball Korea"
+  role_ko: "버블볼 코리아"
+  badge: "Client"
+  badge_class: "sv"
+  category: "svc"
+  linkedin: ""
+  quote_en: >
+    Aaron listened to our requirements and went beyond that by adding his own
+    ideas — which were all excellent and welcome. Our limited knowledge of
+    website design was not an issue as Aaron made everything comfortable and
+    simple to understand. He has kept in contact since and helped with any
+    further issues. We thank him for a stellar job.
+  quote_ko: >
+    요구사항을 경청하고 그 이상의 훌륭한 아이디어를 제안해 주었습니다.
+    웹 디자인 지식이 부족했지만 Aaron이 모든 것을 편안하게 만들어 주었습니다.
+    이후에도 문제가 생길 때마다 도움을 주었습니다.
+
+- name: "Nathan Weatherholt"
+  initial: "NW"
+  photo: "assets/img/testimonials/nathan-weatherholt.jpg"
+  role_en: "Bubble Ball Korea"
+  role_ko: "버블볼 코리아"
+  badge: "Client"
+  badge_class: "sv"
+  category: "svc"
+  linkedin: ""
+  quote_en: >
+    Aaron made the whole process completely stress free and we couldn't be
+    happier with the outcome. He truly wanted to understand what we wanted,
+    took time to meet with us when needed, and has continually helped if
+    questions have arisen since launch. I have never needed a website built
+    before — but Aaron was awesome in every way possible.
+  quote_ko: >
+    전체 과정이 완전히 스트레스 없었고 결과에 매우 만족합니다.
+    출시 이후에도 문의가 생길 때마다 도움을 주고 있습니다.
+    Aaron은 모든 면에서 훌륭했습니다.

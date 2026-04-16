@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}"
+      data-theme="dark"
+      data-lang="en"
+      data-aurora="off">
+<head>
+  {% include head.html %}
+</head>
+<body>
+<div id="prog"></div>
+
+{% include nav.html %}
+
+{{ content }}
+
+{% include footer.html %}
+{% include lightbox.html %}
+
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

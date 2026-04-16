@@ -1,0 +1,32 @@
+<nav id="mainnav">
+  <a href="#hero" class="nav-logo">
+    Aaron <span>Snowberger</span><span class="ko">, 박사</span>
+  </a>
+
+  <div class="nav-links">
+    {% for link in site.nav_links %}
+    <a href="#{{ link.id }}" class="nav-link">
+      <span class="en">{{ link.en }}</span>
+      <span class="ko">{{ link.ko }}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="nav-actions">
+    <button class="nbtn aurora-btn fs" id="auroraBtn" aria-pressed="false" title="Aurora">✦</button>
+    <button class="nbtn fs" id="langBtn">한국어</button>
+    <button class="nbtn fs" id="themeBtn">☀</button>
+    <button class="hamburger" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="mob-menu" id="mobMenu">
+  {% for link in site.nav_links %}
+  <a href="#{{ link.id }}">
+    <span class="en">{{ link.en }}</span>
+    <span class="ko">{{ link.ko }}</span>
+  </a>
+  {% endfor %}
+</nav>

@@ -1,0 +1,82 @@
+# ══════════════════════════════════════════════════════════════
+#  aaronsnowberger.com  —  Jekyll configuration
+#  GitHub Pages compatible (no custom plugins required)
+# ══════════════════════════════════════════════════════════════
+
+# ── Site metadata ─────────────────────────────────────────────
+title:        "Aaron Snowberger, Ph.D."
+description:  "AI Researcher & CS Educator — Press Kit & Professional Profile. Bridging East–West technology at five Korean universities."
+url:          "https://aaronsnowberger.com"
+baseurl:      ""   # empty string for root domain
+lang:         "en"
+
+# ── Author ────────────────────────────────────────────────────
+author:
+  name:         "Aaron Snowberger"
+  name_ko:      "에런 스노우버거"
+  title:        "Ph.D. · AI Researcher & Educator"
+  title_ko:     "공학박사 · AI 연구자 & 교육자"
+  location:     "Jeonju, South Korea"
+  location_ko:  "전주, 대한민국"
+  email:        "hi@aaron.kr"
+  kakao_url:    "https://open.kakao.com/o/YOUR_KAKAO_ID"  # ← update this
+
+# ── Navigation links — order matches page layout in index.html ─
+nav_links:
+  - id: bio
+    en: "Bio Kit"
+    ko: "바이오"
+  - id: photos
+    en: "Photos"
+    ko: "사진"
+  - id: assets
+    en: "Assets"
+    ko: "자료"
+  - id: links
+    en: "Links"
+    ko: "링크"
+  - id: services
+    en: "Services"
+    ko: "서비스"
+  - id: testimonials
+    en: "Reviews"
+    ko: "리뷰"
+  - id: media
+    en: "Media"
+    ko: "미디어"
+  - id: contact
+    en: "Contact"
+    ko: "연락"
+
+# ── External profiles ─────────────────────────────────────────
+profiles:
+  academic_site:    "https://aaron.kr"
+  linkedin:         "https://linkedin.com/in/aaronsnowberger/"
+  github:           "https://github.com/jekkilekki"
+  researchgate:     "https://www.researchgate.net/profile/Aaron-Snowberger"
+  google_scholar:   "https://scholar.google.com/citations?user=JCbnnvUAAAAJ"
+  orcid:            "https://orcid.org/0000-0001-8652-0936"
+  youtube:          "https://youtube.com/@aaronsnowberger"
+  kspai:            "https://kspai.org"
+  naver:            "https://m.blog.naver.com/aaron_kr"
+  courses:          "https://aaronkr-courses.github.io/courses/"
+  twitter:          "https://twitter.com/aaronsnowberger"
+
+# ── Build settings ────────────────────────────────────────────
+markdown:    kramdown
+highlighter: rouge
+permalink:   /:year/:month/:day/:title/
+
+# ── Safe mode (required for GitHub Pages) ─────────────────────
+safe:         true
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ── Exclude from build ────────────────────────────────────────
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - "*.sh"

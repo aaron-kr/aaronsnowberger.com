@@ -1,0 +1,75 @@
+<section id="services">
+  <div class="wrap">
+    <div class="sec-label rise">
+      <span class="en">Professional Services</span><span class="ko">전문 서비스</span>
+    </div>
+    <h2 class="sec-title rise rise-d1">
+      <span class="en">What I can <em>do for you</em></span>
+      <span class="ko">제가 <em>도울 수 있는 것</em></span>
+    </h2>
+    <p class="sec-desc rise rise-d2">
+      <span class="en">Twenty years at the intersection of technology, language, and design in South Korea — available for select engagements.</span>
+      <span class="ko">20년간 한국에서 기술·언어·디자인의 교차점에서 쌓은 전문성을 제공합니다.</span>
+    </p>
+
+    <div class="svc-grid">
+      {% for service in site.data.services %}
+
+      {% comment %} Resolve icon stroke color {% endcomment %}
+      {% if service.icon_color == "blue" %}
+        {% assign svc_stroke = "var(--blue)" %}
+      {% elsif service.icon_color == "purple" %}
+        {% assign svc_stroke = "var(--purple)" %}
+      {% else %}
+        {% assign svc_stroke = "var(--teal)" %}
+      {% endif %}
+
+      <div class="svc-card{% if service.primary %} svc-primary{% endif %} rise{% if service.delay != "" %} {{ service.delay }}{% endif %}">
+        <div class="svc-header">
+          <svg class="svc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="{{ svc_stroke }}" stroke-width="1.75">
+            {% if service.icon_type == "chat" %}
+              <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+            {% elsif service.icon_type == "clock" %}
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            {% elsif service.icon_type == "edit" %}
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+            {% elsif service.icon_type == "translate" %}
+              <path d="M5 8l6 6"/><path d="M4 14l6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="M22 22l-5-10-5 10"/><path d="M14 18h6"/>
+            {% elsif service.icon_type == "palette" %}
+              <circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 20c5 0 8-4 8-8H4c0 4 3 8 8 8z"/>
+            {% elsif service.icon_type == "code" %}
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            {% endif %}
+          </svg>
+          <div class="svc-title">
+            <span class="en">{{ service.title_en }}</span>
+            <span class="ko">{{ service.title_ko }}</span>
+          </div>
+        </div>
+
+        <div class="svc-desc">
+          <span class="en">{{ service.desc_en }}</span>
+          <span class="ko">{{ service.desc_ko }}</span>
+        </div>
+
+        <div class="svc-tags">
+          {% for tag in service.tags %}
+          <span class="svc-tag{% if tag.color == 'blue' %} svc-tag-b{% elsif tag.color == 'purple' %} svc-tag-p{% endif %}">
+            {% if tag.ko %}<span class="en">{{ tag.en }}</span><span class="ko">{{ tag.ko }}</span>{% else %}{{ tag.en }}{% endif %}
+          </span>
+          {% endfor %}
+        </div>
+
+        <a href="#contact" class="svc-cta{% if service.cta_color == 'blue' %} svc-cta-b{% elsif service.cta_color == 'purple' %} svc-cta-p{% endif %}">
+          <span class="en">{{ service.cta_en }}</span><span class="ko">{{ service.cta_ko }}</span>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <p class="svc-note rise">
+      <span class="en">All services are available in English and Korean. Rates available on request — <a href="mailto:{{ site.author.email }}">email Aaron</a> with a brief description of your project.</span>
+      <span class="ko">모든 서비스는 한국어·영어로 제공됩니다. 프로젝트 내용을 간략히 적어 <a href="mailto:{{ site.author.email }}">이메일</a>로 문의해 주세요.</span>
+    </p>
+  </div>
+</section>

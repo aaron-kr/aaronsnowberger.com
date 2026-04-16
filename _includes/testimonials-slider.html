@@ -1,0 +1,686 @@
+<!-- ══════════════════════════════════════════════════════════════
+     TESTIMONIALS — Timed auto-advancing slider
+     Drop-in for aaronsnowberger.com / Jekyll:
+       Save as _includes/testimonials.html
+       Add after services include in index.html:
+         <hr class="section-rule">
+         {% include testimonials.html %}
+
+     PHOTOS: Place downloaded headshots in assets/img/testimonials/
+     and update the data-photo attributes below.
+     Naming convention: firstname-lastname.jpg
+     If no photo is available, the initial avatar renders automatically.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ── Testimonial Slider ─────────────────────────────────────── */
+#testimonials {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--brd);
+  padding: 5.5rem 0;
+}
+
+/* Track + slide container */
+.tsm-stage {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--brd);
+  background: var(--bg-card);
+  /* subtle inner glow */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 24px 60px rgba(0,0,0,.12);
+}
+
+.tsm-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.65,0,.35,1);
+  will-change: transform;
+}
+
+/* ── Individual slide ────────────────────────────────────────── */
+.tsm-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  align-items: center;
+  gap: 0;
+}
+
+/* LEFT: photo + identity panel */
+.tsm-person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 2.75rem 2rem 2.75rem 2.5rem;
+  border-right: 1px solid var(--brd);
+  background: linear-gradient(160deg, var(--bg-muted) 0%, var(--bg-card) 100%);
+  position: relative;
+  height: 100%;
+  min-height: 240px;
+}
+/* accent corner */
+.tsm-person::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(to bottom, var(--teal), var(--blue));
+  border-radius: 18px 0 0 18px;
+  opacity: .6;
+}
+
+/* Avatar ring */
+.tsm-avatar-wrap {
+  position: relative;
+  width: 90px; height: 90px;
+}
+.tsm-avatar-ring {
+  position: absolute; inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--teal), var(--blue), var(--purple), var(--teal));
+  opacity: .55;
+  animation: ring-spin 8s linear infinite;
+}
+@keyframes ring-spin { to { transform: rotate(360deg); } }
+
+.tsm-avatar {
+  position: relative;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--bg-muted);
+  border: 3px solid var(--bg-card);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.tsm-avatar img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+.tsm-avatar-initial {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem; font-weight: 700; font-style: italic;
+  color: var(--teal);
+  line-height: 1;
+  /* shown when img fails or no src */
+}
+
+.tsm-name-block { text-align: center; }
+.tsm-pname {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem; font-weight: 700;
+  color: var(--t1); line-height: 1.25;
+  margin-bottom: .25rem;
+}
+.tsm-prole {
+  font-size: .72rem; color: var(--t3);
+  line-height: 1.55; text-align: center;
+}
+.tsm-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 4px;
+  display: inline-block; margin-top: .35rem;
+}
+.tsm-badge-ac { color: var(--teal);   background: var(--dt); border: 1px solid var(--brd-t); }
+.tsm-badge-sv { color: var(--blue);   background: var(--db); border: 1px solid var(--brd-b); }
+
+/* LinkedIn link */
+.tsm-linkedin {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .65rem; font-weight: 600; color: var(--t3);
+  transition: color .2s; margin-top: .2rem;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: .04em;
+  text-decoration: none;
+}
+.tsm-linkedin:hover { color: #0A66C2; }
+.tsm-linkedin svg { flex-shrink: 0; }
+
+/* RIGHT: quote body */
+.tsm-body {
+  padding: 2.75rem 3rem 2.75rem 2.75rem;
+  position: relative;
+}
+/* decorative large open-quote */
+.tsm-body::before {
+  content: '\201C';
+  position: absolute;
+  top: 1.25rem; left: 2.2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem; font-weight: 900; font-style: italic;
+  color: var(--teal); opacity: .1;
+  line-height: 1; pointer-events: none;
+  z-index: 0;
+}
+
+.tsm-quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(.9rem, 1.4vw, 1.05rem);
+  font-style: italic;
+  color: var(--t2);
+  line-height: 1.9;
+  position: relative; z-index: 1;
+}
+.tsm-quote-text .en, .tsm-quote-text .ko {
+  display: block; /* needed since .en/.ko use display:none via [data-lang] */
+}
+
+/* ── Navigation row ──────────────────────────────────────────── */
+.tsm-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+/* Prev / Next arrows */
+.tsm-arrow {
+  width: 36px; height: 36px;
+  border-radius: 50%; border: 1.5px solid var(--brd2);
+  background: transparent; color: var(--t2);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .2s;
+  flex-shrink: 0;
+  position: relative; overflow: hidden;
+  --sf: var(--teal);
+}
+.tsm-arrow::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--teal); border-radius: 50%;
+  transform: scale(0); transition: transform .25s cubic-bezier(.4,0,.2,1);
+}
+.tsm-arrow:hover::before { transform: scale(1); }
+.tsm-arrow:hover { border-color: var(--teal); color: #0c0f0e; }
+.tsm-arrow svg { position: relative; z-index: 1; }
+
+/* Dots */
+.tsm-dots {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+.tsm-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--brd2);
+  background: transparent;
+  cursor: pointer;
+  transition: all .3s;
+  padding: 0;
+  flex-shrink: 0;
+}
+.tsm-dot.active {
+  background: var(--teal);
+  border-color: var(--teal);
+  transform: scale(1.25);
+}
+.tsm-dot:hover:not(.active) {
+  border-color: var(--t2);
+  background: var(--t2);
+  transform: scale(1.1);
+}
+
+/* Progress bar under dots */
+.tsm-progress-wrap {
+  width: 80px; height: 2px;
+  background: var(--brd2); border-radius: 2px;
+  overflow: hidden;
+}
+.tsm-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), var(--blue));
+  border-radius: 2px;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform linear;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .tsm-slide {
+    grid-template-columns: 1fr;
+  }
+  .tsm-person {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding: 1.5rem 1.5rem;
+    border-right: none;
+    border-bottom: 1px solid var(--brd);
+    min-height: unset;
+    background: var(--bg-muted);
+  }
+  .tsm-person::before {
+    width: 100%; height: 3px;
+    top: 0; left: 0;
+    background: linear-gradient(to right, var(--teal), var(--blue));
+    border-radius: 18px 18px 0 0;
+  }
+  .tsm-avatar-wrap { width: 60px; height: 60px; flex-shrink: 0; }
+  .tsm-avatar { width: 60px; height: 60px; }
+  .tsm-avatar-initial { font-size: 1.3rem; }
+  .tsm-name-block { text-align: left; }
+  .tsm-body { padding: 1.75rem 1.5rem; }
+  .tsm-body::before { top: .75rem; left: 1.2rem; font-size: 4rem; }
+  .tsm-quote-text { font-size: .88rem; }
+}
+@media (max-width: 480px) {
+  .tsm-progress-wrap { display: none; }
+}
+</style>
+
+<section id="testimonials">
+  <div class="wrap">
+
+    <div class="sec-label rise">
+      <span class="en">What People Say</span>
+      <span class="ko">추천사</span>
+    </div>
+    <h2 class="sec-title rise rise-d1">
+      <span class="en">Trusted by <em>clients &amp; academics</em></span>
+      <span class="ko"><em>고객과 학자들</em>이 신뢰합니다</span>
+    </h2>
+    <p class="sec-desc rise rise-d2">
+      <span class="en">Feedback from professors, design clients, and collaborators across two decades of work.</span>
+      <span class="ko">20년간의 작업에 대한 교수, 디자인 고객, 협력자들의 평가.</span>
+    </p>
+
+    <!-- ── Slider ── -->
+    <div class="tsm-stage rise">
+      <div class="tsm-track" id="tsmTrack">
+
+        <!-- ── Slide 1: Donald Larson ───────────────────────── -->
+        <div class="tsm-slide" data-cat="ac">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/donald-larson.jpg"
+                   data-initial="DL">
+                <!-- img injected by JS if photo available -->
+                <span class="tsm-avatar-initial">DL</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Donald Larson</div>
+              <div class="tsm-prole">
+                <span class="en">Program Director<br>Full Sail University</span>
+                <span class="ko">Full Sail University<br>미디어 디자인 MFA 학과장</span>
+              </div>
+              <span class="tsm-badge tsm-badge-ac">Academic</span>
+              <br>
+              <a href="https://linkedin.com/in/" target="_blank" class="tsm-linkedin" rel="noopener">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron was an exceptional student in our online Media Design MFA program. Even though he lived half-way around the globe, he participated in live sessions, connected with his fellow students, and produced a stunning capstone project that continues to be one of the best examples of student work from our program. I highly recommend Aaron as a person who is motivated, dedicated, and exceptional in not only meeting but consistently exceeding expectations.</span>
+              <span class="ko">Aaron은 온라인 미디어 디자인 석사 과정에서 탁월한 학생이었습니다. 지구 반대편에 살면서도 라이브 세션에 참가하고, 동료들과 교류하며, 우리 프로그램 최고의 캡스톤 작품을 완성했습니다. 기대를 꾸준히 뛰어넘는 그를 강력히 추천합니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 2: Colleen Cleveland ───────────────────── -->
+        <div class="tsm-slide" data-cat="ac">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/colleen-cleveland.jpg"
+                   data-initial="CC">
+                <span class="tsm-avatar-initial">CC</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Colleen Cleveland</div>
+              <div class="tsm-prole">
+                <span class="en">Professor<br>Full Sail University</span>
+                <span class="ko">Full Sail University 교수</span>
+              </div>
+              <span class="tsm-badge tsm-badge-ac">Academic</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron is one of those rare students whom a teacher could learn from and expand on their own knowledge. Through him, I was able to broaden my international knowledge base of design. His time management is impeccable, even with the differential in time zones. I would recommend Aaron to employers internationally as one dedicated to his work as well as his passions — which in many cases are one and the same.</span>
+              <span class="ko">Aaron은 교사도 배울 수 있는 보기 드문 학생입니다. 그를 통해 디자인에 대한 국제적 지식을 넓힐 수 있었습니다. 시간대 차이에도 불구하고 시간 관리가 탁월합니다. 업무와 열정에 헌신하는 그를 국제적으로 추천합니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 3: Elena Maria Rogalle ─────────────────── -->
+        <div class="tsm-slide" data-cat="ac">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/elena-rogalle.jpg"
+                   data-initial="ER">
+                <span class="tsm-avatar-initial">ER</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Elena Maria Rogalle</div>
+              <div class="tsm-prole">
+                <span class="en">Professor, Full Sail University<br>Effective Copywriting</span>
+                <span class="ko">Full Sail University 교수<br>카피라이팅 담당</span>
+              </div>
+              <span class="tsm-badge tsm-badge-ac">Academic</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron earned superior grades in my Effective Copywriting course. He always went above and beyond in his assignments and continually brought something new and innovative to the discourse. Aaron is always interested in supporting others — I would highly recommend him, and he will be a positive addition to any organization.</span>
+              <span class="ko">제 강의에서 최우수 성적을 받았으며, 항상 기대 이상을 보여주고 끊임없이 새로운 아이디어를 가져왔습니다. 어떤 조직에도 긍정적인 기여를 할 것입니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 4: Leon Rose ────────────────────────────── -->
+        <div class="tsm-slide" data-cat="svc">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/leon-rose.jpg"
+                   data-initial="LR">
+                <span class="tsm-avatar-initial">LR</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Leon Rose</div>
+              <div class="tsm-prole">
+                <span class="en">Owner<br>Duet English Hagwon</span>
+                <span class="ko">Duet English 학원 원장</span>
+              </div>
+              <span class="tsm-badge tsm-badge-sv">Client</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Mr. Snowberger delivered more than he promised and has a lifelong customer in me. He was patient and helpful as I asked numerous questions and requested numerous changes — working with me every step of the way. I was left with not only an excellent virtual space for my business, but full confidence that I am not alone if any problems arise.</span>
+              <span class="ko">스노우버거 씨는 약속 이상을 제공했고 저는 평생 고객이 되었습니다. 수많은 질문과 변경 요청에도 인내심 있게 모든 단계에서 함께해 주었습니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 5: PD Martin ────────────────────────────── -->
+        <div class="tsm-slide" data-cat="svc">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/pd-martin.jpg"
+                   data-initial="PM">
+                <span class="tsm-avatar-initial">PM</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">PD Martin</div>
+              <div class="tsm-prole">
+                <span class="en">Crime Fiction Author</span>
+                <span class="ko">범죄 소설 작가</span>
+              </div>
+              <span class="tsm-badge tsm-badge-sv">Client</span>
+              <br>
+              <a href="https://linkedin.com/in/" target="_blank" class="tsm-linkedin" rel="noopener">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">I enjoyed working with Aaron during all parts of the development process — from initial mock-ups to finalised designs and HTML code. Probably the best part was how well he followed my original spec in the very first mock-ups, incorporating all the elements I'd requested. He was also very responsive to changes throughout the design process.</span>
+              <span class="ko">초기 목업부터 최종 디자인과 HTML 코드까지 모든 과정이 즐거웠습니다. 첫 목업에서부터 제 사양을 완벽히 반영해 주었고, 변경 요청에도 신속하게 대응해 주었습니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 6: Scott Carpenter ──────────────────────── -->
+        <div class="tsm-slide" data-cat="svc">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/scott-carpenter.jpg"
+                   data-initial="SC">
+                <span class="tsm-avatar-initial">SC</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Scott Carpenter</div>
+              <div class="tsm-prole">
+                <span class="en">Owner<br>Scottalk Adult ESL Academy</span>
+                <span class="ko">Scottalk 성인 영어 학원 원장</span>
+              </div>
+              <span class="tsm-badge tsm-badge-sv">Client</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron did a great job creating an inventive logo, business card, and pamphlet for my burgeoning business. We've had great communication along the way, and he always had things done faster than expected. I look forward to working with Aaron in the future as I continue to grow my business.</span>
+              <span class="ko">로고, 명함, 팸플릿을 훌륭하게 제작해 주었습니다. 커뮤니케이션도 원활했고 항상 예상보다 빠르게 완성해 주었습니다. 사업이 성장함에 따라 앞으로도 계속 함께 일하고 싶습니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 7: Steven O'Hara ────────────────────────── -->
+        <div class="tsm-slide" data-cat="svc">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/steven-ohara.jpg"
+                   data-initial="SO">
+                <span class="tsm-avatar-initial">SO</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Steven O'Hara</div>
+              <div class="tsm-prole">
+                Bubble Ball Korea
+              </div>
+              <span class="tsm-badge tsm-badge-sv">Client</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron listened to our requirements and went beyond that by adding his own ideas — which were all excellent and welcome. Our limited knowledge of website design was not an issue as Aaron made everything comfortable and simple to understand. He has kept in contact since and helped with any further issues. We thank him for a stellar job.</span>
+              <span class="ko">요구사항을 경청하고 그 이상의 훌륭한 아이디어를 제안해 주었습니다. 웹 디자인 지식이 부족했지만 Aaron이 모든 것을 편안하게 만들어 주었습니다. 이후에도 문제가 생길 때마다 도움을 주었습니다.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── Slide 8: Nathan Weatherholt ──────────────────── -->
+        <div class="tsm-slide" data-cat="svc">
+          <div class="tsm-person">
+            <div class="tsm-avatar-wrap">
+              <div class="tsm-avatar-ring"></div>
+              <div class="tsm-avatar"
+                   data-photo="assets/img/testimonials/nathan-weatherholt.jpg"
+                   data-initial="NW">
+                <span class="tsm-avatar-initial">NW</span>
+              </div>
+            </div>
+            <div class="tsm-name-block">
+              <div class="tsm-pname">Nathan Weatherholt</div>
+              <div class="tsm-prole">
+                Bubble Ball Korea
+              </div>
+              <span class="tsm-badge tsm-badge-sv">Client</span>
+            </div>
+          </div>
+          <div class="tsm-body">
+            <p class="tsm-quote-text">
+              <span class="en">Aaron made the whole process completely stress free and we couldn't be happier with the outcome. He truly wanted to understand what we wanted, took time to meet with us when needed, and has continually helped if questions have arisen since launch. I have never needed a website built before — but Aaron was awesome in every way possible.</span>
+              <span class="ko">전체 과정이 완전히 스트레스 없었고 결과에 매우 만족합니다. 출시 이후에도 문의가 생길 때마다 도움을 주고 있습니다. Aaron은 모든 면에서 훌륭했습니다.</span>
+            </p>
+          </div>
+        </div>
+
+      </div><!-- /tsm-track -->
+    </div><!-- /tsm-stage -->
+
+    <!-- ── Navigation ── -->
+    <div class="tsm-nav">
+      <button class="tsm-arrow" id="tsmPrev" aria-label="Previous testimonial">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+
+      <div class="tsm-dots" id="tsmDots" role="tablist" aria-label="Testimonial navigation">
+        <!-- dots injected by JS -->
+      </div>
+
+      <div class="tsm-progress-wrap" title="Auto-advancing">
+        <div class="tsm-progress-bar" id="tsmBar"></div>
+      </div>
+
+      <button class="tsm-arrow" id="tsmNext" aria-label="Next testimonial">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+  </div><!-- /wrap -->
+</section>
+
+<script>
+(function () {
+  /* ── Config ─────────────────────────────────────────────── */
+  var INTERVAL   = 6000;   // ms between auto-advances
+  var DURATION   = 6000;   // must match INTERVAL for progress bar
+
+  /* ── Elements ─────────────────────────────────────────────── */
+  var track    = document.getElementById('tsmTrack');
+  var dotsWrap = document.getElementById('tsmDots');
+  var bar      = document.getElementById('tsmBar');
+  var prevBtn  = document.getElementById('tsmPrev');
+  var nextBtn  = document.getElementById('tsmNext');
+
+  if (!track) return;
+
+  var slides   = Array.from(track.querySelectorAll('.tsm-slide'));
+  var total    = slides.length;
+  var current  = 0;
+  var timer    = null;
+  var paused   = false;
+
+  /* ── Avatar photo injection ──────────────────────────────────
+     Tries to load the photo; if it 404s, the initial fallback
+     stays visible. Just drop the file in assets/img/testimonials/
+     and it will appear automatically.
+  ─────────────────────────────────────────────────────────── */
+  slides.forEach(function (slide) {
+    var avatar = slide.querySelector('.tsm-avatar');
+    if (!avatar) return;
+    var photo   = avatar.dataset.photo;
+    var initial = avatar.dataset.initial;
+    if (!photo) return;
+
+    var img = document.createElement('img');
+    img.alt = initial || '';
+    img.onload = function () {
+      // Photo loaded — hide the initial span
+      var span = avatar.querySelector('.tsm-avatar-initial');
+      if (span) span.style.display = 'none';
+      avatar.insertBefore(img, avatar.firstChild);
+    };
+    img.onerror = function () { /* keep initial */ };
+    img.src = photo; // trigger load attempt
+  });
+
+  /* ── Dots ─────────────────────────────────────────────────── */
+  slides.forEach(function (_, i) {
+    var dot = document.createElement('button');
+    dot.className   = 'tsm-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+    dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+    dotsWrap.appendChild(dot);
+  });
+
+  function getDots() { return Array.from(dotsWrap.querySelectorAll('.tsm-dot')); }
+
+  /* ── Core navigation ─────────────────────────────────────── */
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    getDots().forEach(function (d, i) {
+      d.classList.toggle('active', i === current);
+    });
+    restartBar();
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+
+  /* ── Progress bar ─────────────────────────────────────────── */
+  function restartBar() {
+    bar.style.transition = 'none';
+    bar.style.transform  = 'scaleX(0)';
+    // Force reflow so the transition reset takes effect
+    void bar.offsetWidth;
+    bar.style.transition = 'transform ' + DURATION + 'ms linear';
+    bar.style.transform  = 'scaleX(1)';
+  }
+
+  /* ── Auto-advance timer ──────────────────────────────────── */
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      if (!paused) goTo(current + 1);
+    }, INTERVAL);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    startTimer();
+  }
+
+  /* ── Pause on hover / focus ─────────────────────────────── */
+  var stage = document.querySelector('.tsm-stage');
+  if (stage) {
+    stage.addEventListener('mouseenter', function () { paused = true; bar.style.animationPlayState = 'paused'; });
+    stage.addEventListener('mouseleave', function () { paused = false; });
+    stage.addEventListener('focusin',    function () { paused = true; });
+    stage.addEventListener('focusout',   function () { paused = false; });
+  }
+
+  /* ── Touch / swipe support ──────────────────────────────── */
+  var touchStartX = 0;
+  if (stage) {
+    stage.addEventListener('touchstart', function (e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      var diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) {
+        goTo(diff > 0 ? current + 1 : current - 1);
+        resetTimer();
+      }
+    }, { passive: true });
+  }
+
+  /* ── Keyboard support ───────────────────────────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (!document.getElementById('testimonials').contains(document.activeElement)) return;
+    if (e.key === 'ArrowLeft')  { goTo(current - 1); resetTimer(); }
+    if (e.key === 'ArrowRight') { goTo(current + 1); resetTimer(); }
+  });
+
+  /* ── Init ───────────────────────────────────────────────── */
+  goTo(0);
+  startTimer();
+
+})();
+</script>

@@ -1,0 +1,143 @@
+# ══════════════════════════════════════════════════════════════
+#  Professional Services
+#  Used by: _includes/services.html
+#
+#  icon_type: chat | clock | edit | translate | palette | code
+#  icon_color: teal | blue | purple
+#  cta_color:  teal | blue | purple
+#  delay:      "" | "rise-d1" | "rise-d2"
+# ══════════════════════════════════════════════════════════════
+
+- id: speaking
+  icon_type: chat
+  icon_color: teal
+  primary: true
+  delay: ""
+  title_en: "Speaking & Keynotes"
+  title_ko: "강연 및 기조연설"
+  desc_en: "Conference keynotes, panel discussions, university lectures, and podcast appearances on AI, CS education, East–West tech culture, and Physical AI methodology."
+  desc_ko: "AI, CS 교육, 동서양 기술 문화, 피지컬 AI 방법론에 관한 학회 기조연설, 패널 토론, 대학 강의, 팟캐스트 출연."
+  tags:
+    - en: "AI & Physical AI"
+      color: teal
+    - en: "CS Education"
+      ko: "CS 교육"
+      color: teal
+    - en: "East–West Tech"
+      ko: "동서양 기술"
+      color: teal
+  cta_en: "Book a Talk →"
+  cta_ko: "강연 문의 →"
+  cta_color: teal
+
+- id: consultation
+  icon_type: clock
+  icon_color: blue
+  primary: false
+  delay: "rise-d1"
+  title_en: "AI & EdTech Consultation"
+  title_ko: "AI & 에드테크 컨설팅"
+  desc_en: "Curriculum design, AI integration strategy, Physical AI lab setup, and research methodology for universities and educational organizations entering the AI space."
+  desc_ko: "대학 및 교육 기관을 위한 교육과정 설계, AI 통합 전략, 피지컬 AI 실험실 구축, 연구 방법론 자문."
+  tags:
+    - en: "Curriculum Design"
+      ko: "교육과정 설계"
+      color: blue
+    - en: "Lab Setup"
+      ko: "실험실 구축"
+      color: blue
+    - en: "AI Strategy"
+      color: blue
+  cta_en: "Request Consultation →"
+  cta_ko: "컨설팅 문의 →"
+  cta_color: blue
+
+- id: proofreading
+  icon_type: edit
+  icon_color: teal
+  primary: false
+  delay: "rise-d2"
+  title_en: "English Proofreading & Editing"
+  title_ko: "영문 교정 및 편집"
+  desc_en: "Native-level English proofreading for academic papers, grant applications, journal submissions, university websites, and official documents. Specialized in Korean academic context."
+  desc_ko: "학술 논문, 연구비 신청서, 저널 제출, 대학 웹사이트, 공문서의 원어민 수준 영문 교정. 한국 학술 맥락 전문."
+  tags:
+    - en: "Academic Papers"
+      ko: "학술 논문"
+      color: teal
+    - en: "Grant Applications"
+      ko: "연구비 신청"
+      color: teal
+    - en: "Journals"
+      ko: "저널"
+      color: teal
+  cta_en: "Get a Quote →"
+  cta_ko: "견적 문의 →"
+  cta_color: teal
+
+- id: translation
+  icon_type: translate
+  icon_color: purple
+  primary: false
+  delay: "rise-d1"
+  title_en: "Korean → English Translation"
+  title_ko: "한→영 번역"
+  desc_en: "Accurate Korean-to-English translation for academic documents, research summaries, institutional materials, and web content. Over 20 years immersed in Korean academic and professional culture."
+  desc_ko: "학술 문서, 연구 요약본, 기관 자료, 웹 콘텐츠의 정확한 한영 번역. 20년 이상 한국 학술·직업 문화 몰입."
+  tags:
+    - en: "Academic Docs"
+      ko: "학술 문서"
+      color: purple
+    - en: "Research"
+      ko: "연구"
+      color: purple
+    - en: "Web Content"
+      ko: "웹 콘텐츠"
+      color: purple
+  cta_en: "Get a Quote →"
+  cta_ko: "견적 문의 →"
+  cta_color: purple
+
+- id: design
+  icon_type: palette
+  icon_color: blue
+  primary: false
+  delay: ""
+  title_en: "Graphic Design & Branding"
+  title_ko: "그래픽 디자인 & 브랜딩"
+  desc_en: "Logo design, academic identity systems, conference materials, poster layouts, and digital branding for research labs, academic societies, and university programs. MFA-trained."
+  desc_ko: "로고 디자인, 학술 아이덴티티 시스템, 학회 자료, 포스터 레이아웃, 연구실·학회·대학 프로그램 디지털 브랜딩. MFA 전공."
+  tags:
+    - en: "Logo & Identity"
+      ko: "로고 & 아이덴티티"
+      color: blue
+    - en: "Print Design"
+      ko: "인쇄 디자인"
+      color: blue
+    - en: "Web Graphics"
+      ko: "웹 그래픽"
+      color: blue
+  cta_en: "View Portfolio →"
+  cta_ko: "포트폴리오 보기 →"
+  cta_color: blue
+
+- id: webdev
+  icon_type: code
+  icon_color: purple
+  primary: false
+  delay: "rise-d1"
+  title_en: "Web Design & Development"
+  title_ko: "웹 디자인 & 개발"
+  desc_en: "Academic websites, research lab pages, Jekyll/GitHub Pages builds, WordPress, and interactive course sites. Fast, bilingual, and built for a Korean academic audience."
+  desc_ko: "학술 웹사이트, 연구실 페이지, Jekyll/GitHub Pages, WordPress, 인터랙티브 강의 사이트. 빠르고 이중 언어로 제작."
+  tags:
+    - en: "Jekyll"
+      color: purple
+    - en: "WordPress"
+      color: purple
+    - en: "Bilingual"
+      ko: "이중 언어"
+      color: purple
+  cta_en: "Let's Talk →"
+  cta_ko: "상담 문의 →"
+  cta_color: purple

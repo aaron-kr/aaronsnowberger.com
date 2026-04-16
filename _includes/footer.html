@@ -1,0 +1,58 @@
+<footer>
+  <div class="foot-inner">
+    <!-- LEFT -->
+    <div class="foot-left">
+      <div class="foot-name">Aaron <span>Snowberger</span>, Ph.D.</div>
+      <div class="foot-info">
+        <span class="en">Jeonju, South Korea · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span>
+        <span class="ko">전주, 대한민국 · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span><br>
+        <a href="{{ site.author.kakao_url }}" target="_blank" class="kakao-link">
+          <span class="en">💬 KakaoTalk Open Chat</span>
+          <span class="ko">💬 카카오톡 오픈채팅</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- CENTER: Wyoming cowboy hat -->
+    <div class="foot-center">
+      <a href="https://en.wikipedia.org/wiki/Wyoming" class="wy-logo" target="_blank"
+         title="Wyoming, USA — Big Sky Country">
+        <svg viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="50" rx="36" ry="7" fill="currentColor" opacity=".6"/>
+          <ellipse cx="40" cy="49" rx="22" ry="5" fill="currentColor" opacity=".4"/>
+          <path d="M18 49 Q18 25 25 20 Q32 15 40 14 Q48 15 55 20 Q62 25 62 49"
+                fill="currentColor" opacity=".8"/>
+          <ellipse cx="40" cy="14" rx="10" ry="4" fill="currentColor"/>
+          <path d="M30 20 Q40 18 50 20" stroke="currentColor" stroke-width="1.5"
+                fill="none" opacity=".5"/>
+        </svg>
+      </a>
+      <span class="wy-sub">
+        <span class="en">Wyoming</span>
+        <span class="ko">와이오밍</span>
+      </span>
+    </div>
+
+    <!-- RIGHT: links -->
+    <div class="foot-right">
+      <div class="fl-row">
+        <a href="{{ site.profiles.linkedin }}" class="fl t" target="_blank">LinkedIn</a>
+        <a href="{{ site.profiles.github }}" class="fl t" target="_blank">GitHub</a>
+        <a href="{{ site.profiles.courses }}" class="fl t" target="_blank">Courses</a>
+      </div>
+      <div class="fl-row">
+        <a href="{{ site.profiles.researchgate }}" class="fl b" target="_blank">ResearchGate</a>
+        <a href="{{ site.profiles.google_scholar }}" class="fl b" target="_blank">Scholar</a>
+        <a href="{{ site.profiles.orcid }}" class="fl b" target="_blank">ORCID</a>
+      </div>
+      <div class="fl-row">
+        <a href="{{ site.profiles.kspai }}" class="fl p" target="_blank">KSPAI</a>
+        <a href="{{ site.profiles.naver }}" class="fl p" target="_blank">Naver</a>
+        <a href="{{ site.profiles.academic_site }}/content" class="fl p" target="_blank">Blog</a>
+      </div>
+      <p style="font-size:.72rem;color:var(--t3);text-align:right;margin-top:.3rem;">
+        © {% capture current_year %}{{ 'now' | date: "%Y" }}{% endcapture %}{{ current_year }} Aaron Snowberger
+      </p>
+    </div>
+  </div>
+</footer>

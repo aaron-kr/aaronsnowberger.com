@@ -1,0 +1,57 @@
+# ══════════════════════════════════════════════════════════════
+#  Media Appearances — Cards
+#  Used by: _includes/media.html
+#
+#  type: talk | press | podcast
+#  host_ko: Only needed if host name differs in Korean;
+#           leave blank to use host (same in both languages)
+#  delay: "" | "rise-d1" | "rise-d2"
+# ══════════════════════════════════════════════════════════════
+
+- url: "https://www.irobotnews.com/news/articleView.html?idxno=32424"
+  img: "https://aaronkr-courses.github.io/assets/img/wro-profile.png"
+  img_alt: "Aaron Judging WRO in Incheon 2023"
+  label_en: "View Article →"
+  label_ko: "기사 보기 →"
+  type: "talk"
+  type_en: "Invited Talk"
+  type_ko: "초청 강연"
+  title_en: "Physical AI in Korean University Education"
+  title_ko: "한국 대학 교육에서의 피지컬 AI"
+  host: "KSPAI Founding Symposium"
+  host_ko: "KSPAI 창립 심포지엄"
+  date_en: "2023/8/12 · iRobot News"
+  date_ko: "2023/8/12 · iRobot 신문"
+  delay: ""
+
+- url: "https://2019.jsconfkorea.com/en/tutorials/"
+  img: "https://i0.wp.com/files.aaron.kr/media/2025/01/20190903_111712.webp?resize=1024%2C512&ssl=1"
+  img_alt: "JSConf Korea 2019"
+  label_en: "View Talk →"
+  label_ko: "강연 보기 →"
+  type: "talk"
+  type_en: "Conference Talk"
+  type_ko: "컨퍼런스 발표"
+  title_en: "JSConf Korea 2019 Tutorial"
+  title_ko: "한국 JSConf 2019 튜토리얼"
+  host: "JSConf Korea"
+  host_ko: "한국 JSConf"
+  date_en: "2019/9/3 · JSConf Korea"
+  date_ko: "2019/9/3 · 한국 JSConf"
+  delay: "rise-d1"
+
+- url: "https://example.com"
+  img: "https://i0.wp.com/files.aaron.kr/media/2025/01/1682131399127-edited.webp?w=1920&ssl=1"
+  img_alt: "Invited Talk 2024"
+  label_en: "View Press →"
+  label_ko: "보도 보기 →"
+  type: "press"
+  type_en: "Press"
+  type_ko: "보도"
+  title_en: "Your first press mention"
+  title_ko: "첫 번째 언론 보도"
+  host: "Publication Name"
+  host_ko: "매체명"
+  date_en: "2024/1/1 · Press Article"
+  date_ko: "2024/1/1 · 언론 기사"
+  delay: "rise-d2"

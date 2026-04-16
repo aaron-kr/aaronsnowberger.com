@@ -1,0 +1,81 @@
+# ══════════════════════════════════════════════════════════════
+#  Digital Presence — Link Cards
+#  Used by: _includes/links.html
+#
+#  type: academic | linkedin | github | researchgate |
+#        google-scholar | orcid | youtube | kspai
+#  name_ko: Leave blank if the name is not translated
+#  delay: "" | "rise-d1" | "rise-d2" | "rise-d3"
+# ══════════════════════════════════════════════════════════════
+
+- url: "https://aaron.kr"
+  type: "academic"
+  name_en: "Academic Site"
+  name_ko: "학술 사이트"
+  handle: "aaron.kr"
+  action_en: "Visit →"
+  action_ko: "방문 →"
+  delay: ""
+
+- url: "https://linkedin.com/in/aaronsnowberger/"
+  type: "linkedin"
+  name_en: "LinkedIn"
+  name_ko: ""
+  handle: "aaronsnowberger"
+  action_en: "Connect →"
+  action_ko: "연결 →"
+  delay: "rise-d1"
+
+- url: "https://github.com/jekkilekki"
+  type: "github"
+  name_en: "GitHub"
+  name_ko: ""
+  handle: "jekkilekki"
+  action_en: "View →"
+  action_ko: "보기 →"
+  delay: "rise-d2"
+
+- url: "https://www.researchgate.net/profile/Aaron-Snowberger"
+  type: "researchgate"
+  name_en: "ResearchGate"
+  name_ko: ""
+  handle: "Aaron-Snowberger"
+  action_en: "Profile →"
+  action_ko: "프로필 →"
+  delay: "rise-d3"
+
+- url: "https://scholar.google.com/citations?user=JCbnnvUAAAAJ"
+  type: "google-scholar"
+  name_en: "Google Scholar"
+  name_ko: ""
+  handle: "Publications"
+  action_en: "Cite →"
+  action_ko: "인용 →"
+  delay: ""
+
+- url: "https://orcid.org/0000-0001-8652-0936"
+  type: "orcid"
+  name_en: "ORCID"
+  name_ko: ""
+  handle: "0000-0001-8652-0936"
+  action_en: "View →"
+  action_ko: "보기 →"
+  delay: "rise-d1"
+
+- url: "https://youtube.com/@aaronsnowberger"
+  type: "youtube"
+  name_en: "YouTube"
+  name_ko: ""
+  handle: "@aaronsnowberger"
+  action_en: "Watch →"
+  action_ko: "시청 →"
+  delay: "rise-d2"
+
+- url: "https://kspai.org"
+  type: "kspai"
+  name_en: "KSPAI"
+  name_ko: ""
+  handle: "kspai.org"
+  action_en: "Explore →"
+  action_ko: "탐색 →"
+  delay: "rise-d3"

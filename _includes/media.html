@@ -1,0 +1,52 @@
+<!-- ══ MEDIA ══════════════════════════════════════════════════ -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-label rise in"><span class="en">Media Appearances</span><span class="ko">미디어 출연</span></div>
+    <h2 class="sec-title rise rise-d1 in"><span class="en">In the <em>news</em></span><span class="ko"><em>뉴스</em> 및 출연</span></h2>
+    <p class="sec-desc rise rise-d2 in">
+      <span class="en">Podcast appearances, invited talks, and press coverage. A curated selection — <a href="{{ site.profiles.academic_site }}" style="color:var(--teal)">visit aaron.kr</a> for the full archive.</span>
+      <span class="ko">팟캐스트 출연, 초청 강연, 보도 자료. 전체 목록은 <a href="{{ site.profiles.academic_site }}" style="color:var(--teal)">aaron.kr</a>에서 확인하세요.</span>
+    </p>
+    <div class="media-grid">
+      {% for item in site.data.media %}
+
+      {% comment %} Resolve type CSS class {% endcomment %}
+      {% if item.type == "press" %}
+        {% assign mt_class = "mt-press" %}
+      {% elsif item.type == "podcast" %}
+        {% assign mt_class = "mt-pod" %}
+      {% else %}
+        {% assign mt_class = "mt-talk" %}
+      {% endif %}
+
+      <a href="{{ item.url }}" target="_blank" class="media-card rise{% if item.delay != "" %} {{ item.delay }}{% endif %} in">
+        <div class="media-thumb">
+          <img src="{{ item.img }}" alt="{{ item.img_alt }}">
+          <div class="media-hover-label"><span class="en">{{ item.label_en }}</span><span class="ko">{{ item.label_ko }}</span></div>
+        </div>
+        <div class="media-body">
+          <span class="media-type {{ mt_class }}">
+            <span class="en">{{ item.type_en }}</span><span class="ko">{{ item.type_ko }}</span>
+          </span>
+          <div class="media-title">
+            <span class="en">{{ item.title_en }}</span><span class="ko">{{ item.title_ko }}</span>
+          </div>
+          <div class="media-host">
+            {% if item.host_ko %}<span class="en">{{ item.host }}</span><span class="ko">{{ item.host_ko }}</span>{% else %}{{ item.host }}{% endif %}
+          </div>
+          <div class="media-date">
+            <span class="en">{{ item.date_en }}</span>
+            <span class="ko">{{ item.date_ko }}</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="media-cta-row rise in">
+      <a href="{{ site.profiles.academic_site }}" target="_blank" class="media-see-all fs">
+        <span class="en">See all appearances on aaron.kr →</span>
+        <span class="ko">aaron.kr에서 전체 목록 보기 →</span>
+      </a>
+    </div>
+  </div>
+</section>
