@@ -1,0 +1,560 @@
+/* ════════════════════════════════════════════════════════════════
+   cv.css — Aaron Snowberger CV page
+   Screen: Playfair Display (headings) + DM Sans (body) — matches site
+   Print:  Crimson Pro (body) — traditional academic feel
+
+   FONT CONFIGURATION (edit here):
+     --cv-font-heading : Playfair Display  ← change to 'Cardo' if preferred
+     --cv-font-body    : DM Sans           ← screen body
+     --cv-font-print   : Crimson Pro       ← print body (change to 'Cardo' for
+                                              a more classic look)
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --cv-font-heading : 'Playfair Display', Georgia, serif;
+  --cv-font-body    : 'DM Sans', system-ui, sans-serif;
+  --cv-font-print   : 'Crimson Pro', Georgia, serif;
+  --cv-font-mono    : 'JetBrains Mono', monospace;
+
+  --cv-teal   : #2DD4BF;
+  --cv-blue   : #38BDF8;
+  --cv-purple : #A78BFA;
+
+  /* Light/dark via site's data-theme attribute */
+  --cv-bg       : var(--bg,      #0c0f0e);
+  --cv-bg2      : var(--bg-muted,#111614);
+  --cv-text     : var(--fg,      #e8ede8);
+  --cv-text2    : var(--t2,      #9aada8);
+  --cv-text3    : var(--t3,      #5c7370);
+  --cv-brd      : var(--brd,     rgba(255,255,255,.08));
+  --cv-accent   : var(--teal,    #2DD4BF);
+
+  --cv-max      : 860px;
+  --cv-pad      : clamp(1.5rem, 5vw, 3.5rem);
+  --cv-section-gap : 2.4rem;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+.cv-page {
+  background : var(--cv-bg);
+  color      : var(--cv-text);
+  font-family: var(--cv-font-body);
+  font-size  : 15px;
+  line-height: 1.65;
+  margin     : 0;
+  padding    : 0;
+}
+
+.cv-page a {
+  color          : var(--cv-teal);
+  text-decoration: none;
+  transition     : opacity .15s;
+}
+.cv-page a:hover { opacity: .75; text-decoration: underline; }
+
+/* ── Toolbar ────────────────────────────────────────────────── */
+.cv-toolbar {
+  position        : sticky;
+  top             : 0;
+  z-index         : 100;
+  display         : flex;
+  align-items     : center;
+  justify-content : space-between;
+  padding         : .55rem var(--cv-pad);
+  background      : var(--cv-bg2);
+  border-bottom   : 1px solid var(--cv-brd);
+  backdrop-filter : blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size       : .82rem;
+}
+
+.cv-back {
+  display    : flex;
+  align-items: center;
+  gap        : .35rem;
+  color      : var(--cv-text2);
+  font-size  : .82rem;
+}
+.cv-back:hover { color: var(--cv-teal); text-decoration: none; }
+
+.cv-toolbar-actions {
+  display    : flex;
+  align-items: center;
+  gap        : .6rem;
+}
+
+/* reuse site's .nbtn for the theme toggle */
+.cv-page .nbtn {
+  background  : transparent;
+  border      : 1px solid var(--cv-brd);
+  border-radius: 6px;
+  color       : var(--cv-text2);
+  cursor      : pointer;
+  font-size   : .8rem;
+  padding     : .3rem .55rem;
+  transition  : color .2s, border-color .2s;
+}
+.cv-page .nbtn:hover { color: var(--cv-teal); border-color: var(--cv-teal); }
+
+.cv-print-btn {
+  display     : flex;
+  align-items : center;
+  gap         : .4rem;
+  background  : transparent;
+  border      : 1px solid var(--cv-teal);
+  border-radius: 6px;
+  color       : var(--cv-teal);
+  cursor      : pointer;
+  font-family : var(--cv-font-body);
+  font-size   : .8rem;
+  padding     : .3rem .75rem;
+  transition  : background .2s, color .2s;
+}
+.cv-print-btn:hover { background: var(--cv-teal); color: #0c0f0e; }
+
+/* ── Main container ─────────────────────────────────────────── */
+.cv-main {
+  max-width : var(--cv-max);
+  margin    : 0 auto;
+  padding   : 3rem var(--cv-pad) 4rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.cv-header {
+  text-align   : center;
+  padding-bottom: 2rem;
+  border-bottom : 2px solid var(--cv-accent);
+  margin-bottom : var(--cv-section-gap);
+}
+
+.cv-header-name h1 {
+  font-family : var(--cv-font-heading);
+  font-size   : clamp(2rem, 5vw, 3rem);
+  font-weight : 700;
+  letter-spacing: -.02em;
+  margin      : 0 0 .2rem;
+  color       : var(--cv-text);
+}
+
+.cv-name-ko {
+  font-family : 'Noto Sans KR', var(--cv-font-body);
+  font-size   : .9rem;
+  color       : var(--cv-teal);
+  letter-spacing: .04em;
+  display     : block;
+  margin-bottom: .5rem;
+}
+
+.cv-header-title {
+  font-size  : 1rem;
+  color      : var(--cv-text2);
+  font-style : italic;
+  margin     : .25rem 0 1rem;
+}
+
+.cv-contact-strip {
+  font-size   : .8rem;
+  color       : var(--cv-text3);
+  display     : flex;
+  flex-wrap   : wrap;
+  justify-content: center;
+  gap         : .3rem .1rem;
+  line-height : 1.5;
+}
+.cv-contact-strip a { color: var(--cv-text2); }
+.cv-contact-strip a:hover { color: var(--cv-teal); }
+.cv-sep { opacity: .4; padding: 0 .2rem; }
+
+/* ── Section ─────────────────────────────────────────────────── */
+.cv-section {
+  margin-bottom: var(--cv-section-gap);
+}
+
+.cv-section-title {
+  font-family  : var(--cv-font-heading);
+  font-size    : 1.05rem;
+  font-weight  : 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color        : var(--cv-accent);
+  border-bottom: 1px solid var(--cv-brd);
+  padding-bottom: .4rem;
+  margin       : 0 0 1.1rem;
+}
+
+.cv-subsection {
+  font-family  : var(--cv-font-heading);
+  font-size    : .85rem;
+  font-weight  : 600;
+  font-style   : italic;
+  color        : var(--cv-text2);
+  margin       : 1.2rem 0 .6rem;
+}
+
+.cv-subsection-note {
+  font-weight: 400;
+  font-style : normal;
+  font-size  : .78rem;
+  color      : var(--cv-text3);
+}
+
+/* ── Entry (Education, Employment, Honors, Presentations) ───── */
+.cv-entry {
+  display   : grid;
+  grid-template-columns: 10rem 1fr;
+  gap       : 0 1.2rem;
+  margin-bottom: .85rem;
+  padding-bottom: .85rem;
+  border-bottom: 1px solid var(--cv-brd);
+}
+.cv-entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cv-entry-meta {
+  font-size  : .78rem;
+  color      : var(--cv-text3);
+  line-height: 1.5;
+  padding-top: .1rem;
+  font-variant-numeric: tabular-nums;
+  text-align : right;
+}
+
+.cv-entry-title { font-size: .95rem; line-height: 1.4; }
+.cv-entry-org   { font-size: .85rem; color: var(--cv-text2); margin-top: .15rem; }
+.cv-entry-sub   { font-size: .82rem; color: var(--cv-text3); margin-top: .15rem; line-height: 1.4; }
+.cv-dept        { font-style: italic; }
+.cv-ko          { color: var(--cv-text3); font-size: .85em; }
+
+.cv-award {
+  display        : inline-block;
+  background     : rgba(45,212,191,.12);
+  border         : 1px solid rgba(45,212,191,.3);
+  border-radius  : 4px;
+  color          : var(--cv-teal);
+  font-size      : .7rem;
+  font-style     : normal;
+  font-weight    : 600;
+  letter-spacing : .04em;
+  margin-left    : .4rem;
+  padding        : .05rem .4rem;
+  vertical-align : middle;
+  white-space    : nowrap;
+}
+
+/* ── Publications ────────────────────────────────────────────── */
+.cv-pub {
+  display        : flex;
+  align-items    : baseline;
+  gap            : .4rem;
+  font-size      : .83rem;
+  line-height    : 1.55;
+  margin-bottom  : .7rem;
+  padding-bottom : .7rem;
+  border-bottom  : 1px solid var(--cv-brd);
+}
+.cv-pub:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cv-pub-num {
+  flex-shrink    : 0;
+  width          : 1.4rem;
+  text-align     : right;
+  color          : var(--cv-text3);
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-pub-content { flex: 1; }
+
+.cv-pub-authors { color: var(--cv-text2); }
+.cv-pub-title   { color: var(--cv-text);  }
+.cv-pub-venue   { color: var(--cv-text3); }
+.cv-pub-link    { font-size: .75rem; margin-left: .3rem; white-space: nowrap; }
+
+.cv-badge-deg {
+  display       : inline-block;
+  background    : rgba(56,189,248,.1);
+  border        : 1px solid rgba(56,189,248,.25);
+  border-radius : 4px;
+  color         : var(--cv-blue);
+  font-size     : .68rem;
+  font-weight   : 600;
+  letter-spacing: .04em;
+  padding       : .05rem .4rem;
+  white-space   : nowrap;
+}
+
+.cv-note { color: var(--cv-text3); font-size: .8em; }
+
+/* ── Teaching ────────────────────────────────────────────────── */
+.cv-teach-block {
+  margin-bottom : 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom : 1px solid var(--cv-brd);
+}
+.cv-teach-block:last-child { border-bottom: none; margin-bottom: 0; }
+
+.cv-teach-header {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : baseline;
+  gap            : 1rem;
+  flex-wrap      : wrap;
+}
+
+.cv-teach-inst {
+  font-family : var(--cv-font-heading);
+  font-size   : .92rem;
+  font-weight : 700;
+  color       : var(--cv-text);
+}
+
+.cv-teach-years {
+  font-size   : .78rem;
+  color       : var(--cv-text3);
+  white-space : nowrap;
+}
+
+.cv-teach-dept {
+  font-size  : .82rem;
+  font-style : italic;
+  color      : var(--cv-text2);
+  margin     : .15rem 0 .5rem;
+}
+
+.cv-course-list {
+  list-style : none;
+  padding    : 0;
+  margin     : 0;
+  display    : grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap        : .2rem .8rem;
+}
+
+.cv-course-list li {
+  font-size   : .82rem;
+  color       : var(--cv-text2);
+  padding-left: .8rem;
+  position    : relative;
+}
+
+.cv-course-list li::before {
+  content    : "·";
+  position   : absolute;
+  left       : 0;
+  color      : var(--cv-teal);
+  opacity    : .6;
+}
+
+.cv-course-list a { color: var(--cv-text2); }
+.cv-course-list a:hover { color: var(--cv-teal); }
+
+.cv-course-term {
+  font-size   : .72rem;
+  color       : var(--cv-text3);
+  margin-left : .4rem;
+}
+
+/* ── Presentations ────────────────────────────────────────────── */
+.cv-pres-title {
+  color      : var(--cv-text);
+  font-weight: 500;
+}
+
+/* ── Certifications / Languages (2-col at bottom) ─────────────── */
+.cv-section-2col {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 0 2rem;
+}
+
+.cv-cert {
+  font-size    : .83rem;
+  color        : var(--cv-text2);
+  margin-bottom: .4rem;
+}
+
+.cv-lang { margin-bottom: 1rem; }
+.cv-lang-name { font-size: .9rem; margin-bottom: .25rem; }
+
+/* ── Footer note ──────────────────────────────────────────────── */
+.cv-footer-note {
+  text-align : center;
+  font-size  : .76rem;
+  color      : var(--cv-text3);
+  margin-top : 2.5rem;
+  padding-top: 1.5rem;
+  border-top : 1px solid var(--cv-brd);
+}
+
+/* ── Light mode overrides ──────────────────────────────────────── */
+[data-theme="light"] .cv-page,
+[data-theme="light"].cv-page {
+  --cv-bg   : #f8f8f5;
+  --cv-bg2  : #efefea;
+  --cv-text : #1a1f1e;
+  --cv-text2: #4a5754;
+  --cv-text3: #8a9a97;
+  --cv-brd  : rgba(0,0,0,.1);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   @media print renders a clean white academic CV.
+   Font switches to Crimson Pro (or Cardo if you edited --cv-font-print).
+   ════════════════════════════════════════════════════════════════ */
+@media print {
+  /* Force white background regardless of dark mode */
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  html, body, .cv-page {
+    background : #fff !important;
+    color      : #111 !important;
+    font-family: var(--cv-font-print) !important;
+    font-size  : 10.5pt;
+    line-height: 1.5;
+  }
+
+  .no-print,
+  .cv-toolbar { display: none !important; }
+
+  .cv-main {
+    max-width : 100%;
+    padding   : 0;
+    margin    : 0;
+  }
+
+  .cv-header {
+    border-bottom-color: #2DD4BF;
+    padding-bottom     : 10pt;
+    margin-bottom      : 14pt;
+  }
+
+  .cv-header-name h1 {
+    font-size  : 22pt;
+    color      : #111;
+    font-family: var(--cv-font-heading);
+  }
+
+  .cv-name-ko {
+    font-size  : 9pt;
+    color      : #2DD4BF;
+  }
+
+  .cv-header-title {
+    font-size: 9.5pt;
+    color    : #444;
+  }
+
+  .cv-contact-strip {
+    font-size: 8.5pt;
+    color    : #555;
+  }
+  .cv-contact-strip a,
+  .cv-sep { color: #555; }
+
+  .cv-section-title {
+    font-size      : 8.5pt;
+    color          : #2DD4BF;
+    border-bottom  : 0.5pt solid #ccc;
+    margin-bottom  : 6pt;
+    padding-bottom : 2pt;
+    page-break-after: avoid;
+  }
+
+  .cv-subsection {
+    font-size    : 8.5pt;
+    color        : #444;
+    margin       : 8pt 0 4pt;
+    page-break-after: avoid;
+  }
+
+  .cv-entry {
+    grid-template-columns: 7.5rem 1fr;
+    gap          : 0 .8rem;
+    margin-bottom: 5pt;
+    padding-bottom: 5pt;
+    border-bottom: 0.3pt solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .cv-entry-meta  { font-size: 7.5pt; color: #666; }
+  .cv-entry-title { font-size: 9pt; color: #111; }
+  .cv-entry-org   { font-size: 8.5pt; color: #444; }
+  .cv-entry-sub   { font-size: 8pt; color: #555; }
+
+  .cv-award {
+    background: none;
+    border    : 0.5pt solid #2DD4BF;
+    color     : #1a9e8a;
+    font-size : 6.5pt;
+  }
+
+  .cv-pub {
+    font-size    : 8pt;
+    margin-bottom: 4pt;
+    padding-bottom: 4pt;
+    border-bottom: 0.3pt solid #eee;
+    page-break-inside: avoid;
+  }
+
+  .cv-pub-num   { color: #888; width: 1.2rem; }
+  .cv-pub-title { color: #111; }
+  .cv-pub-venue { color: #444; }
+  .cv-pub-link  { display: none; } /* hide [RG] links in print */
+
+  .cv-badge-deg {
+    background: none;
+    border    : 0.5pt solid #38BDF8;
+    color     : #1e7fa8;
+    font-size : 6pt;
+  }
+
+  .cv-teach-block {
+    margin-bottom : 8pt;
+    padding-bottom: 8pt;
+    border-bottom : 0.3pt solid #ddd;
+    page-break-inside: avoid;
+  }
+
+  .cv-teach-inst { font-size: 9pt; color: #111; }
+  .cv-teach-dept { font-size: 8pt; color: #555; }
+  .cv-teach-years{ font-size: 7.5pt; color: #777; }
+
+  .cv-course-list {
+    grid-template-columns: repeat(auto-fill, minmax(220pt, 1fr));
+  }
+  .cv-course-list li { font-size: 8pt; color: #333; }
+  .cv-course-list li::before { color: #2DD4BF; }
+  .cv-course-term { font-size: 7pt; color: #666; }
+
+  .cv-pres-title { color: #111; }
+
+  .cv-section-2col {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.5rem;
+  }
+
+  .cv-cert, .cv-lang-name { font-size: 8pt; color: #333; }
+
+  /* Page breaks */
+  .cv-section { page-break-inside: avoid; }
+  h2, h3     { page-break-after: avoid; }
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .cv-entry {
+    grid-template-columns: 1fr;
+  }
+  .cv-entry-meta {
+    text-align : left;
+    margin-bottom: .15rem;
+    font-size  : .75rem;
+  }
+  .cv-section-2col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .cv-course-list {
+    grid-template-columns: 1fr;
+  }
+}

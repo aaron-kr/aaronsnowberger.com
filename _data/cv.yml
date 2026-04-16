@@ -1,0 +1,760 @@
+# ══════════════════════════════════════════════════════════════
+#  Curriculum Vitae — Aaron Snowberger, Ph.D.
+#  Used by: cv.md / _layouts/cv.html
+#
+#  FONTS (edit in assets/css/cv.css → :root block):
+#    Screen headings : Playfair Display  (matches site)
+#    Screen body     : DM Sans           (matches site)
+#    Print body      : Crimson Pro       (traditional academic feel)
+#    To switch back to Cardo, replace "Crimson Pro" with "Cardo"
+#    in the @import line and --cv-font-print variable.
+# ══════════════════════════════════════════════════════════════
+
+# ── Personal ──────────────────────────────────────────────────
+personal:
+  name:       "Aaron Snowberger"
+  name_ko:    "에런 스노우버거"
+  credentials: "Ph.D."
+  title_en:   "AI Researcher · CS Educator · Multimedia Designer"
+  address:    "Cheonmasan-Ro 31, 102 Dong 904 Ho, Jeonju, Jeollabuk-do, KOREA 54829"
+  phone:      "010-5197-6432"
+  email:      "hi@aaron.kr"
+  website:    "https://aaron.kr"
+  press_site: "https://aaronsnowberger.com"
+
+# ── Education ─────────────────────────────────────────────────
+education:
+  - degree:      "M.S."
+    field:       "Artificial Intelligence"
+    institution: "Udacity & Woolf University"
+    location:    ""
+    years:       "2025 – present (in progress)"
+
+  - degree:      "Ph.D."
+    field:       "Information Communication Engineering"
+    institution: "Hanbat National University"
+    location:    "Daejeon, South Korea"
+    years:       "2024"
+    advisor:     "Prof. Choong Ho Lee"
+    thesis_en:   "CNN-Based Handwritten Character Recognition for the Manchu and Hangul Scripts"
+    thesis_ko:   "CNN 기반 만주 및 한글 필기 스크립트 문자 인식"
+    thesis_url:  "https://lib.hanbat.ac.kr/search/detail/CATTOT000000452272"
+    award:       "Excellent Thesis Award"
+
+  - degree:      "M.F.A."
+    field:       "Media Design"
+    institution: "Full Sail University"
+    location:    "Winter Park, FL, USA"
+    years:       "2011"
+    advisor:     "Prof. Don Larson"
+    thesis_en:   "Discover Korea: Rebranding Korea's Tourism Marketing"
+    thesis_url:  "https://www.blurb.com/b/2551631-discover-korea-project-book"
+    award:       "Advanced Achiever Award (Valedictorian); 3 Course Director Awards"
+
+  - degree:      "B.S."
+    field:       "Computer Science"
+    institution: "University of Wyoming"
+    location:    "Laramie, WY, USA"
+    years:       "2006"
+    project:     "TerraViewer — Microsoft Terraserver Map Viewer (Java)"
+    award:       "Senior Team Project Design, 2nd Place"
+
+# ── Employment ────────────────────────────────────────────────
+employment:
+  - title:       "Lecturer"
+    org:         "Jeonbuk National University"
+    dept:        "School of International Engineering and Science"
+    years:       "Sep 2024 – present"
+
+  - title:       "Lecturer"
+    org:         "Hanbat National University"
+    dept:        "Dept. of Information and Communications Engineering"
+    years:       "Sep 2023 – present"
+
+  - title:       "Lecturer"
+    org:         "Jeonju National University of Education"
+    dept:        "Dept. of Computer Education"
+    years:       "Sep 2023 – present"
+
+  - title:       "Lecturer"
+    org:         "Korea National University of Transportation"
+    dept:        "Dept. of Computer Science / Dept. of Biomedical Convergence"
+    years:       "Mar 2023 – present"
+
+  - title:       "Lecturer"
+    org:         "Daejeon University"
+    dept:        "Dept. of Information Security"
+    years:       "Sep 2023 – Sep 2025"
+
+  - title:       "Associate Professor"
+    org:         "Jeonju University"
+    dept:        "Liberal Arts"
+    years:       "Sep 2021 – Aug 2023"
+
+  - title:       "Assistant Professor"
+    org:         "Jeonju University"
+    dept:        "Liberal Arts"
+    years:       "Jul 2012 – Sep 2021"
+
+  - title:       "Full-time Instructor"
+    org:         "Jeonju University"
+    dept:        "Liberal Arts"
+    years:       "Mar 2010 – Jul 2012"
+
+  - title:       "Magazine Designer"
+    org:         "Jeollabuk-do Center for International Affairs"
+    dept:        ""
+    years:       "Mar 2018 – Dec 2022"
+
+  - title:       "Technology Instructor"
+    org:         "Global Prodigy Academy (GPA) High School"
+    dept:        ""
+    years:       "Mar 2013 – Jul 2019"
+
+# ── Honors & Awards ───────────────────────────────────────────
+honors:
+  - title:    "Excellent Ph.D. Thesis Award"
+    org:      "Hanbat National University"
+    year:     2024
+    note:     "CNN-Based Handwritten Character Recognition for the Manchu and Hangul Scripts"
+    url:      "https://www.researchgate.net/publication/388769937"
+
+  - title:    "Best Paper Award"
+    org:      "한국실천공학교육학회 (KIPEE) Annual Conference"
+    year:     2021
+    note:     "Attitudes of Teachers in South Korea Toward Technology Use During COVID-19"
+    url:      "https://www.researchgate.net/publication/388568395"
+
+  - title:    "Governor's Award"
+    org:      "2020 Scout Jamboree Contents Monitoring Group, Jeollabuk-do"
+    year:     2020
+
+  - title:    "Advanced Achievement Award (Valedictorian)"
+    org:      "Full Sail University — Media Design MFA"
+    year:     2011
+    note:     "Thesis: Discover Korea: Rebranding Korea's Tourism Marketing"
+    url:      "https://www.blurb.com/b/2551631-discover-korea-project-book"
+
+  - title:    "Course Director's Awards (×3)"
+    org:      "Full Sail University"
+    year:     2011
+    note:     "Defining Client Needs · Design Integration · Multi-Platform Delivery"
+
+  - title:    "Senior Team Project Design, 2nd Place"
+    org:      "University of Wyoming"
+    year:     2006
+
+# ── Certifications ────────────────────────────────────────────
+certifications:
+  technology:
+    - name:  "Google Certified Trainer"
+      org:   "Google"
+      year:  "Mar 2017"
+    - name:  "Google Certified G Suite Administrator"
+      org:   "Google"
+      year:  "Feb 2017"
+    - name:  "Google Certified Teacher, Level 1 & Level 2"
+      org:   "Google"
+      year:  "Feb 2017"
+
+  language:
+    - name:  "120-Hour TEFL Online Diploma"
+      org:   "TEFL Online"
+      year:  "Sep 2009"
+    - name:  "Course in English Grammar"
+      org:   "TEFL Online"
+      year:  "Jan 2010"
+
+# ── Publications ──────────────────────────────────────────────
+publications:
+
+  theses:
+    - type:   "Ph.D."
+      author: "A. Snowberger"
+      title:  "CNN-Based Handwritten Character Recognition for the Manchu and Hangul Scripts"
+      title_ko: "CNN 기반 만주 및 한글 필기 스크립트 문자 인식"
+      inst:   "Hanbat National University"
+      year:   2024
+      url:    "https://lib.hanbat.ac.kr/search/detail/CATTOT000000452272"
+      rg:     "https://www.researchgate.net/publication/388769937"
+
+    - type:   "M.F.A."
+      author: "A. Snowberger"
+      title:  "Discover Korea: Rebranding Korea's Tourism Marketing"
+      inst:   "Full Sail University"
+      year:   2011
+      url:    "https://www.blurb.com/b/2551631-discover-korea-project-book"
+
+  journals:
+    - authors: "A. Snowberger, K.S. You"
+      title:   "Cross-Cultural Perceptions of AI in Education: Comparing Korean and International Students in Korea's Glocal University Era"
+      journal: "Journal of Consulting Convergence Research"
+      vol:     "5(2)"
+      pages:   "1–9"
+      year:    2025
+      doi:     "10.55479/JCCR.2025.5.2.15"
+
+    - authors: "A. Snowberger, K.S. You"
+      title:   "Leveraging GitHub Classroom and Google Colab for Short-Term Student Machine Learning Team Projects"
+      journal: "Journal of Practical Engineering Education"
+      vol:     "17(1)"
+      pages:   "49–61"
+      year:    2025
+      doi:     "10.14702/JPEE.2025.049"
+      url:     "http://dx.doi.org/10.14702/JPEE.2025.049"
+      rg:      "https://www.researchgate.net/publication/389562024"
+
+    - authors: "A. Snowberger, K.S. You"
+      title:   "Creating a Standardized Environment for Efficient Learning Management using GitHub Codespaces and GitHub Classroom"
+      journal: "Journal of Practical Engineering Education"
+      vol:     "16(3)"
+      pages:   "267–274"
+      year:    2024
+      doi:     "10.14702/JPEE.2024.0267"
+      url:     "http://dx.doi.org/10.14702/JPEE.2024.0267"
+      rg:      "https://www.researchgate.net/publication/388006063"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Manchu Script Letters Dataset Creation and Labeling"
+      journal: "Journal of Information and Communication Convergence Engineering"
+      vol:     "22"
+      pages:   "80–87"
+      year:    2024
+      url:     "https://www.jicce.org/journal/view.html?pn=myread&uid=1259&vmd=Full"
+      rg:      "https://www.researchgate.net/publication/379444779"
+
+    - authors: "A. Snowberger, S.M. Kim, S.H. Woo"
+      title:   "Analysis and Application of Front-End Code Playground Tools for Web Programming Education"
+      journal: "Journal of Practical Engineering Education"
+      vol:     "16(1)"
+      pages:   "11–19"
+      year:    2024
+      rg:      "https://www.researchgate.net/publication/380637764"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "A Systematic Review of Handwritten Hangul OCR Techniques and Datasets"
+      journal: "The Korea Quality of Life Journal"
+      vol:     "1(2)"
+      pages:   "27–38"
+      year:    2023
+      doi:     "10.59434/JQoLR.2023.1.2.027"
+      rg:      "https://www.researchgate.net/publication/373678865"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "A Workflow for Practical Programming Class Management Using GitHub Pages and GitHub Classroom"
+      journal: "Journal of Practical Engineering Education"
+      vol:     "15"
+      pages:   "331–339"
+      year:    2023
+      url:     "https://koreascience.kr/article/JAKO202334872050450.pdf"
+      rg:      "https://www.researchgate.net/publication/380637639"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Handwritten Hangul Graphemes Classification using Three Artificial Neural Networks"
+      journal: "Journal of Information and Communication Convergence Engineering"
+      vol:     "21"
+      pages:   "167–173"
+      year:    2023
+      doi:     "10.56977/jicce.2023.21.2.167"
+      rg:      "https://www.researchgate.net/publication/372017683"
+
+  conferences:
+    - authors: "A. Snowberger, S.M. Kim, C.H. Lee"
+      title:   "Development of an Interactive Dataset Builder for Ancient Script Recognition Using ROI Selection and Template Matching"
+      proc:    "Proceedings of the 2025 Spring Academic Conference"
+      org:     "KLife"
+      year:    2025
+      note:    "forthcoming"
+
+    - authors: "A. Snowberger, K.S. You"
+      title:   "A Cross-Cultural Comparison of Korean and International Student Perceptions and Use of AI in Education"
+      proc:    "Proceedings of the 2025 Spring Academic Conference"
+      org:     "KLife"
+      year:    2025
+      note:    "forthcoming"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Design for a Script Alphabet Learning Mobile Application"
+      proc:    "2024 Korea Quality of Life Summer Conference"
+      org:     "KLife"
+      year:    2024
+      rg:      "https://www.researchgate.net/publication/388617012"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Using a Simple ACGAN for Manchu Script Dataset Supplementation"
+      proc:    "Multimedia"
+      org:     "KMMS"
+      year:    2023
+      rg:      "https://www.researchgate.net/publication/388625406"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Handwritten Hangul Grapheme Generation Using an ACGAN"
+      proc:    "Proceedings of the 2023 Spring Academic Conference"
+      org:     "KIICE"
+      pages:   "371–373"
+      year:    2023
+      rg:      "https://www.researchgate.net/publication/388553460"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Hangul Handwritten Character Recognition Using Artificial Neural Networks: MLP, CNN, and RNN"
+      proc:    "Proceedings of the 15th International Conference on Future Information & Communication Engineering"
+      org:     "KIICE"
+      pages:   "143–146"
+      year:    2023
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "A Simple MNIST Style Dataset and CNN Training for Manchu Script Characters"
+      proc:    "Proceedings of the 15th International Conference on Future Information & Communication Engineering"
+      org:     "KIICE"
+      pages:   "136–138"
+      year:    2023
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Digital Technology Use and Opinions About Digital Citizenship Education in South Korean University Freshmen Students After COVID-19"
+      proc:    "Proceedings of the 2022 Annual Comprehensive Academic Conference"
+      org:     "KIPEE"
+      pages:   "186–187"
+      year:    2022
+      rg:      "https://www.researchgate.net/publication/388625435"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Psalm Text Generator Comparison Between English and Korean Using LSTM Blocks in a Recurrent Neural Network"
+      proc:    "Proceedings of the 2022 Fall Academic Conference"
+      org:     "KIICE"
+      pages:   "269–271"
+      year:    2022
+      rg:      "https://www.researchgate.net/publication/388625434"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Visualization of Conference Paper Topics and Trends According to Author-Assigned Index Terms"
+      proc:    "Proceedings of the 2022 Spring Academic Conference"
+      org:     "KIICE"
+      pages:   "340–342"
+      year:    2022
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Seasonal Images Classification with Convolutional Neural Networks"
+      proc:    "Proceedings of the 2022 Spring Academic Conference"
+      org:     "KIICE"
+      pages:   "444–447"
+      year:    2022
+      rg:      "https://www.researchgate.net/publication/388625368"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "A New Segmentation and Extraction Method for Manchu Character Units"
+      proc:    "Proceedings of the 14th International Conference on Future Information & Communication Engineering"
+      org:     "KIICE"
+      pages:   "42–47"
+      year:    2022
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Attitudes of Teachers in South Korea Toward Technology Use for Their Classrooms During the COVID-19 Pandemic"
+      proc:    "Proceedings of the 2021 Annual Comprehensive Academic Conference"
+      org:     "KIPEE"
+      pages:   "319–321"
+      year:    2021
+      award:   "Best Paper Award"
+      rg:      "https://www.researchgate.net/publication/388568395"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "Mask Wearing Detection Using OpenCV Training Data"
+      proc:    "Proceedings of the 2021 Fall Academic Conference"
+      org:     "KIICE"
+      pages:   "303–304"
+      year:    2021
+      rg:      "https://www.researchgate.net/publication/388567807"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "An Investigation into the Correlation between a Country's Total Olympic Medal Count, GDP, and Freedom Index through History"
+      proc:    "Proceedings of the 2021 Fall Academic Conference"
+      org:     "KIICE"
+      pages:   "495–498"
+      year:    2021
+      rg:      "https://www.researchgate.net/publication/388567322"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "A Big Data Analysis of Yumentingzheng: Weiwenqiju as an Example"
+      proc:    "Proceedings of the 2021 Fall Academic Conference"
+      org:     "KIICE"
+      pages:   "624–626"
+      year:    2021
+      rg:      "https://www.researchgate.net/publication/388567325"
+
+    - authors: "A. Snowberger, C.H. Lee"
+      title:   "An Efficient Method to Extract Units of Manchu Characters"
+      proc:    "Proceedings of the 2021 Spring Academic Conference"
+      org:     "KIICE"
+      pages:   "617–619"
+      year:    2021
+      rg:      "https://www.researchgate.net/publication/388567805"
+
+    - authors: "S.M. Kim, K.C. Hong, K.S. Yoo, A. Snowberger, C.H. Lee"
+      title:   "Analysis of Resilience according to Crossing School Classes in Microprocessor Learning"
+      proc:    "Proceedings of the 2021 Spring Academic Conference"
+      org:     "KIICE"
+      pages:   "295–297"
+      year:    2021
+
+  books:
+    - role:   "Graphic Designer"
+      title:  "Practical English Writing 1"
+      pub:    "Wisdom Publishing"
+      year:   2016
+
+    - role:   "Graphic Designer"
+      title:  "Practical English Writing 2"
+      pub:    "Wisdom Publishing"
+      year:   2016
+
+    - role:   "Graphic Designer"
+      title:  "Practical English Reading"
+      pub:    "Jeonju University"
+      year:   2016
+
+    - role:   "Graphic Designer"
+      title:  "GPA Yearbook"
+      pub:    "Global Prodigy Academy High School"
+      year:   "2016, 2017, 2018"
+
+    - role:   "Author & Designer"
+      title:  "Discover Korea: Rebranding Korea's Tourism Marketing"
+      pub:    "Blurb.com"
+      year:   2011
+      url:    "https://www.blurb.com/b/2551631-discover-korea-project-book"
+
+# ── Teaching ──────────────────────────────────────────────────
+teaching:
+  - institution: "Jeonbuk National University"
+    short:       "JBNU"
+    location:    "Jeonju"
+    years:       "2024 – present"
+    dept:        "School of International Engineering and Science"
+    courses:
+      - title:   "Python-Based Machine Learning"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jbnu-python-ml/"
+        term:    "Fall 2025"
+      - title:   "Convergence Information Transmission"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jbnu-info/"
+        term:    "Fall 2025"
+      - title:   "Program-Based Circuit Theory II"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jbnu-circuits-ii/"
+        term:    "Fall 2025"
+      - title:   "Semiconductor Science"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jbnu-chips/"
+        term:    "Spring 2025"
+      - title:   "Program-Based Circuit Theory I"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jbnu-circuits/"
+        term:    "Spring 2025"
+      - title:   "Hydrogen Fuel Cells"
+        url:     "https://aaronkr-courses.github.io/courses/2024-jbnu-hydrogen/"
+        term:    "Fall 2024"
+      - title:   "Data Structures"
+        url:     "https://aaronkr-courses.github.io/courses/2024-jbnu-data/"
+        term:    "Fall 2024"
+      - title:   "Semiconductor Processing"
+        url:     "https://aaronkr-courses.github.io/courses/2024-jbnu-chips/"
+        term:    "Fall 2024"
+
+  - institution: "Hanbat National University"
+    short:       "HBU"
+    location:    "Daejeon"
+    years:       "2023 – present"
+    dept:        "Dept. of Information and Communication Engineering"
+    courses:
+      - title:   "C++ Programming"
+        url:     "https://aaronkr-courses.github.io/courses/2025-hb-cpp/"
+        term:    "Spring 2024, 2025, 2026"
+      - title:   "Advanced C Programming"
+        url:     "https://aaronkr-courses.github.io/courses/2024-hb-c/"
+        term:    "Fall 2023, 2024, 2025"
+
+  - institution: "Jeonju National University of Education"
+    short:       "JNUE"
+    location:    "Jeonju"
+    years:       "2023 – present"
+    dept:        "Dept. of Computer Education"
+    courses:
+      - title:   "Information Society and Software (Excel + Entry)"
+        url:     "https://aaronkr-courses.github.io/courses/2025-jnue-iss/"
+        term:    "Fall 2025"
+      - title:   "Information Society and Software (Scratch)"
+        url:     "https://aaronkr-courses.github.io/courses/2024-jnue-iss/"
+        term:    "Fall 2023, Spring 2024"
+
+  - institution: "Korea National University of Transportation"
+    short:       "UT"
+    location:    "Chungju"
+    years:       "2023 – present"
+    dept:        "Dept. of Computer Science / Dept. of Biomedical Convergence"
+    courses:
+      - title:   "Autonomous Driving and Machine Learning"
+        url:     "https://aaronkr-courses.github.io/courses/2025-ut-cars/"
+        term:    "Fall 2025"
+      - title:   "Data Science"
+        url:     "https://aaronkr-courses.github.io/courses/2024-ut-data/"
+        term:    "Spring 2025"
+      - title:   "Imaging-Based Medical Device Manufacturing (Practice)"
+        url:     "https://aaronkr-courses.github.io/courses/2025-ut-imd/"
+        term:    "Spring 2025"
+      - title:   "Imaging-Based Medical Device Manufacturing (Theory)"
+        url:     "https://aaronkr-courses.github.io/courses/2024-ut-imd/"
+        term:    "Fall 2024"
+      - title:   "Computer Aided Diagnosis (CAD, with Python)"
+        url:     "https://2023-aaronkr.github.io/ut-cad/"
+        term:    "Fall 2023"
+      - title:   "Web Programming Application (Node.JS)"
+        url:     "https://aaronkr-courses.github.io/courses/2024-ut-node/"
+        term:    "Spring 2024"
+      - title:   "Web Programming Foundation (HTML, CSS, JavaScript)"
+        url:     "https://2023-aaronkr.github.io/ut-web/"
+        term:    "Fall 2023"
+      - title:   "Web Programming Application (Node.JS)"
+        url:     "https://ut-nodejs.github.io/"
+        term:    "Spring 2023"
+
+  - institution: "Daejeon University"
+    short:       "DJU"
+    location:    "Daejeon"
+    years:       "2023 – 2025"
+    dept:        "Dept. of Information Security"
+    courses:
+      - title:   "Database Security"
+        url:     "https://aaronkr-courses.github.io/courses/2025-dju-db/"
+        term:    "Spring 2025"
+      - title:   "Secure (Web) Coding"
+        url:     "https://aaronkr-courses.github.io/courses/2025-dju-sec/"
+        term:    "Spring 2025"
+      - title:   "Database Security"
+        url:     "https://aaronkr-courses.github.io/courses/2024-dju-db/"
+        term:    "Fall 2024"
+      - title:   "(Java) Web Hacking Security and Practice"
+        url:     "https://aaronkr-courses.github.io/courses/2024-dju-web/"
+        term:    "Fall 2024"
+      - title:   "Java Programming and Practice"
+        url:     "https://aaronkr-courses.github.io/courses/2024-dju-java/"
+        term:    "Spring 2024"
+      - title:   "Unix System Control and Security"
+        url:     "https://aaronkr-courses.github.io/courses/2024-dju-unix/"
+        term:    "Spring 2024"
+      - title:   "Web Hacking Security and Practice"
+        url:     "https://2023-aaronkr.github.io/dju-sec/"
+        term:    "Fall 2023"
+      - title:   "Database Security (PostgreSQL)"
+        url:     "https://2023-aaronkr.github.io/dju-sql/"
+        term:    "Fall 2023"
+
+  - institution: "Jeonju University"
+    short:       "JJU"
+    location:    "Jeonju"
+    years:       "2010 – 2023"
+    dept:        "Liberal Arts"
+    courses:
+      - title:   "English Conversation"
+        term:    "2010–2023"
+      - title:   "Smart Learning / Tech for Teachers"
+        term:    "2011–2012, 2020–2022"
+      - title:   "Speech & Presentations"
+        term:    "2010, 2011"
+
+  - institution: "Global Prodigy Academy International High School"
+    short:       "GPA"
+    location:    "Jeonju"
+    years:       "2013 – 2019"
+    dept:        "Information Technology"
+    courses:
+      - title:   "AP Computer Science A (Java)"
+        term:    "2015"
+      - title:   "AP Computer Science Principles (JavaScript)"
+        term:    "2017, 2018"
+      - title:   "Computer B (Web Programming)"
+        term:    "2013–2015, 2019"
+      - title:   "Computer A (Office Applications)"
+        term:    "2013–2016"
+      - title:   "Computer A+ (CompTIA A+ Training)"
+        term:    "2018"
+      - title:   "Computer Science Discoveries A & B"
+        term:    "2017, 2018"
+      - title:   "Robotics"
+        term:    "2016, 2017"
+      - title:   "Yearbook / Publishing (Adobe Suite)"
+        term:    "2016–2018"
+      - title:   "Graphic Design (Adobe Suite)"
+        term:    "2016–2018"
+      - title:   "Digital Citizenship"
+        term:    "2018"
+      - title:   "Middle School Technology"
+        term:    "2016–2018"
+
+  - institution: "Provincial Outreach & Online"
+    short:       ""
+    location:    ""
+    years:       "2020 – present"
+    dept:        "Technology / Programming"
+    courses:
+      - title:   "Python Programming with a Native (English) Speaker"
+        url:     "https://2023-aaronkr.github.io/python-crash-course/"
+        term:    "Chungbuk Province high schools, 2023, 2024"
+      - title:   "Web Programming with a Native (English) Speaker"
+        url:     "https://2023-aaronkr.github.io/web-crash-course/"
+        term:    "Chungbuk Province high schools, 2023, 2024"
+      - title:   "Foundational Python for Robotics"
+        url:     "https://aaronkr-courses.github.io/courses/2021-iksan-hs-python/"
+        term:    "Jeonbuk Mechanical & Technical HS, 2021"
+      - title:   "A Beginner's Guide to CSS (online)"
+        url:     "https://www.eduonix.com/beginners-guide-to-css"
+        term:    "Eduonix, 2020"
+      - title:   "Modern WordPress Theme Development (online)"
+        url:     "https://www.eduonix.com/modern-wordpress-theme-development"
+        term:    "Eduonix, 2020"
+
+# ── Presentations ─────────────────────────────────────────────
+presentations:
+  - title: "Smarter, Faster, Better: ChatGPT for Fun and Profit"
+    venue: "Jeonju KOTESOL Workshop"
+    year:  2025
+
+  - title: "English for International Conferences"
+    type:  "Keynote"
+    venue: "Korea Quality of Life Conference"
+    year:  2023
+
+  - title: "Learn JavaScript by Building a Shopping App in CodePen"
+    venue: "JS Conf Korea Tutorial"
+    year:  2019
+    url:   "https://docs.google.com/presentation/d/1X23TrUjYDkb0DJn_ctOEhvBA5-LO2q5aM88dMJAfFfQ/edit"
+
+  - title: "Full Circle: (W)holistic Life Management"
+    venue: "Winning Story Meetup"
+    year:  2019
+    url:   "https://aaron.kr/"
+
+  - title: "Atomic Habits that will turn you into a Superhero"
+    venue: "Jeonju KOTESOL Conference"
+    year:  2018
+    url:   "https://aaron.kr/content/talks/atomic-habits-that-will-turn-you-into-a-superhero/"
+
+  - title: "Increase your Professional Performance"
+    venue: "Jeonju KOTESOL Workshop"
+    year:  2018
+    url:   "https://aaron.kr/content/talks/increase-your-professional-performance/"
+
+  - title: "11 Great Google Services (for your Classroom)"
+    venue: "Jeonju KOTESOL Conference"
+    year:  2018
+    url:   "https://aaron.kr/content/talks/11-great-google-things-for-your-classroom/"
+
+  - title: "Google Classroom 101"
+    venue: "KOTESOL International Conference"
+    year:  2017
+    url:   "https://aaron.kr/content/talks/google-classroom-101/"
+
+  - title: "Google Classroom & G Suite for Education Training"
+    venue: "GPA High School Teacher Training"
+    year:  2017
+    url:   "https://aaron.kr/content/talks/google-classroom-g-suite-for-education-training/"
+
+  - title: "Teacher Tech Tips"
+    venue: "GPA High School Teacher Training"
+    year:  2017
+    url:   "https://aaron.kr/content/talks/teacher-tech-tips/"
+
+  - title: "Become a Better Presenter by Becoming a Better Teacher (and vice versa)"
+    venue: "Jeonju KOTESOL Workshop"
+    year:  2016
+    url:   "https://aaron.kr/content/talks/become-a-better-presenter/"
+
+  - title: "A Roadmap for WordPress as LMS"
+    venue: "KOTESOL National Conference"
+    year:  2015
+    url:   "https://aaron.kr/content/talks/a-roadmap-for-wordpress-as-lms/"
+
+  - title: "Computer Science as a Career"
+    venue: "GPA High School Career Day"
+    year:  2015
+    url:   "https://aaron.kr/content/talks/gpa-hs-career-day-computer-science/"
+
+  - title: "WordPress in your Classroom as an LMS"
+    venue: "Jeonju KOTESOL Workshop"
+    year:  2015
+    url:   "https://aaron.kr/content/code/wordpress/wordpress-as-lms-learning-management-system/"
+
+  - title: "A Comprehensive Overview of WP Site Owner Roles"
+    venue: "Jeonju WordPress Meetup"
+    year:  2015
+    url:   "https://aaron.kr/content/talks/a-comprehensive-overview-of-wordpress-site-owner-roles/"
+
+  - title: "Open Source, WordPress, & the Community"
+    venue: "Seoul WordPress Grand Meetup"
+    year:  2015
+    url:   "https://aaron.kr/content/talks/seoul-meetup-2015-open-source-wordpress-and-the-community/"
+
+  - title: "WordPress Overview"
+    venue: "Jeonju WordPress Meetup"
+    year:  2015
+    url:   "https://aaron.kr/content/talks/all-you-ever-wanted-to-know-about-wordpress-in-ten-minutes-or-less/"
+
+  - title: "From Delinquent to Star Student: My journey toward second-language learning motivation"
+    venue: "Jeonju KOTESOL Conference"
+    year:  2014
+    url:   "https://aaron.kr/content/talks/from-delinquent-to-star-student/"
+
+  - title: "Technology Upgrade: Build a Customized Gradebook"
+    venue: "Jeonju KOTESOL Conference"
+    year:  2012
+    url:   "https://aaron.kr/content/talks/technology-upgrade-customized-grade-book/"
+
+# ── Professional Activities ───────────────────────────────────
+activities:
+  - title:  "International Director"
+    org:    "K-Life (Korea Quality of Life Conference)"
+    years:  "2023 – present"
+
+  - title:  "Managing Director"
+    org:    "KIICE (Korean Institute of Information and Communication Engineers)"
+    years:  "2022 – present"
+    url:    "http://kiice.org/34"
+
+  - title:  "International Director"
+    org:    "KIPEE (Korean Institute for Practical Engineering Education)"
+    years:  "2020 – present"
+    url:    "http://kipee.or.kr/intro/sub_intro06.asp"
+
+  - title:  "Co-Founding Member & Webmaster"
+    org:    "Korea Society for Physical AI (KSPAI)"
+    years:  "2024 – present"
+    url:    "https://kspai.org"
+
+  - title:  "National Conference Tech Chair"
+    org:    "KOTESOL"
+    years:  "2020"
+
+  - title:  "National Conference Chair"
+    org:    "KOTESOL"
+    years:  "2019"
+
+  - title:  "Chapter President"
+    org:    "KOTESOL"
+    years:  "2018"
+
+  - title:  "Honorary Reporter"
+    org:    "Korean Culture and Information Service (Korea.net)"
+    years:  "2014, 2015"
+
+# ── Languages ─────────────────────────────────────────────────
+languages:
+  - lang:    "English"
+    level:   "Native proficiency"
+    scores:
+      - test:  "TOEIC"
+        score: "985 (L: 495 · R: 490)"
+        year:  "Apr 2021"
+      - test:  "TOEFL iBT"
+        score: "116 (R:28 · L:29 · S:30 · W:29)"
+        year:  "Nov 2021"
+
+  - lang:    "Korean"
+    level:   "Professional working proficiency"
+    scores:
+      - test:  "TOPIK"
+        score: "4급, 164/300 (L:66 · W:40 · R:58)"
+        year:  ""

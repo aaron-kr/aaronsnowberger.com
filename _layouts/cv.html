@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en" data-aurora="off">
+<head>
+  {% include head.html %}
+  <!-- Crimson Pro for print — matches traditional academic CV feel.
+       To switch back to Cardo: replace "Crimson+Pro" with "Cardo" below. -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/cv.css' | relative_url }}">
+</head>
+<body class="cv-page">
+
+<!-- ── CV toolbar (hidden on print) ──────────────────────── -->
+<div class="cv-toolbar no-print">
+  <a href="{{ '/' | relative_url }}" class="cv-back">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    aaronsnowberger.com
+  </a>
+  <div class="cv-toolbar-actions">
+    <button class="nbtn fs" id="themeBtn">☀</button>
+    <button class="cv-print-btn" onclick="window.print()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print / Save PDF
+    </button>
+  </div>
+</div>
+
+<!-- ── CV body ────────────────────────────────────────────── -->
+{{ content }}
+
+<script>
+  // Anti-flash theme
+  (function(){
+    var t=localStorage.getItem('asb_theme');
+    if(t) document.documentElement.setAttribute('data-theme',t);
+  })();
+  // Theme toggle
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var html=document.documentElement;
+    var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+    html.setAttribute('data-theme',next);
+    localStorage.setItem('asb_theme',next);
+    this.textContent=next==='dark'?'☀':'☾';
+  });
+</script>
+</body>
+</html>
