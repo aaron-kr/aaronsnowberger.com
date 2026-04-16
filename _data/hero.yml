@@ -1,0 +1,48 @@
+# ══════════════════════════════════════════════════════════════
+#  Hero section content
+#  Used by: _includes/hero.html
+# ══════════════════════════════════════════════════════════════
+
+eyebrow_en: "Press Kit &amp; Professional Profile"
+eyebrow_ko: "프레스 킷 &amp; 전문 프로필"
+
+name:    "Dr. Aaron"
+name_em: "Snowberger"
+
+portrait_src:     "/assets/img/aaron-portrait.jpg"
+portrait_alt:     "Dr. Aaron Snowberger"
+
+subtitle_en: "<strong>AI Researcher &amp; CS Educator</strong> bridging East–West technology at five Korean universities. Ph.D. in Information and Communications Engineering · MFA in Media Design."
+subtitle_ko: "<strong>AI 연구자 &amp; CS 교육자</strong> — 다섯 개 한국 대학에서 동서양 기술 교육을 연결합니다. 정보통신공학 박사 · 미디어 디자인 석사."
+
+# Pills — use color: hp-t (teal) | hp-b (blue) | hp-p (purple)
+# For bilingual pills, provide text_en + text_ko; for single-language use text only.
+pills:
+  - text:    "Physical AI"
+    color:   "hp-t"
+  - text:    "Computer Vision"
+    color:   "hp-b"
+  - text:    "CS Education"
+    color:   "hp-p"
+  - text_en: "Hangul Recognition"
+    text_ko: "한글 인식"
+    color:   "hp-t"
+  - text_en: "Jeonju, Korea"
+    text_ko: "전주, 대한민국"
+    color:   "hp-b"
+
+# CTA buttons — icon is a text glyph or empty string
+actions:
+  - href:     "#bio"
+    class:    "btn-primary"
+    icon:     "↓"
+    label_en: "Grab a Bio"
+    label_ko: "바이오 가져오기"
+  - href:     "#photos"
+    class:    "btn-secondary"
+    icon:     "◻"
+    label_en: "Download Photos"
+    label_ko: "사진 다운로드"
+
+scroll_en: "Scroll"
+scroll_ko: "스크롤"

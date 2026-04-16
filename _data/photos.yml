@@ -1,0 +1,62 @@
+# ══════════════════════════════════════════════════════════════
+#  Photos section — press photo library
+#  Used by: _includes/photos.html
+#
+#  For each card:
+#    thumb       — URL of the thumbnail image (460px-ish). Leave blank for placeholder.
+#    lightbox_src — URL of the medium/large lightbox image.
+#    download    — URL of the hi-res download version.
+#    caption     — Lightbox caption text.
+#    alt         — <img> alt attribute.
+#    placeholder_en / placeholder_ko — shown when thumb is blank.
+#    delay       — rise animation delay class: "" | "rise-d1" | "rise-d2" etc.
+# ══════════════════════════════════════════════════════════════
+
+label_en:   "Photo Library"
+label_ko:   "사진 라이브러리"
+heading_en: "Professional <em>headshots</em>"
+heading_ko: "전문 <em>프로필 사진</em>"
+desc_en:    "High-resolution photos cleared for press, editorial, and promotional use. Click any image to view full size."
+desc_ko:    "보도, 편집, 홍보 목적으로 사용 가능한 고해상도 사진입니다. 클릭하면 크게 볼 수 있습니다."
+note_en:    "For higher-resolution files or usage questions, <a href=\"mailto:hi@aaron.kr\">contact Aaron directly</a>."
+note_ko:    "고해상도 파일이나 사용 문의는 <a href=\"mailto:hi@aaron.kr\">이메일로 연락</a>해주세요."
+
+photos:
+  - name_en:       "Formal Portrait"
+    name_ko:       "공식 프로필"
+    spec_en:       "Hi-res · JPG · Press use"
+    spec_ko:       "고해상도 · JPG · 보도용"
+    thumb:         "https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=460%2C460&ssl=1"
+    lightbox_src:  "https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=900%2C900&ssl=1"
+    download:      "https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=2000%2C2000&ssl=1"
+    caption:       "Formal Portrait · Aaron Snowberger, Ph.D."
+    alt:           "Formal Portrait"
+    placeholder_en: ""
+    placeholder_ko: ""
+    delay:         ""
+
+  - name_en:       "Casual / Outdoor"
+    name_ko:       "캐주얼 / 야외"
+    spec_en:       "Replace with your photo"
+    spec_ko:       "사진으로 교체하세요"
+    thumb:         ""
+    lightbox_src:  ""
+    download:      ""
+    caption:       "Casual / Outdoor"
+    alt:           "Casual / Outdoor"
+    placeholder_en: "Add casual / outdoor photo"
+    placeholder_ko: "캐주얼 사진 추가"
+    delay:         "rise-d1"
+
+  - name_en:       "Lab / Teaching"
+    name_ko:       "강의 / 실험실"
+    spec_en:       "Replace with your photo"
+    spec_ko:       "사진으로 교체하세요"
+    thumb:         ""
+    lightbox_src:  ""
+    download:      ""
+    caption:       "Lab / Teaching"
+    alt:           "Lab / Teaching"
+    placeholder_en: "Add lab / teaching photo"
+    placeholder_ko: "강의실 사진 추가"
+    delay:         "rise-d2"

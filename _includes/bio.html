@@ -1,58 +1,45 @@
+{% assign b = site.data.bio %}
 <section id="bio">
   <div class="wrap">
     <div class="sec-label rise">
-      <span class="en">Bio Kit</span><span class="ko">바이오 킷</span>
+      <span class="en">{{ b.label_en }}</span><span class="ko">{{ b.label_ko }}</span>
     </div>
     <h2 class="sec-title rise rise-d1">
-      <span class="en">Ready-to-use <em>biographies</em></span>
-      <span class="ko">즉시 사용 가능한 <em>자기소개</em></span>
+      <span class="en">{{ b.heading_en }}</span>
+      <span class="ko">{{ b.heading_ko }}</span>
     </h2>
     <p class="sec-desc rise rise-d2">
-      <span class="en">Copy any version below for podcasts, conference programs, paper author bios, LinkedIn, or press releases.</span>
-      <span class="ko">팟캐스트, 학회 프로그램, 논문 저자 소개, LinkedIn, 보도자료 등에 바로 사용할 수 있습니다.</span>
+      <span class="en">{{ b.desc_en }}</span>
+      <span class="ko">{{ b.desc_ko }}</span>
     </p>
 
     <div class="bio-layout">
       <!-- ── Stat card ── -->
       <div class="stat-card rise">
         <div class="stat-photo-frame"
-             data-lightbox-src="{{ '/assets/img/aaron-portrait-hires.jpg' | relative_url }}"
-             data-lightbox-caption="Aaron Snowberger, Ph.D. — Formal Portrait">
-          <img src="{{ '/assets/img/aaron-portrait.jpg' | relative_url }}"
-               alt="Aaron Snowberger headshot"
+             data-lightbox-src="{{ b.portrait_hires_src | relative_url }}"
+             data-lightbox-caption="{{ b.portrait_caption }}">
+          <img src="{{ b.portrait_src | relative_url }}"
+               alt="{{ b.portrait_alt }}"
                onerror="this.style.display='none'">
           <div class="stat-photo-expand">
-            <span class="en">View Full Size</span>
-            <span class="ko">크게 보기</span>
+            <span class="en">{{ b.view_full_en }}</span>
+            <span class="ko">{{ b.view_full_ko }}</span>
           </div>
         </div>
-        <div class="stat-name">Aaron Snowberger</div>
-        <div class="stat-ko">에런 스노우버거 · Ph.D.</div>
+        <div class="stat-name">{{ b.stat_name }}</div>
+        <div class="stat-ko">{{ b.stat_ko }}</div>
         <div class="stat-facts">
+          {% for sf in b.stats %}
           <div class="sf-row">
-            <span class="sf-key"><span class="en">Position</span><span class="ko">직위</span></span>
-            <span class="sf-val"><span class="en">Adjunct Lecturer · 5 Universities</span><span class="ko">시간강사 · 5개 대학</span></span>
+            <span class="sf-key">
+              {% if sf.key %}{{ sf.key }}{% else %}<span class="en">{{ sf.key_en }}</span><span class="ko">{{ sf.key_ko }}</span>{% endif %}
+            </span>
+            <span class="sf-val">
+              {% if sf.val %}<span>{{ sf.val }}</span>{% else %}<span class="en">{{ sf.val_en }}</span><span class="ko">{{ sf.val_ko }}</span>{% endif %}
+            </span>
           </div>
-          <div class="sf-row">
-            <span class="sf-key"><span class="en">Location</span><span class="ko">위치</span></span>
-            <span class="sf-val"><span class="en">Jeonju, South Korea</span><span class="ko">전주, 대한민국</span></span>
-          </div>
-          <div class="sf-row">
-            <span class="sf-key">Ph.D.</span>
-            <span class="sf-val"><span class="en">Information &amp; Communications Engineering</span><span class="ko">정보통신공학</span></span>
-          </div>
-          <div class="sf-row">
-            <span class="sf-key">MFA</span>
-            <span class="sf-val"><span class="en">Media Design</span><span class="ko">미디어 디자인</span></span>
-          </div>
-          <div class="sf-row">
-            <span class="sf-key">B.S.</span>
-            <span class="sf-val"><span class="en">Computer Science</span><span class="ko">컴퓨터공학</span></span>
-          </div>
-          <div class="sf-row">
-            <span class="sf-key"><span class="en">Research</span><span class="ko">연구</span></span>
-            <span class="sf-val">Physical AI · CV · EdTech</span>
-          </div>
+          {% endfor %}
           <div class="sf-row">
             <span class="sf-key"><span class="en">Site</span><span class="ko">사이트</span></span>
             <span class="sf-val"><a href="{{ site.profiles.academic_site }}" target="_blank">aaron.kr</a></span>
@@ -64,100 +51,48 @@
         </div>
         <div class="uni-strip">
           <div class="uni-strip-lbl">
-            <span class="en">Teaching at</span><span class="ko">강의 대학교</span>
+            <span class="en">{{ b.uni_label_en }}</span><span class="ko">{{ b.uni_label_ko }}</span>
           </div>
-          <span class="uni-name">Jeonbuk National</span>
-          <span class="uni-name">Jeonju University</span>
-          <span class="uni-name">Woosuk University</span>
-          <span class="uni-name">Wonkwang University</span>
-          <span class="uni-name">+ 1 more</span>
+          {% for u in b.universities %}
+          <span class="uni-name">{{ u }}</span>
+          {% endfor %}
         </div>
       </div>
 
       <!-- ── Bio tab panel ── -->
       <div class="rise rise-d1">
         <div class="bio-tabs-nav">
-          <button class="btab active" data-tab="short"><span class="en">Short</span><span class="ko">짧은</span></button>
-          <button class="btab" data-tab="medium"><span class="en">Medium</span><span class="ko">중간</span></button>
-          <button class="btab" data-tab="long"><span class="en">Long</span><span class="ko">긴</span></button>
-          <button class="btab" data-tab="academic"><span class="en">Academic</span><span class="ko">학술용</span></button>
-          <button class="btab" data-tab="speaker"><span class="en">Speaker</span><span class="ko">강연자용</span></button>
+          {% for bio in b.bios %}
+          <button class="btab{% if forloop.first %} active{% endif %}" data-tab="{{ bio.id }}">
+            <span class="en">{{ bio.tab_en }}</span><span class="ko">{{ bio.tab_ko }}</span>
+          </button>
+          {% endfor %}
         </div>
 
-        <!-- Short -->
-        <div class="bio-pane active" id="bio-short">
+        {% for bio in b.bios %}
+        <div class="bio-pane{% if forloop.first %} active{% endif %}" id="bio-{{ bio.id }}">
           <div class="bio-text">
-            <p class="en">Dr. Aaron Snowberger is an American AI researcher and computer science educator lecturing at five universities in Jeonju, South Korea. His research focuses on Physical AI, computer vision, and handwritten character recognition — with a particular interest in bridging East–West perspectives in technology education.</p>
-            <p class="ko">Dr. 에런 스노우버거는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자 겸 컴퓨터공학 교육자입니다. 피지컬 AI, 컴퓨터 비전, 필기 문자 인식을 연구하며, 동서양 기술 교육의 연결에 관심을 갖고 있습니다.</p>
-          </div>
-          <div class="bio-meta">
-            <span class="bio-wc en">~55 words · Short</span>
-            <span class="bio-wc ko">짧은 버전</span>
-            <button class="copy-btn fs" data-target="bio-short" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-short" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
-          </div>
-        </div>
+            {% assign en_paras = bio.en | split: "
 
-        <!-- Medium -->
-        <div class="bio-pane" id="bio-medium">
-          <div class="bio-text">
-            <p class="en">Dr. Aaron Snowberger is an American AI researcher and computer science educator based in <strong>Jeonju, South Korea</strong>, where he lectures at five universities. He holds a Ph.D. in <em>Information and Communications Engineering</em> (specializing in Computer Vision and AI), an MFA in Media Design, and a B.S. in Computer Science.</p>
-            <p class="en">His research sits at the intersection of <strong>Physical AI, computer vision, and CS education</strong> — with a focus on handwritten character recognition, digital twin simulation, and cross-cultural technology pedagogy. He is a co-founding member of the Korea Society for Physical AI (KSPAI).</p>
-            <p class="ko">Dr. 에런 스노우버거는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자이자 컴퓨터공학 교육자입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사 학위를 보유하고 있습니다. 피지컬 AI, 컴퓨터 비전, CS 교육의 교차점을 연구하며, 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다.</p>
-          </div>
-          <div class="bio-meta">
-            <span class="bio-wc en">~95 words · Medium</span>
-            <span class="bio-wc ko">중간 버전</span>
-            <button class="copy-btn fs" data-target="bio-medium" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-medium" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
-          </div>
-        </div>
+" %}
+            {% assign ko_paras = bio.ko | split: "
 
-        <!-- Long -->
-        <div class="bio-pane" id="bio-long">
-          <div class="bio-text">
-            <p class="en">Dr. Aaron Snowberger (에런 스노우버거) is an American AI researcher, computer science educator, and multimedia designer based in <strong>Jeonju, South Korea</strong>. He lectures in computer science, programming, IoT, and circuits at five Korean universities, with his primary affiliation at <em>Jeonbuk National University (JBNU)</em>.</p>
-            <p class="en">He holds a Ph.D. in Information and Communications Engineering — specializing in Computer Vision and AI — alongside an MFA in Media Design and a B.S. in Computer Science. His research focuses on <strong>Physical AI, handwritten character recognition</strong> (including an original Hangul pangram dataset), and digital twin simulation in education.</p>
-            <p class="en">A co-founding member and webmaster of the <em>Korea Society for Physical AI (KSPAI)</em>, Aaron's work bridges technical rigor with pedagogical innovation across East–West cultural contexts. Originally from <strong>Wyoming, USA</strong>, he has spent over two decades building, tinkering, and teaching in South Korea.</p>
-            <p class="ko">Dr. 에런 스노우버거는 전주 소재 5개 한국 대학에서 강의하는 AI 연구자이자 교육자입니다. 정보통신공학 박사, 미디어 디자인 석사, 컴퓨터공학 학사를 보유하고 있으며, 한글 팡그램 데이터셋 개발, 피지컬 AI 교육과정 설계, 디지털 트윈 시뮬레이션 등을 연구합니다. 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버이며, 미국 와이오밍 출신으로 20년 이상 한국에서 활동해왔습니다.</p>
+" %}
+            {% for para in en_paras %}
+            <p class="en">{{ para | strip }}</p>
+            {% endfor %}
+            {% for para in ko_paras %}
+            <p class="ko">{{ para | strip }}</p>
+            {% endfor %}
           </div>
           <div class="bio-meta">
-            <span class="bio-wc en">~175 words · Long</span>
-            <span class="bio-wc ko">긴 버전</span>
-            <button class="copy-btn fs" data-target="bio-long" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-long" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
+            <span class="bio-wc en">{{ bio.wc_en }}</span>
+            <span class="bio-wc ko">{{ bio.wc_ko }}</span>
+            <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
+            <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
           </div>
         </div>
-
-        <!-- Academic -->
-        <div class="bio-pane" id="bio-academic">
-          <div class="bio-text">
-            <p class="en">Dr. Aaron Snowberger is an adjunct lecturer in Computer Science at <strong>Jeonbuk National University</strong> and four additional Korean universities, and a co-founding member of the Korea Society for Physical AI (KSPAI). He received his Ph.D. in Information and Communications Engineering from [University Name], specializing in Computer Vision and AI, an MFA in Media Design, and a B.S. in Computer Science.</p>
-            <p class="en">His research interests include <em>Physical AI methodology, handwritten character recognition</em> (Hangul, Cherokee, and Manchu scripts), digital twin simulation in education, and cross-cultural technology perception. He is currently preparing an original Hangul pangram dataset targeting <em>Data in Brief</em> and <em>IEEE Access</em>.</p>
-            <p class="ko">스노우버거 박사는 전북대학교 외 4개 한국 대학 시간강사이자 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사를 보유합니다. 연구 분야: 피지컬 AI 방법론, 필기 문자 인식(한글·체로키·만주 문자), 디지털 트윈 교육, 기술 인식의 문화 간 비교.</p>
-          </div>
-          <div class="bio-meta">
-            <span class="bio-wc en">~110 words · Academic</span>
-            <span class="bio-wc ko">학술 논문용</span>
-            <button class="copy-btn fs" data-target="bio-academic" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-academic" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
-          </div>
-        </div>
-
-        <!-- Speaker -->
-        <div class="bio-pane" id="bio-speaker">
-          <div class="bio-text">
-            <p class="en"><strong>Dr. Aaron Snowberger</strong> is an AI researcher, CS educator, and cross-cultural technologist who has spent over two decades living and working in South Korea. Originally from <em>Wyoming, USA</em>, Aaron brings a rare East–West perspective to conversations about AI education, Physical AI, and the future of human–machine collaboration.</p>
-            <p class="en">He lectures at five Korean universities and co-founded the Korea Society for Physical AI. He holds a Ph.D. in Information and Communications Engineering (Computer Vision/AI), an MFA in Media Design, and a B.S. in Computer Science. Whether wiring IoT circuits, building handwritten character recognition models, or leading university lectures in Korean — Aaron's work lives at the creative edge of technology and education.</p>
-            <p class="ko"><strong>Dr. 에런 스노우버거</strong>는 20년 이상 한국에서 활동해온 AI 연구자이자 CS 교육자입니다. 미국 와이오밍 출신으로, AI 교육·피지컬 AI·인간-기계 협업에 대한 동서양의 시각을 연결합니다. 5개 한국 대학에서 강의하며, 한국 피지컬 AI 학회 공동 창립 멤버입니다.</p>
-          </div>
-          <div class="bio-meta">
-            <span class="bio-wc en">~130 words · Speaker / Podcast</span>
-            <span class="bio-wc ko">강연자 / 팟캐스트용</span>
-            <button class="copy-btn fs" data-target="bio-speaker" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-speaker" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
-          </div>
-        </div>
+        {% endfor %}
       </div><!-- /bio panel -->
     </div><!-- /bio-layout -->
   </div><!-- /wrap -->

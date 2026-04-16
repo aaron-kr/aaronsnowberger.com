@@ -1,0 +1,27 @@
+# ══════════════════════════════════════════════════════════════
+#  Contact section content
+#  Used by: _includes/contact.html
+# ══════════════════════════════════════════════════════════════
+
+label_en:   "Get in Touch"
+label_ko:   "연락하기"
+heading_en: "Booking &amp; <em>inquiries</em>"
+heading_ko: "예약 &amp; <em>문의</em>"
+desc_en:    "For podcast appearances, conference invitations, press requests, collaboration proposals, or media asset inquiries."
+desc_ko:    "팟캐스트 출연, 학회 초청, 보도자료, 협업 제안 또는 미디어 자산 문의."
+
+# Primary contact email (displayed as link + plain text below buttons)
+email: "hi@aaron.kr"
+
+# Buttons — type: email | external | internal
+buttons:
+  - href:     "mailto:hi@aaron.kr"
+    class:    "btn-primary"
+    type:     "email"
+    label_en: "Send an Email"
+    label_ko: "이메일 보내기"
+  - href:     "https://aaron.kr"
+    class:    "btn-secondary"
+    type:     "external"
+    label_en: "⬡ Academic Site"
+    label_ko: "⬡ 학술 사이트"

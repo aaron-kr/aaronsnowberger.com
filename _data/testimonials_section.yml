@@ -1,0 +1,15 @@
+# ══════════════════════════════════════════════════════════════
+#  Testimonials section labels
+#  Used by: _includes/testimonials.html
+#
+#  Slides are fetched live from the WordPress REST API in main.js.
+#  Edit the API URL and MAX_SLIDES constant in assets/js/main.js
+#  (Section 10) to change the source or cap the number of slides.
+# ══════════════════════════════════════════════════════════════
+
+label_en:   "What People Say"
+label_ko:   "추천사"
+heading_en: "Trusted by <em>clients &amp; academics</em>"
+heading_ko: "<em>고객과 학자들</em>이 신뢰합니다"
+desc_en:    "Feedback from professors, design clients, and collaborators across two decades of work."
+desc_ko:    "20년간의 작업에 대한 교수, 디자인 고객, 협력자들의 평가."

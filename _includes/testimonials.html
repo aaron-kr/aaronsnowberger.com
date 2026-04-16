@@ -1,60 +1,25 @@
+{% assign ts = site.data.testimonials_section %}
 <section id="testimonials">
   <div class="wrap">
     <div class="sec-label rise">
-      <span class="en">What People Say</span>
-      <span class="ko">추천사</span>
+      <span class="en">{{ ts.label_en | default: "What People Say" }}</span>
+      <span class="ko">{{ ts.label_ko | default: "추천사" }}</span>
     </div>
     <h2 class="sec-title rise rise-d1">
-      <span class="en">Trusted by <em>clients &amp; academics</em></span>
-      <span class="ko"><em>고객과 학자들</em>이 신뢰합니다</span>
+      <span class="en">{{ ts.heading_en | default: "Trusted by <em>clients &amp; academics</em>" }}</span>
+      <span class="ko">{{ ts.heading_ko | default: "<em>고객과 학자들</em>이 신뢰합니다" }}</span>
     </h2>
     <p class="sec-desc rise rise-d2">
-      <span class="en">Feedback from professors, design clients, and collaborators across two decades of work.</span>
-      <span class="ko">20년간의 작업에 대한 교수, 디자인 고객, 협력자들의 평가.</span>
+      <span class="en">{{ ts.desc_en | default: "Feedback from professors, design clients, and collaborators across two decades of work." }}</span>
+      <span class="ko">{{ ts.desc_ko | default: "20년간의 작업에 대한 교수, 디자인 고객, 협력자들의 평가." }}</span>
     </p>
 
-    <!-- ── Slider ── -->
+    <!-- ── Slider — slides injected by JS from WP REST API ── -->
     <div class="tsm-stage rise">
       <div class="tsm-track" id="tsmTrack">
-
-        {% for t in site.data.testimonials %}
-        <div class="tsm-slide" data-cat="{{ t.category }}">
-          <div class="tsm-person">
-            <div class="tsm-avatar-wrap">
-              <div class="tsm-avatar-ring"></div>
-              <div class="tsm-avatar"
-                   data-photo="{{ t.photo }}"
-                   data-initial="{{ t.initial }}">
-                <span class="tsm-avatar-initial">{{ t.initial }}</span>
-              </div>
-            </div>
-            <div class="tsm-name-block">
-              <div class="tsm-pname">{{ t.name }}</div>
-              <div class="tsm-prole">
-                <span class="en">{{ t.role_en }}</span>
-                <span class="ko">{{ t.role_ko }}</span>
-              </div>
-              <span class="tsm-badge tsm-badge-{{ t.badge_class }}">{{ t.badge }}</span>
-              {% if t.linkedin != "" %}
-              <br>
-              <a href="{{ t.linkedin }}" target="_blank" class="tsm-linkedin" rel="noopener">
-                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-                LinkedIn
-              </a>
-              {% endif %}
-            </div>
-          </div>
-          <div class="tsm-body">
-            <p class="tsm-quote-text">
-              <span class="en">{{ t.quote_en }}</span>
-              <span class="ko">{{ t.quote_ko }}</span>
-            </p>
-          </div>
-        </div>
-        {% endfor %}
-
-      </div><!-- /tsm-track -->
-    </div><!-- /tsm-stage -->
+        <!-- populated by testimonials fetch in main.js -->
+      </div>
+    </div>
 
     <!-- ── Navigation ── -->
     <div class="tsm-nav">

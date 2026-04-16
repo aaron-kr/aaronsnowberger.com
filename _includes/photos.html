@@ -1,69 +1,66 @@
+{% assign ph = site.data.photos %}
 <!-- ══ PHOTOS ════════════════════════════════════════════════ -->
 <section id="photos">
   <div class="wrap">
-    <div class="sec-label rise in"><span class="en">Photo Library</span><span class="ko">사진 라이브러리</span></div>
-    <h2 class="sec-title rise rise-d1 in"><span class="en">Professional <em>headshots</em></span><span class="ko">전문 <em>프로필 사진</em></span></h2>
+    <div class="sec-label rise in">
+      <span class="en">{{ ph.label_en }}</span><span class="ko">{{ ph.label_ko }}</span>
+    </div>
+    <h2 class="sec-title rise rise-d1 in">
+      <span class="en">{{ ph.heading_en }}</span>
+      <span class="ko">{{ ph.heading_ko }}</span>
+    </h2>
     <p class="sec-desc rise rise-d2 in">
-      <span class="en">High-resolution photos cleared for press, editorial, and promotional use. Click any image to view full size.</span>
-      <span class="ko">보도, 편집, 홍보 목적으로 사용 가능한 고해상도 사진입니다. 클릭하면 크게 볼 수 있습니다.</span>
+      <span class="en">{{ ph.desc_en }}</span>
+      <span class="ko">{{ ph.desc_ko }}</span>
     </p>
     <div class="photos-grid">
-      <div class="photo-card rise in" data-lightbox-src="https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=900%2C900&amp;ssl=1" data-lightbox-caption="Formal Portrait · Aaron Snowberger, Ph.D.">
+      {% for photo in ph.photos %}
+      <div class="photo-card rise {% if photo.delay %}{{ photo.delay }} {% endif %}in"
+           data-lightbox-src="{{ photo.lightbox_src }}"
+           data-lightbox-caption="{{ photo.caption }}">
         <div class="photo-thumb">
-          <img src="https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=460%2C460&amp;ssl=1" alt="Formal Portrait" onerror="this.parentElement.innerHTML='&lt;div class=\'photo-thumb-ph\'&gt;Add formal portrait&lt;/div&gt;'">
+          {% if photo.thumb != "" %}
+          <img src="{{ photo.thumb }}"
+               alt="{{ photo.alt }}"
+               onerror="this.parentElement.innerHTML='<div class=\'photo-thumb-ph\'><span class=\'en\'>{{ photo.placeholder_en }}</span><span class=\'ko\'>{{ photo.placeholder_ko }}</span></div>'">
+          {% else %}
+          <div class="photo-thumb-ph">
+            <span class="en">{{ photo.placeholder_en }}</span>
+            <span class="ko">{{ photo.placeholder_ko }}</span>
+          </div>
+          {% endif %}
           <div class="photo-overlay">
             <div class="photo-actions">
+              {% if photo.thumb != "" %}
               <button class="photo-btn photo-btn-view" data-action="view">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
                 <span class="en">View</span><span class="ko">보기</span>
               </button>
-              <a class="photo-btn photo-btn-dl" href="https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=2000%2C2000&amp;ssl=1" download="" target="_blank">
+              <a class="photo-btn photo-btn-dl" href="{{ photo.download }}" download target="_blank">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 <span class="en">Download</span><span class="ko">다운로드</span>
               </a>
+              {% else %}
+              <button class="photo-btn photo-btn-view" disabled style="opacity:.4;cursor:default">
+                <span class="en">No image</span><span class="ko">사진 없음</span>
+              </button>
+              {% endif %}
             </div>
           </div>
         </div>
         <div class="photo-info">
-          <div class="photo-name"><span class="en">Formal Portrait</span><span class="ko">공식 프로필</span></div>
-          <div class="photo-spec en">Hi-res · JPG · Press use</div>
-          <div class="photo-spec ko">고해상도 · JPG · 보도용</div>
-        </div>
-      </div>
-      <div class="photo-card rise rise-d1 in" data-lightbox-src="" data-lightbox-caption="Casual / Outdoor">
-        <div class="photo-thumb">
-          <div class="photo-thumb-ph"><span class="en">Add casual / outdoor photo</span><span class="ko">캐주얼 사진 추가</span></div>
-          <div class="photo-overlay">
-            <div class="photo-actions">
-              <button class="photo-btn photo-btn-view" disabled="" style="opacity:.4;cursor:default"><span class="en">No image</span><span class="ko">사진 없음</span></button>
-            </div>
+          <div class="photo-name">
+            <span class="en">{{ photo.name_en }}</span><span class="ko">{{ photo.name_ko }}</span>
           </div>
-        </div>
-        <div class="photo-info">
-          <div class="photo-name"><span class="en">Casual / Outdoor</span><span class="ko">캐주얼 / 야외</span></div>
-          <div class="photo-spec en">Replace with your photo</div>
-          <div class="photo-spec ko">사진으로 교체하세요</div>
+          <div class="photo-spec en">{{ photo.spec_en }}</div>
+          <div class="photo-spec ko">{{ photo.spec_ko }}</div>
         </div>
       </div>
-      <div class="photo-card rise rise-d2 in" data-lightbox-src="" data-lightbox-caption="Lab / Teaching">
-        <div class="photo-thumb">
-          <div class="photo-thumb-ph"><span class="en">Add lab / teaching photo</span><span class="ko">강의실 사진 추가</span></div>
-          <div class="photo-overlay">
-            <div class="photo-actions">
-              <button class="photo-btn photo-btn-view" disabled="" style="opacity:.4;cursor:default"><span class="en">No image</span><span class="ko">사진 없음</span></button>
-            </div>
-          </div>
-        </div>
-        <div class="photo-info">
-          <div class="photo-name"><span class="en">Lab / Teaching</span><span class="ko">강의 / 실험실</span></div>
-          <div class="photo-spec en">Replace with your photo</div>
-          <div class="photo-spec ko">사진으로 교체하세요</div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <p class="photos-note rise in">
-      <span class="en">For higher-resolution files or usage questions, <a href="mailto:hi@aaron.kr">contact Aaron directly</a>.</span>
-      <span class="ko">고해상도 파일이나 사용 문의는 <a href="mailto:hi@aaron.kr">이메일로 연락</a>해주세요.</span>
+      <span class="en">{{ ph.note_en }}</span>
+      <span class="ko">{{ ph.note_ko }}</span>
     </p>
   </div>
 </section>

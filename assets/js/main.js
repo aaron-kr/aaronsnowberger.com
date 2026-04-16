@@ -306,11 +306,15 @@
 
   document.querySelectorAll('.rise').forEach(function (el) { obs.observe(el); });
 
-  /* ── 10. TESTIMONIALS SLIDER ─────────────────────────────────
-     Auto-advancing slider with dots, progress bar, prev/next,
-     touch swipe, and keyboard navigation.
+  /* ── 10. TESTIMONIALS SLIDER — WP REST API ──────────────────
+     Fetches testimonials from notes.aaron.kr, randomly selects
+     up to MAX_SLIDES, injects slide HTML, then inits the slider.
+     Photos come from _embedded['wp:featuredmedia'][0].source_url;
+     falls back to initials avatar if unavailable.
   ──────────────────────────────────────────────────────────── */
   (function () {
+    var API_URL   = 'https://notes.aaron.kr/wp-json/wp/v2/testimonials?per_page=20&_embed';
+    var MAX_SLIDES = 10;
     var INTERVAL  = 6000;  // ms between auto-advances
     var DURATION  = 6000;  // must match INTERVAL for progress bar
 
@@ -322,117 +326,196 @@
 
     if (!track) return;
 
-    var slides  = Array.from(track.querySelectorAll('.tsm-slide'));
-    var total   = slides.length;
-    var current = 0;
-    var timer   = null;
-    var paused  = false;
+    /* ── Fetch + render ────────────────────────────────────── */
+    fetch(API_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        /* shuffle and cap */
+        var shuffled = data.slice().sort(function () { return Math.random() - 0.5; });
+        var selected = shuffled.slice(0, MAX_SLIDES);
 
-    /* ── Avatar photo injection ────────────────────────────────
-       Tries to load the photo; if it 404s the initial stays.
-       Drop the file in assets/img/testimonials/ and it appears.
-    ────────────────────────────────────────────────────────── */
-    slides.forEach(function (slide) {
-      var avatar = slide.querySelector('.tsm-avatar');
-      if (!avatar) return;
-      var photo   = avatar.dataset.photo;
-      var initial = avatar.dataset.initial;
-      if (!photo) return;
+        track.innerHTML = selected.map(function (t) {
+          /* ── Parse name / role from title ── */
+          var raw  = (t.title && t.title.rendered) || '';
+          /* decode common HTML entities */
+          raw = raw.replace(/&#8217;/g, '\u2019')
+                   .replace(/&#8216;/g, '\u2018')
+                   .replace(/&amp;/g,   '&')
+                   .replace(/&quot;/g,  '"');
+          var comma = raw.indexOf(',');
+          var name  = (comma > -1 ? raw.slice(0, comma) : raw).trim();
+          var role  = (comma > -1 ? raw.slice(comma + 1) : '').trim();
 
-      var img = document.createElement('img');
-      img.alt = initial || '';
-      img.onload = function () {
-        var span = avatar.querySelector('.tsm-avatar-initial');
-        if (span) span.style.display = 'none';
-        avatar.insertBefore(img, avatar.firstChild);
-      };
-      img.onerror = function () { /* keep initial */ };
-      img.src = photo;
-    });
+          /* ── Initials ── */
+          var parts   = name.split(/\s+/);
+          var initial = (parts[0] ? parts[0][0] : '') +
+                        (parts[1] ? parts[1][0] : '');
 
-    /* ── Dots ─────────────────────────────────────────────────── */
-    slides.forEach(function (_, i) {
-      var dot = document.createElement('button');
-      dot.className = 'tsm-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
-      dot.addEventListener('click', function () { goTo(i); resetTimer(); });
-      dotsWrap.appendChild(dot);
-    });
+          /* ── Badge: detect academic by title keywords ── */
+          var isAc       = /professor|full sail/i.test(raw);
+          var badgeClass = isAc ? 'ac'       : 'sv';
+          var badgeLabel = isAc ? 'Academic' : 'Client';
+          var catClass   = isAc ? 'ac'       : 'svc';
 
-    function getDots() { return Array.from(dotsWrap.querySelectorAll('.tsm-dot')); }
+          /* ── Strip HTML from quote ── */
+          var tmp       = document.createElement('div');
+          tmp.innerHTML = (t.content && t.content.rendered) || '';
+          var quote     = (tmp.textContent || tmp.innerText || '').trim()
+                            .replace(/\s+/g, ' ');
 
-    /* ── Core navigation ─────────────────────────────────────── */
-    function goTo(index) {
-      current = (index + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      getDots().forEach(function (d, i) {
-        d.classList.toggle('active', i === current);
+          /* ── Featured photo URL ── */
+          var photoUrl = '';
+          try {
+            var media = t._embedded && t._embedded['wp:featuredmedia'];
+            if (media && media[0] && media[0].source_url) {
+              photoUrl = media[0].source_url;
+            }
+          } catch (e) { /* fall through to initials */ }
+
+          return [
+            '<div class="tsm-slide" data-cat="' + catClass + '">',
+              '<div class="tsm-person">',
+                '<div class="tsm-avatar-wrap">',
+                  '<div class="tsm-avatar-ring"></div>',
+                  '<div class="tsm-avatar"',
+                       ' data-photo="'   + photoUrl + '"',
+                       ' data-initial="' + initial  + '">',
+                    '<span class="tsm-avatar-initial">' + initial + '</span>',
+                  '</div>',
+                '</div>',
+                '<div class="tsm-name-block">',
+                  '<div class="tsm-pname">' + name + '</div>',
+                  '<div class="tsm-prole">' + role + '</div>',
+                  '<span class="tsm-badge tsm-badge-' + badgeClass + '">' + badgeLabel + '</span>',
+                '</div>',
+              '</div>',
+              '<div class="tsm-body">',
+                '<p class="tsm-quote-text">' + quote + '</p>',
+              '</div>',
+            '</div>'
+          ].join('');
+        }).join('');
+
+        initSlider();
+      })
+      .catch(function () {
+        /* silently hide the section nav on error */
+        var nav = document.querySelector('.tsm-nav');
+        if (nav) nav.style.display = 'none';
       });
-      restartBar();
-    }
 
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+    /* ── Slider init (called after slides are in the DOM) ──── */
+    function initSlider() {
+      var slides  = Array.from(track.querySelectorAll('.tsm-slide'));
+      var total   = slides.length;
+      var current = 0;
+      var timer   = null;
+      var paused  = false;
 
-    /* ── Progress bar ─────────────────────────────────────────── */
-    function restartBar() {
-      if (!bar) return;
-      bar.style.transition = 'none';
-      bar.style.transform  = 'scaleX(0)';
-      void bar.offsetWidth; // force reflow
-      bar.style.transition = 'transform ' + DURATION + 'ms linear';
-      bar.style.transform  = 'scaleX(1)';
-    }
+      if (!total) return;
 
-    /* ── Auto-advance timer ──────────────────────────────────── */
-    function startTimer() {
-      clearInterval(timer);
-      timer = setInterval(function () {
-        if (!paused) goTo(current + 1);
-      }, INTERVAL);
-    }
+      /* ── Avatar photo injection ─────────────────────────── */
+      slides.forEach(function (slide) {
+        var avatar  = slide.querySelector('.tsm-avatar');
+        if (!avatar) return;
+        var photo   = avatar.dataset.photo;
+        var initial = avatar.dataset.initial;
+        if (!photo) return;
+        var img = document.createElement('img');
+        img.alt = initial || '';
+        img.onload = function () {
+          var span = avatar.querySelector('.tsm-avatar-initial');
+          if (span) span.style.display = 'none';
+          avatar.insertBefore(img, avatar.firstChild);
+        };
+        img.onerror = function () { /* keep initials */ };
+        img.src = photo;
+      });
 
-    function resetTimer() {
-      clearInterval(timer);
+      /* ── Dots ────────────────────────────────────────────── */
+      if (dotsWrap) dotsWrap.innerHTML = '';
+      slides.forEach(function (_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'tsm-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+        dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+        if (dotsWrap) dotsWrap.appendChild(dot);
+      });
+
+      function getDots() {
+        return dotsWrap ? Array.from(dotsWrap.querySelectorAll('.tsm-dot')) : [];
+      }
+
+      /* ── Core navigation ─────────────────────────────────── */
+      function goTo(index) {
+        current = (index + total) % total;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        getDots().forEach(function (d, i) {
+          d.classList.toggle('active', i === current);
+        });
+        restartBar();
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
+      if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+
+      /* ── Progress bar ────────────────────────────────────── */
+      function restartBar() {
+        if (!bar) return;
+        bar.style.transition = 'none';
+        bar.style.transform  = 'scaleX(0)';
+        void bar.offsetWidth; // force reflow
+        bar.style.transition = 'transform ' + DURATION + 'ms linear';
+        bar.style.transform  = 'scaleX(1)';
+      }
+
+      /* ── Auto-advance timer ──────────────────────────────── */
+      function startTimer() {
+        clearInterval(timer);
+        timer = setInterval(function () {
+          if (!paused) goTo(current + 1);
+        }, INTERVAL);
+      }
+
+      function resetTimer() { clearInterval(timer); startTimer(); }
+
+      /* ── Pause on hover / focus ──────────────────────────── */
+      var stage = document.querySelector('.tsm-stage');
+      if (stage) {
+        stage.addEventListener('mouseenter', function () { paused = true;  });
+        stage.addEventListener('mouseleave', function () { paused = false; });
+        stage.addEventListener('focusin',    function () { paused = true;  });
+        stage.addEventListener('focusout',   function () { paused = false; });
+      }
+
+      /* ── Touch / swipe ───────────────────────────────────── */
+      var touchStartX = 0;
+      if (stage) {
+        stage.addEventListener('touchstart', function (e) {
+          touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        stage.addEventListener('touchend', function (e) {
+          var diff = touchStartX - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 40) {
+            goTo(diff > 0 ? current + 1 : current - 1);
+            resetTimer();
+          }
+        }, { passive: true });
+      }
+
+      /* ── Keyboard support ────────────────────────────────── */
+      document.addEventListener('keydown', function (e) {
+        var section = document.getElementById('testimonials');
+        if (!section || !section.contains(document.activeElement)) return;
+        if (e.key === 'ArrowLeft')  { goTo(current - 1); resetTimer(); }
+        if (e.key === 'ArrowRight') { goTo(current + 1); resetTimer(); }
+      });
+
+      /* ── Init ────────────────────────────────────────────── */
+      goTo(0);
       startTimer();
     }
-
-    /* ── Pause on hover / focus ──────────────────────────────── */
-    var stage = document.querySelector('.tsm-stage');
-    if (stage) {
-      stage.addEventListener('mouseenter', function () { paused = true; });
-      stage.addEventListener('mouseleave', function () { paused = false; });
-      stage.addEventListener('focusin',    function () { paused = true; });
-      stage.addEventListener('focusout',   function () { paused = false; });
-    }
-
-    /* ── Touch / swipe support ───────────────────────────────── */
-    var touchStartX = 0;
-    if (stage) {
-      stage.addEventListener('touchstart', function (e) {
-        touchStartX = e.touches[0].clientX;
-      }, { passive: true });
-      stage.addEventListener('touchend', function (e) {
-        var diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 40) {
-          goTo(diff > 0 ? current + 1 : current - 1);
-          resetTimer();
-        }
-      }, { passive: true });
-    }
-
-    /* ── Keyboard support ────────────────────────────────────── */
-    document.addEventListener('keydown', function (e) {
-      var section = document.getElementById('testimonials');
-      if (!section || !section.contains(document.activeElement)) return;
-      if (e.key === 'ArrowLeft')  { goTo(current - 1); resetTimer(); }
-      if (e.key === 'ArrowRight') { goTo(current + 1); resetTimer(); }
-    });
-
-    /* ── Init ────────────────────────────────────────────────── */
-    goTo(0);
-    startTimer();
 
   })();
 
