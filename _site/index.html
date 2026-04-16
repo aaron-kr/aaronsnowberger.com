@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Snowberger, Ph.D. — AI Researcher & Educator</title>
+<meta name="description" content="Aaron Snowberger, Ph.D. — AI Researcher & Educator at five Korean universities. Physical AI curriculum, handwriting recognition, CS education. Jeonju, South Korea.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://aaronsnowberger.com">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Aaron Snowberger, Ph.D.">
+<meta property="og:description" content="AI Researcher & Educator · Jeonju, South Korea">
+<meta property="og:url" content="https://aaronsnowberger.com">
+<meta property="og:image" content="https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=460%2C460&ssl=1">
+
+<!-- Anti-flash -->
+<script>(function(){var t=localStorage.getItem('as_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════
+   ROOT & TOKENS  (identical to aaron.kr v7)
+══════════════════════════════ */
+:root { font-size: clamp(14px, 1.1vw + 1px, 19px); }
+
+[data-theme="dark"] {
+  --bg: #0c0f0e; --bg-soft: #101614; --bg-muted: #131a18;
+  --t1: #e6efec; --t2: #7ea89e; --t3: #3e5852;
+  --brd: #1b2825; --brd2: #243530; --rule: rgba(255,255,255,.06);
+  --nav-bg: rgba(12,15,14,.92); --cta-fg: #0c0f0e;
+  --teal: #2dd4bf; --blue: #38bdf8; --purple: #a78bfa; --pink: #e879f9;
+  --dt: rgba(45,212,191,.11); --db: rgba(56,189,248,.11); --dp: rgba(167,139,250,.10);
+  --brd-t: rgba(45,212,191,.28); --brd-b: rgba(56,189,248,.28); --brd-p: rgba(167,139,250,.26);
+  --aur-a: rgba(45,212,191,.20); --aur-b: rgba(56,189,248,.15);
+  --aur-c: rgba(167,139,250,.12); --aur-d: rgba(232,121,249,.08);
+}
+[data-theme="light"] {
+  --bg: #f8faf9; --bg-soft: #ffffff; --bg-muted: #eef5f2;
+  --t1: #101814; --t2: #3e5750; --t3: #8aa29b;
+  --brd: #d6e6e0; --brd2: #c2d6d0; --rule: rgba(0,0,0,.07);
+  --nav-bg: rgba(248,250,249,.93); --cta-fg: #ffffff;
+  --teal: #0a8c78; --blue: #0369a1; --purple: #6d28d9; --pink: #a21caf;
+  --dt: rgba(10,140,120,.11); --db: rgba(3,105,161,.11); --dp: rgba(109,40,217,.09);
+  --brd-t: rgba(10,140,120,.32); --brd-b: rgba(3,105,161,.32); --brd-p: rgba(109,40,217,.28);
+  --aur-a: rgba(10,140,120,.15); --aur-b: rgba(3,105,161,.10);
+  --aur-c: rgba(109,40,217,.08); --aur-d: rgba(162,28,175,.05);
+}
+
+/* ══════════════════════════════
+   AURORA BACKGROUND
+══════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(ellipse 110% 60% at 10% 0%,   var(--aur-a) 0%, transparent 55%),
+    radial-gradient(ellipse 70%  50% at 85% 5%,   var(--aur-b) 0%, transparent 50%),
+    radial-gradient(ellipse 50%  40% at 5%  70%,  var(--aur-c) 0%, transparent 45%),
+    radial-gradient(ellipse 40%  30% at 90% 80%,  var(--aur-d) 0%, transparent 40%);
+  transition: opacity .4s;
+}
+
+/* ══════════════════════════════
+   FILL-SLIDE  (same as aaron.kr)
+══════════════════════════════ */
+.fs { position:relative; overflow:hidden; z-index:0; }
+.fs::before { content:''; position:absolute; inset:0; background:var(--sf,var(--teal)); transform:translateX(-101%); transition:transform .3s cubic-bezier(.4,0,.2,1); z-index:-1; border-radius:inherit; }
+.fs:hover::before { transform:translateX(0); }
+.fs:hover { color:var(--bg) !important; border-color:var(--sf,var(--teal)) !important; }
+.sl-t  { --sf:var(--teal);   color:var(--teal);   border-color:var(--teal); }
+.sl-b  { --sf:var(--blue);   color:var(--blue);   border-color:var(--blue); }
+.sl-p  { --sf:var(--purple); color:var(--purple); border-color:var(--purple); }
+.sl-pk { --sf:var(--pink);   color:var(--pink);   border-color:var(--pink); }
+.tag   { --sf:var(--dt);   color:var(--teal);   border-color:var(--brd-t); }
+.tag.b { --sf:var(--db);   color:var(--blue);   border-color:var(--brd-b); }
+.tag.p { --sf:var(--dp);   color:var(--purple); border-color:var(--brd-p); }
+
+/* ══════════════════════════════
+   RESET & BASE
+══════════════════════════════ */
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--bg); color:var(--t1);
+  font-family:'DM Sans','Noto Sans KR',sans-serif;
+  font-size:1rem; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  transition:background .3s, color .3s;
+  min-height:100dvh;
+  display:flex; flex-direction:column;
+}
+a { text-decoration:none; color:inherit; }
+
+/* ══════════════════════════════
+   BILINGUAL
+══════════════════════════════ */
+[data-lang="en"] .ko { display:none !important; }
+[data-lang="ko"] .en { display:none !important; }
+
+/* ══════════════════════════════
+   FADE-IN
+══════════════════════════════ */
+.rise { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
+.rise.d1 { transition-delay:.1s; }
+.rise.d2 { transition-delay:.22s; }
+.rise.d3 { transition-delay:.34s; }
+.rise.d4 { transition-delay:.46s; }
+.rise.d5 { transition-delay:.58s; }
+.rise.d6 { transition-delay:.70s; }
+.rise.in { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════
+   TOP BAR — controls only (no logo)
+══════════════════════════════ */
+.topbar {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:flex-end; align-items:center;
+  gap:.35rem; padding:.7rem 1.5rem;
+  background:transparent;
+  pointer-events:none; /* let clicks fall through to body */
+}
+.topbar button { pointer-events:all; }
+.nbtn {
+  background:transparent; border:1px solid var(--brd2); color:var(--t2); cursor:pointer;
+  padding:5px 10px; border-radius:6px; font-family:'DM Sans',sans-serif;
+  font-size:.73rem; font-weight:600; letter-spacing:.04em; white-space:nowrap;
+  transition:border-color .2s, color .2s;
+}
+.nbtn:hover { border-color:var(--teal); color:var(--teal); }
+.nbtn.fs { --sf:var(--teal); }
+
+/* ══════════════════════════════
+   PROGRESS BAR
+══════════════════════════════ */
+#prog {
+  position:fixed; top:0; left:0; height:2px; width:0%;
+  background:linear-gradient(90deg,var(--teal),var(--blue),var(--purple),var(--pink));
+  z-index:200; transition:width .08s linear;
+}
+
+/* ══════════════════════════════
+   MAIN CARD LAYOUT
+══════════════════════════════ */
+main {
+  flex:1; display:flex; align-items:center; justify-content:center;
+  padding:5rem 1.5rem 3rem;
+  min-height:100dvh;
+}
+
+.card {
+  width:100%; max-width:700px;
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:3.5rem;
+  align-items:start;
+}
+
+/* ── Left col: photo + affiliations ── */
+.card-photo { display:flex; flex-direction:column; gap:.9rem; }
+.photo-wrap {
+  position:relative;
+  border-radius:8px; overflow:hidden;
+  aspect-ratio:1; background:var(--bg-muted);
+}
+.photo-wrap img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:grayscale(8%); transition:filter .4s;
+}
+.photo-wrap:hover img { filter:grayscale(0%); }
+
+/* Teal border trace on hover */
+.photo-wrap::after {
+  content:''; position:absolute; inset:0;
+  border:2px solid transparent; border-radius:8px;
+  transition:border-color .3s;
+}
+.photo-wrap:hover::after { border-color:var(--teal); }
+
+.affil-list { display:flex; flex-direction:column; gap:.25rem; }
+.affil-line { display:flex; align-items:center; gap:.4rem; font-size:.69rem; font-weight:500; color:var(--t3); }
+.affil-dot  { width:5px; height:5px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+.affil-dot.b{ background:var(--blue); }
+.affil-dot.p{ background:var(--purple); }
+
+/* ── Right col: bio ── */
+.card-body {}
+
+.eyebrow { display:flex; align-items:center; gap:.6rem; margin-bottom:.9rem; }
+.ey-line { width:1.8rem; height:1.5px; background:var(--teal); }
+.ey-txt  { font-size:.65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); }
+
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,5.5vw,3.6rem);
+  font-weight:700; line-height:1.05;
+  color:var(--t1); letter-spacing:-.01em;
+  margin-bottom:.2rem;
+}
+h1 em { font-style:italic; color:var(--teal); }
+
+.cred {
+  font-size:.76rem; font-weight:500; letter-spacing:.07em;
+  color:var(--t3); text-transform:uppercase; margin-bottom:1.1rem;
+}
+
+.tagline {
+  font-family:'Playfair Display',serif;
+  font-size:.97rem; font-style:italic;
+  color:var(--t2); line-height:1.65;
+  margin-bottom:1rem; max-width:440px;
+  border-left:2px solid var(--teal);
+  padding-left:.85rem;
+}
+
+.bio {
+  font-size:.88rem; color:var(--t2); line-height:1.85;
+  max-width:440px; margin-bottom:.9rem;
+}
+
+/* Research focus tags */
+.focus-tags { display:flex; flex-wrap:wrap; gap:.3rem; margin-bottom:1.4rem; }
+.tag {
+  font-size:.63rem; font-weight:700; padding:3px 9px; border-radius:5px;
+  border:1px solid; letter-spacing:.03em; cursor:default;
+  position:relative; overflow:hidden; z-index:0;
+}
+.tag span { position:relative; z-index:1; }
+.tag::before { content:''; position:absolute; inset:0; background:var(--sf,var(--teal)); transform:translateX(-101%); transition:transform .3s cubic-bezier(.4,0,.2,1); z-index:0; border-radius:inherit; }
+
+/* ── Links row ── */
+.links { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.6rem; }
+.slink {
+  display:inline-flex; align-items:center; gap:.35rem;
+  font-size:.76rem; font-weight:600; padding:6px 12px;
+  border-radius:6px; border:1px solid; background:transparent;
+  transition:transform .2s;
+}
+.slink:hover { transform:translateY(-1px); }
+.slink svg { width:12px; height:12px; opacity:.65; flex-shrink:0; }
+
+/* ── Destination pointer ── */
+.dest-note {
+  font-size:.75rem; color:var(--t3); line-height:1.7;
+  padding:.7rem .9rem; border:1px solid var(--brd);
+  border-radius:7px; background:var(--bg-soft);
+  margin-top:.25rem;
+}
+.dest-note a { color:var(--teal); font-weight:600; transition:opacity .2s; }
+.dest-note a:hover { opacity:.7; }
+.dest-note .sep { color:var(--t3); opacity:.4; margin:0 .3rem; }
+
+/* ══════════════════════════════
+   FOOTER  — minimal 1-liner
+══════════════════════════════ */
+footer {
+  text-align:center; padding:1.25rem 1.5rem;
+  font-size:.71rem; color:var(--t3); letter-spacing:.04em;
+  border-top:1px solid var(--rule);
+}
+footer a { color:var(--t3); transition:color .2s; }
+footer a:hover { color:var(--teal); }
+
+/* ══════════════════════════════
+   MANUSCRIPT TEXTURE (footer)
+══════════════════════════════ */
+footer { position:relative; overflow:hidden; }
+footer::before {
+  content:''; position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background-image:url('img/hangul-calligraphy.jpg');
+  background-size:cover; background-position:center;
+  opacity:.05; mix-blend-mode:screen;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width:620px) {
+  .card {
+    grid-template-columns:1fr;
+    gap:2rem;
+    max-width:420px;
+  }
+  .card-photo {
+    flex-direction:row; align-items:center; gap:1.25rem;
+  }
+  .photo-wrap { width:100px; height:100px; flex-shrink:0; }
+  .affil-list { flex-direction:row; flex-wrap:wrap; gap:.3rem .7rem; }
+  h1 { font-size:2.4rem; }
+  main { padding:4rem 1.25rem 2rem; align-items:flex-start; }
+}
+
+@media (max-width:400px) {
+  h1 { font-size:2rem; }
+  .tagline { font-size:.9rem; }
+  .photo-wrap { width:80px; height:80px; }
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- ── Top controls ── -->
+<div class="topbar">
+  <button class="nbtn fs" id="langBtn">한국어</button>
+  <button class="nbtn fs" id="themeBtn">☾</button>
+</div>
+
+<!-- ══════════════════════════════
+     MAIN CARD
+══════════════════════════════ -->
+<main>
+  <div class="card">
+
+    <!-- ── Left: Photo ── -->
+    <div class="card-photo">
+      <div class="photo-wrap rise d1">
+        <img
+          src="https://i0.wp.com/files.aaron.kr/media/2025/01/aaron.jpg?fit=460%2C460&ssl=1"
+          alt="Aaron Snowberger"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <div class="affil-list rise d2">
+        <div class="affil-line"><span class="affil-dot"></span>KSPAI</div>
+        <div class="affil-line"><span class="affil-dot b"></span>KIICE</div>
+        <div class="affil-line"><span class="affil-dot p"></span>KLIFE</div>
+        <div class="affil-line"><span class="affil-dot b"></span>JBNU</div>
+      </div>
+    </div>
+
+    <!-- ── Right: Bio ── -->
+    <div class="card-body">
+
+      <div class="eyebrow rise d1">
+        <div class="ey-line"></div>
+        <span class="ey-txt en">Jeonju, South Korea</span>
+        <span class="ey-txt ko">전주, 대한민국</span>
+      </div>
+
+      <h1 class="rise d2">
+        <span class="en">Aaron <em>Snowberger</em></span>
+        <span class="ko">에런 <em>스노버거</em></span>
+      </h1>
+
+      <p class="cred rise d2">
+        <span class="en">Ph.D. · AI Researcher &amp; Educator · Wyoming</span>
+        <span class="ko">공학박사 · AI 연구자 &amp; 교육자 · 와이오밍 출신</span>
+      </p>
+
+      <p class="tagline rise d3 en">
+        "Building the bridge between Physical AI and the classroom — one modular lesson at a time."
+      </p>
+      <p class="tagline rise d3 ko">
+        "피지컬 AI와 교실을 잇는 다리를 놓습니다 — 하나의 모듈식 수업으로."
+      </p>
+
+      <p class="bio rise d3 en">
+        Lecturer at five Korean universities in AI, programming, IoT, and circuits.
+        Current research: Physical AI curriculum for low-resource classrooms —
+        modular, hardware-agnostic lessons designed to work with whatever a school actually has.
+        Ph.D. in Computer Vision &amp; AI · 20 years in Korea · Wyoming at heart.
+      </p>
+      <p class="bio rise d3 ko">
+        다섯 개 한국 대학에서 AI, 프로그래밍, IoT, 회로 강의.
+        현재 연구: 저자원 환경을 위한 피지컬 AI 교육과정 — 학교 보유 장비로 구현 가능한
+        모듈식 수업 설계. 컴퓨터 비전 &amp; AI 공학박사 · 한국 생활 20년.
+      </p>
+
+      <!-- Research focus tags -->
+      <div class="focus-tags rise d4">
+        <span class="tag fss"><span>Physical AI</span></span>
+        <span class="tag fss"><span>Curriculum Design</span></span>
+        <span class="tag b fss"><span>Computer Vision</span></span>
+        <span class="tag b fss"><span>Handwriting Recognition</span></span>
+        <span class="tag p fss"><span>CS Education</span></span>
+        <span class="tag p fss"><span>Low-Resource Pedagogy</span></span>
+      </div>
+
+      <!-- Links -->
+      <div class="links rise d5">
+        <a href="https://aaron.kr" class="slink sl-t fs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+          </svg>
+          <span class="en">Main Site</span><span class="ko">메인 사이트</span>
+        </a>
+        <a href="https://linkedin.com/in/aaronsnowberger/" class="slink sl-t fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a href="https://aaronkr-courses.github.io/courses/" class="slink sl-b fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+          </svg>
+          <span class="en">Courses</span><span class="ko">강의</span>
+        </a>
+        <a href="https://www.researchgate.net/profile/Aaron-Snowberger" class="slink sl-b fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM7 17V7h3a3 3 0 010 6H9v4H7zm12 0h-2l-2-4h-1v4h-2V7h3a3 3 0 011 5.82L19 17z"/>
+          </svg>
+          ResearchGate
+        </a>
+        <a href="https://scholar.google.com/citations?user=JCbnnvUAAAAJ" class="slink sl-b fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+          </svg>
+          Scholar
+        </a>
+        <a href="https://kspai.org" class="slink sl-p fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+          </svg>
+          KSPAI
+        </a>
+        <a href="https://github.com/jekkilekki" class="slink sl-p fs" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="mailto:hi@aaron.kr" class="slink sl-pk fs">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,12 2,6"/>
+          </svg>
+          hi@aaron.kr
+        </a>
+      </div>
+
+      <!-- Destination pointer -->
+      <div class="dest-note rise d6">
+        <span class="en">
+          → <a href="https://aaron.kr">aaron.kr</a> — Research &amp; Teaching hub
+          <span class="sep">·</span>
+          <a href="https://aaronkr-courses.github.io/courses/">Courses</a>
+          <span class="sep">·</span>
+          <a href="https://kspai.org">KSPAI</a>
+          <span class="sep">·</span>
+          <a href="https://orcid.org/0000-0001-8652-0936">ORCID</a>
+        </span>
+        <span class="ko">
+          → <a href="https://aaron.kr">aaron.kr</a> — 연구 &amp; 교육 허브
+          <span class="sep">·</span>
+          <a href="https://aaronkr-courses.github.io/courses/">강의 사이트</a>
+          <span class="sep">·</span>
+          <a href="https://kspai.org">KSPAI</a>
+        </span>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ── Footer ── -->
+<footer>
+  <span class="en">© 2026 Aaron Snowberger · <a href="https://aaron.kr">aaron.kr</a> · Jeonju, Republic of Korea</span>
+  <span class="ko">© 2026 에런 스노버거 · <a href="https://aaron.kr">aaron.kr</a> · 전주, 대한민국</span>
+</footer>
+
+<script>
+/* ── Prefs ── */
+const html = document.documentElement;
+const PREFS = {
+  theme: localStorage.getItem('as_theme') || 'dark',
+  lang:  localStorage.getItem('as_lang')  || 'en',
+};
+html.setAttribute('data-theme', PREFS.theme);
+html.setAttribute('data-lang',  PREFS.lang);
+
+const themeBtn = document.getElementById('themeBtn');
+const langBtn  = document.getElementById('langBtn');
+
+themeBtn.textContent = PREFS.theme === 'dark' ? '☀' : '☾';
+langBtn.textContent  = PREFS.lang  === 'en'   ? '한국어' : 'English';
+
+themeBtn.addEventListener('click', function() {
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('as_theme', next);
+  html.setAttribute('data-theme', next);
+  this.textContent = next === 'dark' ? '☀' : '☾';
+});
+langBtn.addEventListener('click', function() {
+  const next = html.getAttribute('data-lang') === 'en' ? 'ko' : 'en';
+  localStorage.setItem('as_lang', next);
+  html.setAttribute('data-lang', next);
+  this.textContent = next === 'en' ? '한국어' : 'English';
+});
+
+/* ── Scroll progress ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('prog').style.width =
+    Math.min(window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100, 100) + '%';
+}, { passive: true });
+
+/* ── Fade-in on load ── */
+window.addEventListener('load', () => {
+  document.querySelectorAll('.rise').forEach(el => {
+    // Small rAF delay so CSS transition fires
+    requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('in')));
+  });
+});
+</script>
+</body>
+</html>

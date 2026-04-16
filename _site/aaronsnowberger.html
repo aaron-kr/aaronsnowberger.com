@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-aurora="on">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Snowberger · Press Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ══ TOKENS ══════════════════════════════════════════════════════ */
+:root { font-size: clamp(14px,1.1vw + 1px,19px); }
+[data-theme="dark"] {
+  --bg:#0c0f0e; --bg-soft:#101614; --bg-muted:#131a18; --bg-card:#141d1a;
+  --t1:#e6efec; --t2:#7ea89e; --t3:#3e5852;
+  --brd:#1b2825; --brd2:#243530; --rule:rgba(255,255,255,.06);
+  --nav-bg:rgba(12,15,14,.92);
+  --teal:#2dd4bf; --blue:#38bdf8; --purple:#a78bfa; --pink:#e879f9;
+  --dt:rgba(45,212,191,.11); --db:rgba(56,189,248,.11); --dp:rgba(167,139,250,.10);
+  --brd-t:rgba(45,212,191,.28); --brd-b:rgba(56,189,248,.28); --brd-p:rgba(167,139,250,.26);
+  --glow-t:rgba(45,212,191,.18); --glow-b:rgba(56,189,248,.14); --glow-p:rgba(167,139,250,.11);
+}
+[data-theme="light"] {
+  --bg:#f8faf9; --bg-soft:#ffffff; --bg-muted:#eef5f2; --bg-card:#ffffff;
+  --t1:#101814; --t2:#3e5750; --t3:#8aa29b;
+  --brd:#d6e6e0; --brd2:#c2d6d0; --rule:rgba(0,0,0,.07);
+  --nav-bg:rgba(248,250,249,.93);
+  --teal:#0a8c78; --blue:#0369a1; --purple:#6d28d9; --pink:#a21caf;
+  --dt:rgba(10,140,120,.1); --db:rgba(3,105,161,.1); --dp:rgba(109,40,217,.09);
+  --brd-t:rgba(10,140,120,.32); --brd-b:rgba(3,105,161,.32); --brd-p:rgba(109,40,217,.28);
+  --glow-t:rgba(10,140,120,.12); --glow-b:rgba(3,105,161,.08); --glow-p:rgba(109,40,217,.07);
+}
+
+/* ══ RESET ═══════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--t1);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+img{display:block;max-width:100%}
+
+/* ══ NAV ══════════════════════════════════════════════════════════ */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  height:60px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;
+  background:transparent;
+  transition:background .3s,border-color .3s,backdrop-filter .3s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled {
+  background:var(--nav-bg);
+  border-color:var(--brd);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.nav-logo {
+  font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+  color:var(--t1);letter-spacing:-.01em;
+}
+.nav-logo span{color:var(--teal)}
+.nav-links{display:flex;align-items:center;gap:.2rem}
+.nav-link {
+  font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--t2);padding:6px 14px;border-radius:6px;
+  transition:color .2s,background .2s;
+}
+.nav-link:hover{color:var(--t1);background:var(--rule)}
+.nav-actions{display:flex;align-items:center;gap:.75rem}
+.theme-btn {
+  width:34px;height:34px;border-radius:8px;border:1px solid var(--brd2);
+  background:transparent;color:var(--t2);display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:all .2s;
+}
+.theme-btn:hover{border-color:var(--teal);color:var(--teal);background:var(--dt)}
+.nav-cta {
+  font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  padding:7px 18px;border-radius:7px;border:1.5px solid var(--teal);
+  color:var(--teal);background:transparent;
+  position:relative;overflow:hidden;
+  transition:color .25s;
+}
+.nav-cta::before{
+  content:'';position:absolute;inset:0;background:var(--teal);
+  transform:translateX(-101%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+  z-index:-1;
+}
+.nav-cta:hover::before{transform:translateX(0)}
+.nav-cta:hover{color:#0c0f0e}
+
+/* ══ HERO ══════════════════════════════════════════════════════════ */
+#hero {
+  position:relative;min-height:100vh;display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg {
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(160deg, #0c1f1c 0%, #0a1512 40%, #070e0c 100%);
+}
+/* Geometric accent lines */
+.hero-bg::before {
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(45,212,191,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%);
+}
+/* Aurora glows */
+.hero-bg::after {
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 75% 30%, rgba(45,212,191,.13) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 20% 70%, rgba(56,189,248,.10) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 35% at 85% 80%, rgba(167,139,250,.09) 0%, transparent 45%);
+}
+/* Portrait placeholder - right side */
+.hero-portrait {
+  position:absolute;right:0;top:0;bottom:0;width:52%;
+  background:linear-gradient(135deg, #112220 0%, #0c1a17 50%, #091510 100%);
+  clip-path:polygon(12% 0%, 100% 0%, 100% 100%, 0% 100%);
+  z-index:1;overflow:hidden;
+}
+.hero-portrait-img {
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  opacity:.55;mix-blend-mode:luminosity;
+  filter:contrast(1.1) saturate(.8);
+}
+.hero-portrait-overlay {
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to right, #0c0f0e 0%, transparent 25%),
+    linear-gradient(to top, rgba(12,15,14,.8) 0%, transparent 40%);
+}
+/* Color wash on portrait */
+.hero-portrait::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,
+    rgba(45,212,191,.15) 0%,
+    rgba(56,189,248,.08) 40%,
+    rgba(167,139,250,.10) 100%);
+  mix-blend-mode:screen;
+}
+.hero-content {
+  position:relative;z-index:2;
+  width:100%;padding:0 2.5rem 7rem;max-width:1200px;margin:0 auto;
+}
+.hero-eyebrow {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.hero-eyebrow::before{
+  content:'';display:inline-block;width:32px;height:1.5px;background:var(--teal);
+}
+.hero-h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.2rem,6.5vw,7rem);
+  font-weight:900;line-height:.95;letter-spacing:-.03em;
+  color:var(--t1);margin-bottom:1.25rem;
+}
+.hero-h1 em{font-style:italic;color:var(--teal)}
+.hero-sub {
+  font-size:clamp(.9rem,1.5vw,1.15rem);color:var(--t2);
+  max-width:520px;line-height:1.75;margin-bottom:2.5rem;
+}
+.hero-sub strong{color:var(--t1);font-weight:500}
+.hero-pills {
+  display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.75rem;
+}
+.hero-pill {
+  font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
+  padding:5px 14px;border-radius:100px;border:1px solid;
+}
+.hp-t{color:var(--teal);border-color:var(--brd-t);background:var(--dt)}
+.hp-b{color:var(--blue);border-color:var(--brd-b);background:var(--db)}
+.hp-p{color:var(--purple);border-color:var(--brd-p);background:var(--dp)}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary {
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:12px 28px;border-radius:8px;
+  background:var(--teal);color:#0c0f0e;border:none;
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  box-shadow:0 0 0 rgba(45,212,191,0);
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(45,212,191,.25)}
+.btn-secondary {
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:11px 28px;border-radius:8px;
+  background:transparent;color:var(--t1);border:1.5px solid var(--brd2);
+  transition:border-color .2s,color .2s;
+}
+.btn-secondary:hover{border-color:var(--t2);color:var(--t1)}
+/* Scroll indicator */
+.hero-scroll {
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  color:var(--t3);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;
+}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--teal),transparent);animation:scrollpulse 2s ease-in-out infinite}
+@keyframes scrollpulse{0%,100%{opacity:.3;transform:scaleY(.7)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ══ SECTION COMMON ════════════════════════════════════════════ */
+section{padding:6rem 0;position:relative}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.sec-label {
+  font-family:'JetBrains Mono',monospace;
+  font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem;
+}
+.sec-label::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--teal)}
+.sec-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;
+  color:var(--t1);line-height:1.1;letter-spacing:-.02em;margin-bottom:.5rem;
+}
+.sec-title em{font-style:italic;color:var(--teal)}
+.sec-desc{font-size:.9rem;color:var(--t2);line-height:1.8;max-width:560px;margin-bottom:3rem}
+
+/* ══ BIO SECTION ═══════════════════════════════════════════════ */
+#bio{background:var(--bg)}
+.bio-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:start}
+/* Stat card on left */
+.stat-card {
+  background:var(--bg-card);border:1px solid var(--brd);border-radius:16px;
+  padding:2rem;position:sticky;top:80px;
+}
+.stat-photo-frame {
+  width:100%;aspect-ratio:3/4;border-radius:10px;overflow:hidden;
+  background:linear-gradient(135deg,var(--bg-muted),var(--bg-soft));
+  margin-bottom:1.5rem;position:relative;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--brd);
+}
+.stat-photo-placeholder {
+  font-family:'Playfair Display',serif;font-style:italic;font-size:.85rem;color:var(--t3);
+  text-align:center;padding:1rem;
+}
+.stat-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--t1);margin-bottom:.2rem}
+.stat-role{font-size:.78rem;color:var(--teal);font-weight:600;letter-spacing:.04em;margin-bottom:1.25rem}
+.stat-facts{display:flex;flex-direction:column;gap:.75rem}
+.sf-row{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--rule)}
+.sf-row:last-child{border-bottom:none;padding-bottom:0}
+.sf-key{font-size:.72rem;color:var(--t3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.sf-val{font-size:.82rem;color:var(--t2);text-align:right;line-height:1.4}
+.sf-val a{color:var(--blue);transition:color .2s}
+.sf-val a:hover{color:var(--teal)}
+
+/* Bio tabs on right */
+.bio-panel{}
+.bio-tabs-nav {
+  display:flex;gap:.4rem;margin-bottom:1.75rem;flex-wrap:wrap;
+}
+.btab {
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 16px;border-radius:7px;border:1.5px solid var(--brd2);
+  color:var(--t3);background:transparent;
+  transition:all .2s;
+}
+.btab:hover{border-color:var(--t2);color:var(--t2)}
+.btab.active{border-color:var(--teal);color:var(--teal);background:var(--dt)}
+.bio-pane{display:none}
+.bio-pane.active{display:block;animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.bio-text {
+  font-size:.95rem;color:var(--t2);line-height:1.9;margin-bottom:1.75rem;
+  background:var(--bg-card);border:1px solid var(--brd);border-radius:12px;
+  padding:1.75rem;position:relative;
+}
+.bio-text p+p{margin-top:1rem}
+.bio-text strong{color:var(--t1);font-weight:600}
+.bio-text em{color:var(--teal);font-style:italic}
+.bio-meta {
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;
+  font-size:.72rem;color:var(--t3);
+}
+.bio-wc{font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.copy-btn {
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 16px;border-radius:6px;border:1.5px solid var(--brd-t);
+  color:var(--teal);background:transparent;
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.copy-btn::before{
+  content:'';position:absolute;inset:0;background:var(--teal);
+  transform:translateX(-101%);transition:transform .25s cubic-bezier(.4,0,.2,1);z-index:-1;
+}
+.copy-btn:hover::before{transform:translateX(0)}
+.copy-btn:hover{color:#0c0f0e;border-color:var(--teal)}
+.copy-btn.copied{border-color:var(--purple);color:var(--purple)}
+.copy-btn.copied::before{background:var(--purple);transform:translateX(0)}
+.copy-btn.copied{color:#0c0f0e}
+
+/* ══ PHOTOS SECTION ════════════════════════════════════════════ */
+#photos{background:var(--bg-soft);border-top:1px solid var(--brd);border-bottom:1px solid var(--brd)}
+.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:2rem}
+.photo-card {
+  border-radius:12px;overflow:hidden;border:1px solid var(--brd);
+  background:var(--bg-muted);position:relative;cursor:pointer;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  group:photo;
+}
+.photo-card:hover{transform:translateY(-4px);border-color:var(--brd-t);box-shadow:0 12px 40px rgba(45,212,191,.12)}
+.photo-thumb {
+  aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--bg-muted) 0%,var(--bg-card) 100%);
+  position:relative;overflow:hidden;
+}
+.photo-thumb::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--glow-t),var(--glow-b),var(--glow-p));
+  opacity:.6;
+}
+.photo-thumb-icon{
+  font-size:2.5rem;color:var(--t3);position:relative;z-index:1;
+  font-family:'Playfair Display',serif;font-style:italic;
+}
+.photo-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-overlay {
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(12,15,14,.85) 0%,transparent 50%);
+  opacity:0;transition:opacity .25s;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;padding:1.25rem;
+}
+.photo-card:hover .photo-overlay{opacity:1}
+.photo-dl {
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:7px 18px;border-radius:6px;border:1.5px solid var(--teal);
+  color:var(--teal);background:rgba(12,15,14,.7);
+  transition:all .2s;
+}
+.photo-dl:hover{background:var(--teal);color:#0c0f0e}
+.photo-info{padding:1rem}
+.photo-name{font-size:.82rem;font-weight:600;color:var(--t1);margin-bottom:.2rem}
+.photo-spec{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--t3);letter-spacing:.06em}
+.photos-note{font-size:.8rem;color:var(--t3);line-height:1.7;text-align:center;max-width:500px;margin:0 auto}
+.photos-note a{color:var(--teal);transition:opacity .2s}
+.photos-note a:hover{opacity:.7}
+
+/* ══ ASSETS SECTION ════════════════════════════════════════════ */
+#assets{background:var(--bg)}
+.assets-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.asset-card {
+  background:var(--bg-card);border:1px solid var(--brd);border-radius:14px;
+  padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start;
+  transition:border-color .25s,transform .2s;cursor:pointer;
+}
+.asset-card:hover{border-color:var(--brd-t);transform:translateY(-2px)}
+.asset-icon {
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.ai-t{background:var(--dt);border:1px solid var(--brd-t)}
+.ai-b{background:var(--db);border:1px solid var(--brd-b)}
+.ai-p{background:var(--dp);border:1px solid var(--brd-p)}
+.asset-body{}
+.asset-title{font-weight:700;color:var(--t1);font-size:.9rem;margin-bottom:.3rem}
+.asset-desc{font-size:.78rem;color:var(--t2);line-height:1.6}
+.asset-tag{
+  display:inline-block;margin-top:.6rem;
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--teal);padding:3px 8px;border-radius:4px;border:1px solid var(--brd-t);background:var(--dt);
+}
+
+/* ══ LINKS SECTION ═════════════════════════════════════════════ */
+#links{background:var(--bg-soft);border-top:1px solid var(--brd)}
+.links-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.lnk-card {
+  background:var(--bg-card);border:1px solid var(--brd);border-radius:12px;
+  padding:1.25rem;display:flex;flex-direction:column;gap:.6rem;
+  transition:all .25s;position:relative;overflow:hidden;
+}
+.lnk-card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:opacity .25s;
+  background:linear-gradient(135deg,var(--glow-t),var(--glow-b));
+}
+.lnk-card:hover::before{opacity:1}
+.lnk-card:hover{border-color:var(--brd-t);transform:translateY(-3px);box-shadow:0 8px 30px rgba(45,212,191,.1)}
+.lnk-icon{font-size:1.4rem;line-height:1;position:relative;z-index:1}
+.lnk-name{font-size:.82rem;font-weight:700;color:var(--t1);position:relative;z-index:1}
+.lnk-handle{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--t3);letter-spacing:.04em;position:relative;z-index:1}
+.lnk-arrow{
+  margin-top:auto;font-size:.7rem;color:var(--teal);
+  display:flex;align-items:center;gap:.3rem;
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  position:relative;z-index:1;
+  opacity:0;transform:translateX(-4px);transition:all .2s;
+}
+.lnk-card:hover .lnk-arrow{opacity:1;transform:translateX(0)}
+
+/* ══ MEDIA / IN THE NEWS ═══════════════════════════════════════ */
+#media{background:var(--bg);border-top:1px solid var(--brd)}
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.media-card {
+  background:var(--bg-card);border:1px solid var(--brd);border-radius:14px;
+  padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;
+  transition:border-color .25s,transform .2s;
+}
+.media-card:hover{border-color:var(--brd-b);transform:translateY(-3px)}
+.media-type {
+  font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;padding:3px 10px;
+  border-radius:4px;display:inline-block;width:fit-content;
+}
+.mt-pod{color:var(--blue);background:var(--db);border:1px solid var(--brd-b)}
+.mt-talk{color:var(--purple);background:var(--dp);border:1px solid var(--brd-p)}
+.mt-press{color:var(--teal);background:var(--dt);border:1px solid var(--brd-t)}
+.media-title{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:600;color:var(--t1);line-height:1.35}
+.media-host{font-size:.78rem;color:var(--t2)}
+.media-date{font-size:.72rem;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-top:auto;padding-top:.5rem;border-top:1px solid var(--rule)}
+.media-empty{
+  grid-column:1/-1;text-align:center;padding:4rem;
+  color:var(--t3);font-style:italic;font-family:'Playfair Display',serif;font-size:1.1rem;
+}
+
+/* ══ CONTACT BAR ═══════════════════════════════════════════════ */
+#contact {
+  background:linear-gradient(135deg,rgba(45,212,191,.06) 0%,rgba(56,189,248,.04) 50%,rgba(167,139,250,.06) 100%);
+  border-top:1px solid var(--brd);
+  padding:5rem 0;text-align:center;
+}
+.contact-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:700;color:var(--t1);margin-bottom:.75rem;letter-spacing:-.02em}
+.contact-h em{font-style:italic;color:var(--teal)}
+.contact-sub{font-size:.9rem;color:var(--t2);margin-bottom:2.5rem;line-height:1.7}
+.contact-actions{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.contact-email{
+  font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--t2);
+  margin-top:1.5rem;letter-spacing:.06em;
+}
+.contact-email a{color:var(--teal);transition:opacity .2s}
+.contact-email a:hover{opacity:.7}
+
+/* ══ FOOTER ════════════════════════════════════════════════════ */
+footer{
+  background:var(--bg-soft);border-top:1px solid var(--brd);
+  padding:2.5rem 0;position:relative;overflow:hidden;
+}
+.foot-inner{
+  max-width:1100px;margin:0 auto;padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+.foot-left{font-family:'Playfair Display',serif;font-size:.85rem;color:var(--t3)}
+.foot-left span{color:var(--teal)}
+.foot-right{font-size:.75rem;color:var(--t3);display:flex;gap:1.5rem}
+.foot-right a{transition:color .2s}
+.foot-right a:hover{color:var(--teal)}
+
+/* ══ RISE ANIMATION ════════════════════════════════════════════ */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.rise.in{opacity:1;transform:translateY(0)}
+.rise-d1{transition-delay:.1s}.rise-d2{transition-delay:.2s}.rise-d3{transition-delay:.3s}
+
+/* ══ RESPONSIVE ════════════════════════════════════════════════ */
+@media(max-width:960px){
+  .bio-layout{grid-template-columns:1fr;gap:2.5rem}
+  .stat-card{position:static}
+  .links-grid{grid-template-columns:repeat(2,1fr)}
+  .media-grid{grid-template-columns:repeat(2,1fr)}
+  .assets-grid{grid-template-columns:1fr}
+  .hero-portrait{width:60%;clip-path:polygon(18% 0%,100% 0%,100% 100%,0% 100%)}
+}
+@media(max-width:640px){
+  nav{padding:0 1.25rem}
+  .nav-links{display:none}
+  .wrap{padding:0 1.25rem}
+  .hero-content{padding:0 1.25rem 6rem}
+  .hero-portrait{opacity:.4}
+  .photos-grid{grid-template-columns:1fr 1fr}
+  .links-grid{grid-template-columns:repeat(2,1fr)}
+  .media-grid{grid-template-columns:1fr}
+  .hero-h1{font-size:clamp(2.8rem,12vw,4rem)}
+}
+
+/* ══ SECTION DIVIDER ═══════════════════════════════════════════ */
+.section-rule{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--teal),var(--blue),var(--purple),transparent);
+  opacity:.2;margin:0;border:none;
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ═══════════════════════════════════════════════════ -->
+<nav id="mainnav">
+  <a href="#hero" class="nav-logo">Aaron <span>Snowberger</span></a>
+  <div class="nav-links">
+    <a href="#bio" class="nav-link">Bio Kit</a>
+    <a href="#photos" class="nav-link">Photos</a>
+    <a href="#links" class="nav-link">Links</a>
+    <a href="#media" class="nav-link">Media</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-btn" id="themeBtn" title="Toggle theme">☀</button>
+    <a href="mailto:aaron@aaronsnowberger.com" class="nav-cta">Press Inquiry</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-portrait">
+    <!-- Replace src with real headshot -->
+    <img class="hero-portrait-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&auto=format&fit=crop&q=60" alt="">
+    <div class="hero-portrait-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Press Kit &amp; Professional Profile</div>
+    <h1 class="hero-h1">Dr. Aaron<br><em>Snowberger</em></h1>
+    <p class="hero-sub">
+      <strong>AI Researcher &amp; CS Educator</strong> bridging East–West technology at
+      Jeonbuk National University, South Korea.
+      Ph.D. in Computer Vision · MFA in Media Design.
+    </p>
+    <div class="hero-pills">
+      <span class="hero-pill hp-t">Physical AI</span>
+      <span class="hero-pill hp-b">Computer Vision</span>
+      <span class="hero-pill hp-p">CS Education</span>
+      <span class="hero-pill hp-t">Hangul Recognition</span>
+      <span class="hero-pill hp-b">Jeonju, South Korea</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#bio" class="btn-primary">
+        <span>↓</span> Grab a Bio
+      </a>
+      <a href="#photos" class="btn-secondary">
+        <span>◻</span> Download Photos
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ BIO ═══════════════════════════════════════════════════ -->
+<section id="bio">
+  <div class="wrap">
+    <div class="sec-label rise">Bio Kit</div>
+    <h2 class="sec-title rise rise-d1">Ready-to-use <em>biographies</em></h2>
+    <p class="sec-desc rise rise-d2">Copy any version below for podcasts, conference programs, paper author bios, LinkedIn, or press releases. All text is pre-formatted and production-ready.</p>
+
+    <div class="bio-layout">
+      <!-- Stat card -->
+      <div class="stat-card rise">
+        <div class="stat-photo-frame">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=60" alt="Aaron Snowberger headshot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center">
+          <!-- Remove img and show placeholder until real photo is added -->
+        </div>
+        <div class="stat-name">Aaron Snowberger</div>
+        <div class="stat-role">에런 스노우버거 · Dr.</div>
+        <div class="stat-facts">
+          <div class="sf-row">
+            <span class="sf-key">Position</span>
+            <span class="sf-val">Lecturer, JBNU</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Location</span>
+            <span class="sf-val">Jeonju, South Korea</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Ph.D.</span>
+            <span class="sf-val">ICE · Computer Vision/AI</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">MFA</span>
+            <span class="sf-val">Media Design</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Research</span>
+            <span class="sf-val">Physical AI · CV · EdTech</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Pronouns</span>
+            <span class="sf-val">he / him</span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Website</span>
+            <span class="sf-val"><a href="https://aaron.kr" target="_blank">aaron.kr</a></span>
+          </div>
+          <div class="sf-row">
+            <span class="sf-key">Email</span>
+            <span class="sf-val"><a href="mailto:aaron@aaronsnowberger.com">aaron@aaronsnowberger.com</a></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio tabs -->
+      <div class="bio-panel rise rise-d1">
+        <div class="bio-tabs-nav">
+          <button class="btab active" data-tab="short">Short</button>
+          <button class="btab" data-tab="medium">Medium</button>
+          <button class="btab" data-tab="long">Long</button>
+          <button class="btab" data-tab="academic">Academic</button>
+          <button class="btab" data-tab="speaker">Speaker</button>
+        </div>
+
+        <div class="bio-pane active" id="bio-short">
+          <div class="bio-text">
+            <p>Dr. Aaron Snowberger is an American AI researcher and computer science educator at Jeonbuk National University in South Korea. His research focuses on Physical AI, computer vision, and handwritten character recognition — with a particular interest in bridging East–West perspectives in technology education.</p>
+          </div>
+          <div class="bio-meta">
+            <span class="bio-wc">~50 words · Short</span>
+            <button class="copy-btn" data-target="bio-short">
+              <span class="copy-icon">⧉</span> Copy Text
+            </button>
+          </div>
+        </div>
+
+        <div class="bio-pane" id="bio-medium">
+          <div class="bio-text">
+            <p>Dr. Aaron Snowberger is an American AI researcher and computer science educator based in <strong>Jeonju, South Korea</strong>, where he lectures at <em>Jeonbuk National University</em>. He holds a Ph.D. in Information and Communications Engineering (specializing in Computer Vision/AI) and an MFA in Media Design.</p>
+            <p>His research sits at the intersection of <strong>Physical AI, computer vision, and CS education</strong> — with a focus on handwritten character recognition, digital twin simulation, and cross-cultural technology pedagogy. He is a co-founding member of the Korea Society for Physical AI (KSPAI).</p>
+          </div>
+          <div class="bio-meta">
+            <span class="bio-wc">~90 words · Medium</span>
+            <button class="copy-btn" data-target="bio-medium">
+              <span class="copy-icon">⧉</span> Copy Text
+            </button>
+          </div>
+        </div>
+
+        <div class="bio-pane" id="bio-long">
+          <div class="bio-text">
+            <p>Dr. Aaron Snowberger (에런 스노우버거) is an American AI researcher, computer science educator, and multimedia designer based in <strong>Jeonju, South Korea</strong>. He lectures in computer science, programming, IoT, and circuits across multiple Korean universities, with his primary affiliation at <em>Jeonbuk National University (JBNU)</em>.</p>
+            <p>He holds a Ph.D. in Information and Communications Engineering — specializing in Computer Vision and AI — alongside an MFA in Media Design and a B.S. in Computer Science. His research focuses on <strong>Physical AI, handwritten character recognition</strong> (including an original Hangul pangram dataset), and the application of digital twin simulation in education.</p>
+            <p>A co-founding member and webmaster of the <em>Korea Society for Physical AI (KSPAI)</em>, Aaron's work bridges technical rigor with pedagogical innovation, connecting East–West perspectives on AI methodology and CS education. He is an ordained deacon, worship leader, bass guitarist, and fitness enthusiast — a builder and tinkerer who came to academia by way of graphic design and English magazine publishing in Korea.</p>
+          </div>
+          <div class="bio-meta">
+            <span class="bio-wc">~175 words · Long</span>
+            <button class="copy-btn" data-target="bio-long">
+              <span class="copy-icon">⧉</span> Copy Text
+            </button>
+          </div>
+        </div>
+
+        <div class="bio-pane" id="bio-academic">
+          <div class="bio-text">
+            <p>Dr. Aaron Snowberger is a lecturer in Computer Science at <strong>Jeonbuk National University</strong>, South Korea, and a co-founding member of the Korea Society for Physical AI (KSPAI). He received his Ph.D. in Information and Communications Engineering from [University Name], specializing in Computer Vision and AI, and holds an MFA in Media Design and a B.S. in Computer Science.</p>
+            <p>His research interests include <em>Physical AI methodology, handwritten character recognition</em> (with focus on Hangul, Cherokee, and Manchu scripts), digital twin simulation in education, and cross-cultural technology perception. He is currently developing an original Hangul pangram dataset targeting publication in <em>Data in Brief</em> and <em>IEEE Access</em>.</p>
+          </div>
+          <div class="bio-meta">
+            <span class="bio-wc">~110 words · Academic / Paper</span>
+            <button class="copy-btn" data-target="bio-academic">
+              <span class="copy-icon">⧉</span> Copy Text
+            </button>
+          </div>
+        </div>
+
+        <div class="bio-pane" id="bio-speaker">
+          <div class="bio-text">
+            <p><strong>Dr. Aaron Snowberger</strong> is an AI researcher, CS educator, and cross-cultural technologist who has spent over a decade living and working in South Korea. Originally from the United States, Aaron brings a rare East–West perspective to conversations about <em>AI education, physical AI, and the future of human–machine collaboration</em>.</p>
+            <p>He teaches computer science and AI at Jeonbuk National University, co-founded the Korea Society for Physical AI, and holds a Ph.D. in Computer Vision/AI alongside an MFA in Media Design. Whether he's wiring IoT circuits, researching handwritten script recognition, or leading university lectures in Korean, Aaron's work lives at the creative edge of technology and education.</p>
+          </div>
+          <div class="bio-meta">
+            <span class="bio-wc">~120 words · Speaker / Podcast</span>
+            <button class="copy-btn" data-target="bio-speaker">
+              <span class="copy-icon">⧉</span> Copy Text
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ PHOTOS ════════════════════════════════════════════════ -->
+<section id="photos">
+  <div class="wrap">
+    <div class="sec-label rise">Photo Library</div>
+    <h2 class="sec-title rise rise-d1">Professional <em>headshots</em></h2>
+    <p class="sec-desc rise rise-d2">High-resolution photos cleared for press, editorial, and promotional use. Click any image to download the full-resolution file.</p>
+
+    <div class="photos-grid">
+      <div class="photo-card rise">
+        <div class="photo-thumb">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&auto=format&fit=crop&q=70" alt="Headshot 1">
+          <div class="photo-overlay">
+            <a class="photo-dl" href="#" download>↓ Download</a>
+          </div>
+        </div>
+        <div class="photo-info">
+          <div class="photo-name">Formal Portrait</div>
+          <div class="photo-spec">5472 × 7296 · JPG · ~8MB</div>
+        </div>
+      </div>
+      <div class="photo-card rise rise-d1">
+        <div class="photo-thumb" style="background:linear-gradient(135deg,#0a1f1c,#0d1c19)">
+          <div class="photo-thumb-icon">Add Photo</div>
+          <div class="photo-overlay">
+            <span class="photo-dl" style="cursor:default;opacity:.5">Placeholder</span>
+          </div>
+        </div>
+        <div class="photo-info">
+          <div class="photo-name">Casual / Outdoor</div>
+          <div class="photo-spec">Upload your preferred shot</div>
+        </div>
+      </div>
+      <div class="photo-card rise rise-d2">
+        <div class="photo-thumb" style="background:linear-gradient(135deg,#0d1a20,#0a1015)">
+          <div class="photo-thumb-icon">Add Photo</div>
+          <div class="photo-overlay">
+            <span class="photo-dl" style="cursor:default;opacity:.5">Placeholder</span>
+          </div>
+        </div>
+        <div class="photo-info">
+          <div class="photo-name">Lab / Teaching</div>
+          <div class="photo-spec">Upload your preferred shot</div>
+        </div>
+      </div>
+    </div>
+    <p class="photos-note rise">
+      All photos by [Photographer Name]. High-resolution files available on request —
+      <a href="mailto:aaron@aaronsnowberger.com">email Aaron directly</a> for access.
+    </p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ ASSETS ════════════════════════════════════════════════ -->
+<section id="assets">
+  <div class="wrap">
+    <div class="sec-label rise">Brand Assets</div>
+    <h2 class="sec-title rise rise-d1">Logos &amp; <em>assets</em></h2>
+    <p class="sec-desc rise rise-d2">Everything a designer or event organizer needs in one place.</p>
+    <div class="assets-grid">
+      <div class="asset-card rise">
+        <div class="asset-icon ai-t">🖊</div>
+        <div class="asset-body">
+          <div class="asset-title">Signature / Wordmark</div>
+          <div class="asset-desc">Personal signature graphic for email footers, slide decks, and branded documents. Available in PNG and SVG.</div>
+          <span class="asset-tag">PNG · SVG · 2× retina</span>
+        </div>
+      </div>
+      <div class="asset-card rise rise-d1">
+        <div class="asset-icon ai-b">🔬</div>
+        <div class="asset-body">
+          <div class="asset-title">KSPAI Logo</div>
+          <div class="asset-desc">Korea Society for Physical AI official mark. Contact for usage rights outside personal/academic contexts.</div>
+          <span class="asset-tag">Official Use · Contact First</span>
+        </div>
+      </div>
+      <div class="asset-card rise rise-d2">
+        <div class="asset-icon ai-p">🎨</div>
+        <div class="asset-body">
+          <div class="asset-title">Brand Color Palette</div>
+          <div class="asset-desc">Teal · Electric Blue · Purple · Pink. HEX, RGB, and HSL values available in the brand guidelines PDF.</div>
+          <span class="asset-tag">HEX · RGB · HSL</span>
+        </div>
+      </div>
+      <div class="asset-card rise rise-d1">
+        <div class="asset-icon ai-t">🔗</div>
+        <div class="asset-body">
+          <div class="asset-title">QR Codes</div>
+          <div class="asset-desc">Pre-generated QR codes for aaron.kr and aaronsnowberger.com — ideal for print materials and slide decks.</div>
+          <span class="asset-tag">PNG · SVG · Printable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ LINKS ══════════════════════════════════════════════════ -->
+<section id="links">
+  <div class="wrap">
+    <div class="sec-label rise">Digital Presence</div>
+    <h2 class="sec-title rise rise-d1">Find me <em>online</em></h2>
+    <p class="sec-desc rise rise-d2">All active platforms and professional profiles in one place.</p>
+    <div class="links-grid">
+      <a href="https://aaron.kr" target="_blank" class="lnk-card rise">
+        <div class="lnk-icon">🏠</div>
+        <div class="lnk-name">Academic Portfolio</div>
+        <div class="lnk-handle">aaron.kr</div>
+        <div class="lnk-arrow">Visit →</div>
+      </a>
+      <a href="https://linkedin.com/in/aaronsnowberger" target="_blank" class="lnk-card rise rise-d1">
+        <div class="lnk-icon">💼</div>
+        <div class="lnk-name">LinkedIn</div>
+        <div class="lnk-handle">aaronsnowberger</div>
+        <div class="lnk-arrow">Connect →</div>
+      </a>
+      <a href="https://github.com/aaronkr-programmer" target="_blank" class="lnk-card rise rise-d2">
+        <div class="lnk-icon">⌨</div>
+        <div class="lnk-name">GitHub</div>
+        <div class="lnk-handle">aaronkr-programmer</div>
+        <div class="lnk-arrow">View →</div>
+      </a>
+      <a href="https://researchgate.net" target="_blank" class="lnk-card rise rise-d3">
+        <div class="lnk-icon">🔬</div>
+        <div class="lnk-name">ResearchGate</div>
+        <div class="lnk-handle">Research Profile</div>
+        <div class="lnk-arrow">View →</div>
+      </a>
+      <a href="https://scholar.google.com" target="_blank" class="lnk-card rise">
+        <div class="lnk-icon">📚</div>
+        <div class="lnk-name">Google Scholar</div>
+        <div class="lnk-handle">Publications</div>
+        <div class="lnk-arrow">View →</div>
+      </a>
+      <a href="https://youtube.com/@aaronsnowberger" target="_blank" class="lnk-card rise rise-d1">
+        <div class="lnk-icon">▶</div>
+        <div class="lnk-name">YouTube</div>
+        <div class="lnk-handle">@aaronsnowberger</div>
+        <div class="lnk-arrow">Watch →</div>
+      </a>
+      <a href="https://aaronkr-courses.github.io" target="_blank" class="lnk-card rise rise-d2">
+        <div class="lnk-icon">🎓</div>
+        <div class="lnk-name">Course Site</div>
+        <div class="lnk-handle">aaronkr-courses</div>
+        <div class="lnk-arrow">Explore →</div>
+      </a>
+      <a href="https://twitter.com/aaronsnowberger" target="_blank" class="lnk-card rise rise-d3">
+        <div class="lnk-icon">𝕏</div>
+        <div class="lnk-name">X / Twitter</div>
+        <div class="lnk-handle">@aaronsnowberger</div>
+        <div class="lnk-arrow">Follow →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ MEDIA ══════════════════════════════════════════════════ -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-label rise">Media Appearances</div>
+    <h2 class="sec-title rise rise-d1">In the <em>news</em></h2>
+    <p class="sec-desc rise rise-d2">Podcast appearances, invited talks, and press coverage. Add your appearances here as they happen.</p>
+    <div class="media-grid">
+      <div class="media-card rise">
+        <span class="media-type mt-talk">Invited Talk</span>
+        <div class="media-title">Physical AI in Korean University Education</div>
+        <div class="media-host">KSPAI Founding Symposium</div>
+        <div class="media-date">Add date · Add link</div>
+      </div>
+      <div class="media-card rise rise-d1">
+        <span class="media-type mt-pod">Podcast</span>
+        <div class="media-title">Your first podcast appearance goes here</div>
+        <div class="media-host">Show Name · Host Name</div>
+        <div class="media-date">Add date · Add link</div>
+      </div>
+      <div class="media-card rise rise-d2">
+        <span class="media-type mt-press">Press</span>
+        <div class="media-title">Your first press mention goes here</div>
+        <div class="media-host">Publication Name</div>
+        <div class="media-date">Add date · Add link</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ══ CONTACT ═══════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="wrap" style="text-align:center">
+    <div class="sec-label rise" style="justify-content:center">Get in Touch</div>
+    <h2 class="contact-h rise rise-d1">Booking &amp; <em>inquiries</em></h2>
+    <p class="contact-sub rise rise-d2">For podcast appearances, conference invitations, press requests,<br>collaboration proposals, or media assets.</p>
+    <div class="contact-actions rise rise-d2">
+      <a href="mailto:aaron@aaronsnowberger.com" class="btn-primary">✉ Send an Email</a>
+      <a href="https://aaron.kr" target="_blank" class="btn-secondary">⬡ Academic Site</a>
+    </div>
+    <p class="contact-email rise rise-d3">
+      Direct: <a href="mailto:aaron@aaronsnowberger.com">aaron@aaronsnowberger.com</a>
+    </p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-left">
+      © 2025 <span>Aaron Snowberger</span> · Jeonju, South Korea
+    </div>
+    <div class="foot-right">
+      <a href="https://aaron.kr">aaron.kr</a>
+      <a href="https://aaronkr-courses.github.io">Courses</a>
+      <a href="mailto:aaron@aaronsnowberger.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV SCROLL EFFECT ─────────────────────────────────────────
+const nav = document.getElementById('mainnav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+// ── THEME TOGGLE ──────────────────────────────────────────────
+const themeBtn = document.getElementById('themeBtn');
+let theme = localStorage.getItem('asb-theme') || 'dark';
+document.documentElement.setAttribute('data-theme', theme);
+themeBtn.textContent = theme === 'dark' ? '☀' : '◑';
+themeBtn.addEventListener('click', () => {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  themeBtn.textContent = theme === 'dark' ? '☀' : '◑';
+  localStorage.setItem('asb-theme', theme);
+});
+
+// ── BIO TABS ──────────────────────────────────────────────────
+document.querySelectorAll('.btab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.btab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.bio-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('bio-' + target).classList.add('active');
+  });
+});
+
+// ── COPY BIO TEXT ─────────────────────────────────────────────
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pane = document.getElementById(btn.dataset.target);
+    const bioText = pane.querySelector('.bio-text');
+    // Get plain text (strip HTML tags)
+    const text = bioText.innerText || bioText.textContent;
+    navigator.clipboard.writeText(text.trim()).then(() => {
+      const icon = btn.querySelector('.copy-icon');
+      const origText = btn.innerHTML;
+      btn.classList.add('copied');
+      btn.innerHTML = '<span class="copy-icon">✓</span> Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = origText;
+      }, 2200);
+    }).catch(() => {
+      // Fallback for older browsers
+      const ta = document.createElement('textarea');
+      ta.value = (bioText.innerText || bioText.textContent).trim();
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.classList.add('copied');
+      const origHTML = btn.innerHTML;
+      btn.innerHTML = '<span class="copy-icon">✓</span> Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = origHTML;
+      }, 2200);
+    });
+  });
+});
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rise').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
