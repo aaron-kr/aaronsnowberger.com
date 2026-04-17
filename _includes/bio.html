@@ -64,6 +64,20 @@
           <span class="uni-name">{{ u.name }}</span>
           {% endif %}
           {% endfor %}
+
+          <div class="uni-strip-lbl">
+            <span class="en">{{ b.uni_prev_label_en }}</span><span class="ko">{{ b.uni_prev_label_ko }}</span>
+          </div>
+          {% for u in b.universities_previous %}
+          {% if u.logo and u.logo != "" %}
+          <span class="uni-name" data-tip="{{ u.name }}">
+            <img src="{{ u.logo }}" alt="{{ u.name }}" class="uni-logo"
+                 onerror="this.style.display='none';this.parentElement.textContent='{{ u.name }}'">
+          </span>
+          {% else %}
+          <span class="uni-name">{{ u.name }}</span>
+          {% endif %}
+          {% endfor %}
         </div>
       </div>
 

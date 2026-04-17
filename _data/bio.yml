@@ -20,7 +20,7 @@ view_full_en:        "View Full Size"
 view_full_ko:        "크게 보기"
 
 stat_name:    "Aaron Snowberger · Ph.D."
-stat_ko:      "에런 스노우버거 · Ph.D."
+stat_ko:      "에런 스노버거 · Ph.D."
 
 # key/key_en+key_ko, val/val_en+val_ko  (omit key_ko for degree keys like Ph.D.)
 # site and email rows are rendered from site.profiles and site.author in the template
@@ -34,7 +34,7 @@ stats:
     val_en: "Jeonju, South Korea"
     val_ko: "전주, 대한민국"
   - key:    "Ph.D."
-    val_en: "Information &amp; Communication Engineering"
+    val_en: "Info &amp; Comm Engineering"
     val_ko: "정보통신공학"
   - key:    "MFA"
     val_en: "Media Design"
@@ -52,14 +52,22 @@ uni_label_ko: "강의 대학교"
 universities:
   - name: "Jeonbuk National University"
     logo: "https://aaronkr-courses.github.io/assets/img/jbnu-logo-2.png"
-  - name: "Jeonju University"
-    logo: ""
-  - name: "Woosuk University"
-    logo: ""
+  - name: "Korea National University of Transportation"
+    logo: "https://aaronkr-courses.github.io/assets/img/ut-logo.png"
+  - name: "Hanbat National University"
+    logo: "https://aaronkr-courses.github.io/assets/img/hanbat-logo.png"
+  - name: "Jeonju National University of Education"
+    logo: "https://aaronkr-courses.github.io/assets/img/jnue-logo.png"
   - name: "Wonkwang University"
-    logo: ""
-  - name: "+ 1 more"
-    logo: ""
+    logo: "https://aaronkr-courses.github.io/assets/img/wku-logo.png"
+
+uni_prev_label_en: "Previously"
+uni_prev_label_ko: "이전 강의 위치"
+universities_previous:
+  - name: "Daejeon University"
+    logo: "https://aaronkr-courses.github.io/assets/img/dju-logo-2.png"
+  - name: "Jeonju University"
+    logo: "https://aaronkr-courses.github.io/assets/img/jju-logo.png"
 
 # ── Bio tabs ──────────────────────────────────────────────────
 # Each entry maps to a tab + pane.
@@ -73,9 +81,9 @@ bios:
     wc_en:  "~55 words · Short"
     wc_ko:  "짧은 버전"
     en: |
-      Dr. Aaron Snowberger is an American AI researcher and computer science educator lecturing at five universities in Jeonju, South Korea. His research focuses on Physical AI, computer vision, and handwritten character recognition — with a particular interest in bridging East–West perspectives in technology education.
+      <strong>Aaron Snowberger</strong> is an American AI researcher and computer science educator lecturing at five universities in Jeonju, South Korea. His research focuses on Physical AI, computer vision, and handwritten character recognition — with a particular interest in bridging East–West perspectives in technology education.
     ko: |
-      Dr. 에런 스노우버거는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자 겸 컴퓨터공학 교육자입니다. 피지컬 AI, 컴퓨터 비전, 필기 문자 인식을 연구하며, 동서양 기술 교육의 연결에 관심을 갖고 있습니다.
+      <strong>에런 스노버거 박사</strong>는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자 겸 컴퓨터공학 교육자입니다. 피지컬 AI, 컴퓨터 비전, 필기 문자 인식을 연구하며, 동서양 기술 교육의 연결에 관심을 갖고 있습니다.
 
   - id:    "medium"
     tab_en: "Medium"
@@ -83,11 +91,11 @@ bios:
     wc_en:  "~95 words · Medium"
     wc_ko:  "중간 버전"
     en: |
-      Dr. Aaron Snowberger is an American AI researcher and computer science educator based in <strong>Jeonju, South Korea</strong>, where he lectures at five universities. He holds a Ph.D. in <em>Information and Communications Engineering</em> (specializing in Computer Vision and AI), an MFA in Media Design, and a B.S. in Computer Science.
+      <strong>Aaron Snowberger</strong> is an American AI researcher and computer science educator based in <strong>Jeonju, South Korea</strong>, where he lectures at five universities. He holds a Ph.D. in <em>Information and Communications Engineering</em> (specializing in Computer Vision and AI), an MFA in Media Design, and a B.S. in Computer Science.
 
       His research sits at the intersection of <strong>Physical AI, computer vision, and CS education</strong> — with a focus on handwritten character recognition, digital twin simulation, and cross-cultural technology pedagogy. He is a co-founding member of the Korea Society for Physical AI (KSPAI).
     ko: |
-      Dr. 에런 스노우버거는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자이자 컴퓨터공학 교육자입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사 학위를 보유하고 있습니다. 피지컬 AI, 컴퓨터 비전, CS 교육의 교차점을 연구하며, 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다.
+      <strong>에런 스노버거 박사</strong>는 전주 소재 5개 대학에서 강의하는 미국인 AI 연구자이자 컴퓨터공학 교육자입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사 학위를 보유하고 있습니다. 피지컬 AI, 컴퓨터 비전, CS 교육의 교차점을 연구하며, 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다.
 
   - id:    "long"
     tab_en: "Long"
@@ -95,13 +103,13 @@ bios:
     wc_en:  "~175 words · Long"
     wc_ko:  "긴 버전"
     en: |
-      Dr. Aaron Snowberger (에런 스노우버거) is an American AI researcher, computer science educator, and multimedia designer based in <strong>Jeonju, South Korea</strong>. He lectures in computer science, programming, IoT, and circuits at five Korean universities, with his primary affiliation at <em>Jeonbuk National University (JBNU)</em>.
+      <strong>Aaron Snowberger</strong> (에런 스노버거) is an American AI researcher, computer science educator, and multimedia designer based in <strong>Jeonju, South Korea</strong>. He lectures in computer science, programming, IoT, and circuits at five Korean universities, with his primary affiliation at <em>Jeonbuk National University (JBNU)</em>.
 
       He holds a Ph.D. in Information and Communications Engineering — specializing in Computer Vision and AI — alongside an MFA in Media Design and a B.S. in Computer Science. His research focuses on <strong>Physical AI, handwritten character recognition</strong> (including an original Hangul pangram dataset), and digital twin simulation in education.
 
       A co-founding member and webmaster of the <em>Korea Society for Physical AI (KSPAI)</em>, Aaron's work bridges technical rigor with pedagogical innovation across East–West cultural contexts. Originally from <strong>Wyoming, USA</strong>, he has spent over two decades building, tinkering, and teaching in South Korea.
     ko: |
-      Dr. 에런 스노우버거는 전주 소재 5개 한국 대학에서 강의하는 AI 연구자이자 교육자입니다. 정보통신공학 박사, 미디어 디자인 석사, 컴퓨터공학 학사를 보유하고 있으며, 한글 팡그램 데이터셋 개발, 피지컬 AI 교육과정 설계, 디지털 트윈 시뮬레이션 등을 연구합니다. 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버이며, 미국 와이오밍 출신으로 20년 이상 한국에서 활동해왔습니다.
+      <strong>에런 스노버거 박사</strong>는 전주 소재 5개 한국 대학에서 강의하는 AI 연구자이자 교육자입니다. 정보통신공학 박사, 미디어 디자인 석사, 컴퓨터공학 학사를 보유하고 있으며, 한글 팡그램 데이터셋 개발, 피지컬 AI 교육과정 설계, 디지털 트윈 시뮬레이션 등을 연구합니다. 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버이며, 미국 와이오밍 출신으로 20년 이상 한국에서 활동해왔습니다.
 
   - id:    "academic"
     tab_en: "Academic"
@@ -109,11 +117,11 @@ bios:
     wc_en:  "~110 words · Academic"
     wc_ko:  "학술 논문용"
     en: |
-      Dr. Aaron Snowberger is an adjunct lecturer in Computer Science at <strong>Jeonbuk National University</strong> and four additional Korean universities, and a co-founding member of the Korea Society for Physical AI (KSPAI). He received his Ph.D. in Information and Communications Engineering from [University Name], specializing in Computer Vision and AI, an MFA in Media Design, and a B.S. in Computer Science.
+      <strong>Aaron Snowberger</strong> is an adjunct lecturer in Computer Science at <strong>Jeonbuk National University</strong> and four additional Korean universities, and a co-founding member of the Korea Society for Physical AI (KSPAI). He received his Ph.D. in Information and Communications Engineering from [University Name], specializing in Computer Vision and AI, an MFA in Media Design, and a B.S. in Computer Science.
 
       His research interests include <em>Physical AI methodology, handwritten character recognition</em> (Hangul, Cherokee, and Manchu scripts), digital twin simulation in education, and cross-cultural technology perception. He is currently preparing an original Hangul pangram dataset targeting <em>Data in Brief</em> and <em>IEEE Access</em>.
     ko: |
-      스노우버거 박사는 전북대학교 외 4개 한국 대학 시간강사이자 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사를 보유합니다. 연구 분야: 피지컬 AI 방법론, 필기 문자 인식(한글·체로키·만주 문자), 디지털 트윈 교육, 기술 인식의 문화 간 비교.
+      <strong>에런 스노버거 박사</strong>는 전북대학교 외 4개 한국 대학 시간강사이자 한국 피지컬 AI 학회(KSPAI) 공동 창립 멤버입니다. 정보통신공학 박사(컴퓨터 비전·AI 전공), 미디어 디자인 석사, 컴퓨터공학 학사를 보유합니다. 연구 분야: 피지컬 AI 방법론, 필기 문자 인식(한글·체로키·만주 문자), 디지털 트윈 교육, 기술 인식의 문화 간 비교.
 
   - id:    "speaker"
     tab_en: "Speaker"
@@ -121,8 +129,8 @@ bios:
     wc_en:  "~130 words · Speaker / Podcast"
     wc_ko:  "강연자 / 팟캐스트용"
     en: |
-      <strong>Dr. Aaron Snowberger</strong> is an AI researcher, CS educator, and cross-cultural technologist who has spent over two decades living and working in South Korea. Originally from <em>Wyoming, USA</em>, Aaron brings a rare East–West perspective to conversations about AI education, Physical AI, and the future of human–machine collaboration.
+      <strong>Aaron Snowberger</strong> is an AI researcher, CS educator, and cross-cultural technologist who has spent over two decades living and working in South Korea. Originally from <em>Wyoming, USA</em>, Aaron brings a rare East–West perspective to conversations about AI education, Physical AI, and the future of human–machine collaboration.
 
       He lectures at five Korean universities and co-founded the Korea Society for Physical AI. He holds a Ph.D. in Information and Communications Engineering (Computer Vision/AI), an MFA in Media Design, and a B.S. in Computer Science. Whether wiring IoT circuits, building handwritten character recognition models, or leading university lectures in Korean — Aaron's work lives at the creative edge of technology and education.
     ko: |
-      <strong>Dr. 에런 스노우버거</strong>는 20년 이상 한국에서 활동해온 AI 연구자이자 CS 교육자입니다. 미국 와이오밍 출신으로, AI 교육·피지컬 AI·인간-기계 협업에 대한 동서양의 시각을 연결합니다. 5개 한국 대학에서 강의하며, 한국 피지컬 AI 학회 공동 창립 멤버입니다.
+      <strong>에런 스노버거 박사</strong>는 20년 이상 한국에서 활동해온 AI 연구자이자 CS 교육자입니다. 미국 와이오밍 출신으로, AI 교육·피지컬 AI·인간-기계 협업에 대한 동서양의 시각을 연결합니다. 5개 한국 대학에서 강의하며, 한국 피지컬 AI 학회 공동 창립 멤버입니다.

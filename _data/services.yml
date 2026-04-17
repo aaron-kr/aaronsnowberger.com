@@ -9,6 +9,7 @@
 # ══════════════════════════════════════════════════════════════
 
 - id: speaking
+  img: "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776424357/KakaoTalk_20260415_143420882_01_qln83u.jpg"
   icon_type: chat
   icon_color: teal
   primary: true
@@ -31,6 +32,7 @@
   cta_color: teal
 
 - id: consultation
+  img: "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776419032/JNJ_20workshop_20-_20Aaron_odaprx.jpg"
   icon_type: clock
   icon_color: blue
   primary: false
@@ -53,6 +55,7 @@
   cta_color: blue
 
 - id: proofreading
+  img: "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776437220/closeup-red-marks-on-proofreading-260nw-552589921_mevmy6.jpg"
   icon_type: edit
   icon_color: teal
   primary: false
@@ -76,6 +79,7 @@
   cta_color: teal
 
 - id: translation
+  img: "https://public-files.gumroad.com/415wfjhunt0i51xxb90yoh9y1i3w"
   icon_type: translate
   icon_color: purple
   primary: false
@@ -99,6 +103,7 @@
   cta_color: purple
 
 - id: design
+  img: "https://files.aaron.kr/media/2016/08/per-v2-promo-881x1024.jpg"
   icon_type: palette
   icon_color: blue
   primary: false
@@ -122,6 +127,7 @@
   cta_color: blue
 
 - id: webdev
+  img: "/assets/img/web-dev.jpg"
   icon_type: code
   icon_color: purple
   primary: false
