@@ -4,12 +4,11 @@
     <div class="foot-left">
       <div class="foot-name">Aaron <span>Snowberger</span>, Ph.D.</div>
       <div class="foot-info">
-        <span class="en">Jeonju, South Korea · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span>
-        <span class="ko">전주, 대한민국 · <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span><br>
-        <a href="{{ site.author.kakao_url }}" target="_blank" class="kakao-link">
-          <span class="en">💬 KakaoTalk Open Chat</span>
-          <span class="ko">💬 카카오톡 오픈채팅</span>
-        </a>
+        <span class="en">Jeonju, South Korea</span>
+        <span class="ko">전주, 대한민국</span>
+        <p style="font-size:.72rem;color:var(--t3);margin-top:.3rem;">
+          © {% capture current_year %}{{ 'now' | date: "%Y" }}{% endcapture %}{{ current_year }} Aaron Snowberger
+        </p>
       </div>
     </div>
 
@@ -50,11 +49,9 @@
       </div>
       <div class="fl-row">
         <a href="{{ '/cv/' | relative_url }}" class="fl t">CV</a>
-        <a href="{{ site.profiles.academic_site }}" class="fl b" target="_blank">aaron.kr</a>
+        <a href="{{ site.profiles.academic_site }}" class="fl t" target="_blank">aaron.kr</a>
+        <a href="{{ site.profiles.lab_site }}" class="fl t" target="_blank">Lab</a>
       </div>
-      <p style="font-size:.72rem;color:var(--t3);text-align:right;margin-top:.3rem;">
-        © {% capture current_year %}{{ 'now' | date: "%Y" }}{% endcapture %}{{ current_year }} Aaron Snowberger
-      </p>
     </div>
   </div>
 </footer>

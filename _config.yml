@@ -19,7 +19,7 @@ author:
   location:     "Jeonju, South Korea"
   location_ko:  "전주, 대한민국"
   email:        "hi@aaron.kr"
-  kakao_url:    "https://open.kakao.com/o/YOUR_KAKAO_ID"  # ← update this
+  kakao_url:    ""  # ← update this
 
 # ── Navigation links — order matches page layout in index.html ─
 nav_links:
@@ -51,6 +51,7 @@ nav_links:
 # ── External profiles ─────────────────────────────────────────
 profiles:
   academic_site:    "https://aaron.kr"
+  lab_site:         "https://pailab.io"
   linkedin:         "https://linkedin.com/in/aaronsnowberger/"
   github:           "https://github.com/jekkilekki"
   researchgate:     "https://www.researchgate.net/profile/Aaron-Snowberger"

@@ -16,11 +16,12 @@ personal:
   name_ko:    "에런 스노버거"
   credentials: "Ph.D."
   title_en:   "AI Researcher · CS Educator · Multimedia Designer"
-  address:    "Cheonmasan-Ro 31, 102 Dong 904 Ho, Jeonju, Jeollabuk-do, KOREA 54829"
-  phone:      "010-5197-6432"
+  address:    "Jeonju, SOUTH KOREA"
+  phone:      ""
   email:      "hi@aaron.kr"
   website:    "https://aaron.kr"
   press_site: "https://aaronsnowberger.com"
+  lab_site:   "https://pailab.io"
 
 # ── Education ─────────────────────────────────────────────────
 education:
@@ -28,7 +29,7 @@ education:
     field:       "Artificial Intelligence"
     institution: "Udacity & Woolf University"
     location:    ""
-    years:       "2025 – present (in progress)"
+    years:       "2025 – present<br>(in progress)"
 
   - degree:      "Ph.D."
     field:       "Information Communication Engineering"

@@ -6,6 +6,7 @@ permalink: /cv/
 ---
 
 {% assign cv = site.data.cv %}
+{% assign cp = cv.personal.email | split: "@" %}
 
 <main class="cv-main">
 
@@ -21,9 +22,11 @@ permalink: /cv/
       <span class="cv-sep">·</span>
       <span>{{ cv.personal.phone }}</span>
       <span class="cv-sep">·</span>
-      <a href="mailto:{{ cv.personal.email }}">{{ cv.personal.email }}</a>
+      <a href="mailto:{{ c.email }}">{{ cp[0] }}&#64;{{ cp[1] }}</a>
       <span class="cv-sep">·</span>
       <a href="{{ cv.personal.website }}" target="_blank">{{ cv.personal.website }}</a>
+      <span class="cv-sep">·</span>
+      <a href="{{ cv.personal.lab_site }}">{{ cv.personal.lab_site }}</a>
     </div>
   </header>
 
@@ -44,7 +47,7 @@ permalink: /cv/
         <div class="cv-entry-sub">
           Thesis:
           {% if ed.thesis_url %}<a href="{{ ed.thesis_url }}" target="_blank"><em>{{ ed.thesis_en }}</em></a>{% else %}<em>{{ ed.thesis_en }}</em>{% endif %}
-          {% if ed.thesis_ko %}<span class="cv-ko"> ({{ ed.thesis_ko }})</span>{% endif %}
+          {% if ed.thesis_ko %}<br><span class="cv-ko"> ({{ ed.thesis_ko }})</span>{% endif %}
         </div>
         {% endif %}
         {% if ed.project %}<div class="cv-entry-sub">Senior Project: <em>{{ ed.project }}</em></div>{% endif %}
@@ -91,12 +94,15 @@ permalink: /cv/
     <h3 class="cv-subsection">Theses</h3>
     {% for p in cv.publications.theses %}
     <div class="cv-pub">
-      <span class="cv-pub-authors">{{ p.author }}</span>
-      {% if p.url %}<a href="{{ p.url }}" target="_blank" class="cv-pub-title">"{{ p.title }}"</a>{% else %}<span class="cv-pub-title">"{{ p.title }}"</span>{% endif %}
-      {% if p.title_ko %}<span class="cv-ko"> ({{ p.title_ko }})</span>{% endif %}
-      <span class="cv-pub-venue">{{ p.inst }}, {{ p.year }}.</span>
-      <span class="cv-pub-badge cv-badge-deg">{{ p.type }}</span>
-      {% if p.rg %}<a href="{{ p.rg }}" target="_blank" class="cv-pub-link">[RG]</a>{% endif %}
+      <span class="cv-pub-num"></span>
+      <div class="cv-pub-content">
+        <span class="cv-pub-authors">{{ p.author }}</span>
+        {% if p.url %}<a href="{{ p.url }}" target="_blank" class="cv-pub-title">"{{ p.title }}"</a>{% else %}<span class="cv-pub-title">"{{ p.title }}"</span>{% endif %}
+        {% if p.title_ko %}<span class="cv-ko"> ({{ p.title_ko }})</span>{% endif %}
+        <span class="cv-pub-venue">{{ p.inst }}, {{ p.year }}.</span>
+        <span class="cv-pub-badge cv-badge-deg">{{ p.type }}</span>
+        {% if p.rg %}<a href="{{ p.rg }}" target="_blank" class="cv-pub-link">[RG]</a>{% endif %}
+      </div>
     </div>
     {% endfor %}
 
@@ -129,9 +135,12 @@ permalink: /cv/
     <h3 class="cv-subsection">Books <span class="cv-subsection-note">(as Graphic Designer / Author)</span></h3>
     {% for b in cv.publications.books %}
     <div class="cv-pub">
-      <span class="cv-pub-authors">{{ b.role }}: </span>
-      {% if b.url %}<a href="{{ b.url }}" target="_blank" class="cv-pub-title"><em>{{ b.title }}</em></a>{% else %}<em class="cv-pub-title">{{ b.title }}</em>{% endif %}
-      <span class="cv-pub-venue">, {{ b.pub }}, {{ b.year }}.</span>
+      <span class="cv-pub-num"></span>
+        <div class="cv-pub-content">
+        <span class="cv-pub-authors">{{ b.role }}: </span>
+        {% if b.url %}<a href="{{ b.url }}" target="_blank" class="cv-pub-title"><em>{{ b.title }}</em></a>{% else %}<em class="cv-pub-title">{{ b.title }}</em>{% endif %}
+        <span class="cv-pub-venue">, {{ b.pub }}, {{ b.year }}.</span>
+      </div>
     </div>
     {% endfor %}
   </section>
@@ -219,7 +228,7 @@ permalink: /cv/
   </section>
 
   <div class="cv-footer-note no-print">
-    <p>Last updated: April 2026 · <a href="{{ '/' | relative_url }}">aaronsnowberger.com</a> · <a href="mailto:{{ cv.personal.email }}">{{ cv.personal.email }}</a></p>
+    <p>Last updated: April 2026 · <a href="{{ '/' | relative_url }}">aaronsnowberger.com</a> · <a href="mailto:{{ c.email }}">{{ cp[0] }}&#64;{{ cp[1] }}</a></p>
   </div>
 
 </main>
