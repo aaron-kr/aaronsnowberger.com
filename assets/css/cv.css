@@ -179,8 +179,8 @@
   text-transform: uppercase;
   color        : var(--cv-accent);
   border-bottom: 1px solid var(--cv-brd);
-  padding-bottom: .4rem;
-  margin       : 0 0 1.1rem;
+  padding-bottom: .6rem;
+  margin       : 0 0 1.4rem;
 }
 
 .cv-subsection {
@@ -204,8 +204,8 @@
   display   : grid;
   grid-template-columns: 10rem 1fr;
   gap       : 0 1.2rem;
-  margin-bottom: .85rem;
-  padding-bottom: .85rem;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1.1rem;
   border-bottom: 1px solid var(--cv-brd);
 }
 .cv-entry:last-child { border-bottom: none; margin-bottom: 0; }
@@ -227,16 +227,16 @@
 
 .cv-award {
   display        : inline-block;
-  background     : rgba(45,212,191,.12);
-  border         : 1px solid rgba(45,212,191,.3);
+  background     : rgba(45,212,191,.10);
+  border         : 1px solid rgba(45,212,191,.25);
   border-radius  : 4px;
   color          : var(--cv-teal);
-  font-size      : .7rem;
+  font-size      : .68rem;
   font-style     : normal;
-  font-weight    : 600;
-  letter-spacing : .04em;
-  margin-left    : .4rem;
-  padding        : .05rem .4rem;
+  font-weight    : 500;
+  letter-spacing : .02em;
+  margin-left    : .5rem;
+  padding        : .1rem .5rem;
   vertical-align : middle;
   white-space    : nowrap;
 }
@@ -271,14 +271,14 @@
 
 .cv-badge-deg {
   display       : inline-block;
-  background    : rgba(56,189,248,.1);
-  border        : 1px solid rgba(56,189,248,.25);
+  background    : rgba(56,189,248,.08);
+  border        : 1px solid rgba(56,189,248,.2);
   border-radius : 4px;
   color         : var(--cv-blue);
-  font-size     : .68rem;
-  font-weight   : 600;
-  letter-spacing: .04em;
-  padding       : .05rem .4rem;
+  font-size     : .66rem;
+  font-weight   : 500;
+  letter-spacing: .02em;
+  padding       : .1rem .5rem;
   white-space   : nowrap;
 }
 
@@ -535,9 +535,13 @@
 
   .cv-cert, .cv-lang-name { font-size: 8pt; color: #333; }
 
-  /* Page breaks */
-  .cv-section { page-break-inside: avoid; }
-  h2, h3     { page-break-after: avoid; }
+  /* Page breaks — sections flow freely across pages;
+     only individual entries are kept together */
+  .cv-section { break-before: auto; break-inside: auto; margin-bottom: 12pt; }
+  .cv-entry,
+  .cv-pub,
+  .cv-teach-block { break-inside: avoid; }
+  h2, h3, .cv-section-title, .cv-subsection { break-after: avoid; }
 }
 
 /* ── Responsive ────────────────────────────────────────────────── */

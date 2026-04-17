@@ -119,12 +119,57 @@
     btn.addEventListener('click', function () {
       const target = this.dataset.tab;
       document.querySelectorAll('.btab').forEach(function (b) { b.classList.remove('active'); });
-      document.querySelectorAll('.bio-pane').forEach(function (p) { p.classList.remove('active'); });
+      document.querySelectorAll('.bio-pane').forEach(function (p) {
+        p.classList.remove('active');
+        p.classList.remove('bio-flipped'); // clear any lang flip when switching tabs
+      });
       this.classList.add('active');
       const pane = document.getElementById('bio-' + target);
       if (pane) pane.classList.add('active');
+      updateFlipLabels();
     });
   });
+
+  /* ── 4b. BIO LANGUAGE FLIP ───────────────────────────────────
+     Toggles .bio-flipped on the current pane, showing the
+     opposite language from the global site setting.
+     Independent of the site-wide lang toggle.
+  ──────────────────────────────────────────────────────────── */
+  function getFlipLabel(pane) {
+    var globalLang = html.getAttribute('data-lang') || 'en';
+    var flipped    = pane && pane.classList.contains('bio-flipped');
+    var showingKo  = (globalLang === 'ko') ? !flipped : flipped;
+    return showingKo ? 'View English' : '한국어 보기';
+  }
+
+  function updateFlipLabels() {
+    document.querySelectorAll('.lang-flip-btn').forEach(function (btn) {
+      var pane = btn.closest('.bio-pane');
+      var lbl  = btn.querySelector('.flip-label');
+      if (lbl) lbl.textContent = getFlipLabel(pane);
+    });
+  }
+
+  document.querySelectorAll('.lang-flip-btn').forEach(function (btn) {
+    var pane = btn.closest('.bio-pane');
+    var lbl  = btn.querySelector('.flip-label');
+    if (lbl) lbl.textContent = getFlipLabel(pane); // set initial label
+
+    btn.addEventListener('click', function () {
+      var pane = this.closest('.bio-pane');
+      if (!pane) return;
+      pane.classList.toggle('bio-flipped');
+      var lbl = this.querySelector('.flip-label');
+      if (lbl) lbl.textContent = getFlipLabel(pane);
+    });
+  });
+
+  // Sync flip button labels when global lang changes
+  if (langBtn) {
+    langBtn.addEventListener('click', function () {
+      setTimeout(updateFlipLabels, 0); // run after the lang attr updates
+    });
+  }
 
   /* ── 5. COPY BIO TEXT ────────────────────────────────────────
      Reads the bio pane for paragraphs matching the requested
@@ -193,7 +238,8 @@
   });
 
   /* ── 7. QR CODES ─────────────────────────────────────────────
-     Rendered inline in the Assets section preview.
+     Data-driven: any element with data-qr-url gets a QR code.
+     Click a QR box to open it full-size in the lightbox.
      Uses qrcodejs loaded via CDN in <head>.
   ──────────────────────────────────────────────────────────── */
   function initQR() {
@@ -205,23 +251,29 @@
       correctLevel: QRCode.CorrectLevel.H,
     };
 
-    var targets = [
-      { id: 'qr-asb-main',    url: 'https://aaron.kr' },
-      { id: 'qr-asb-press',   url: 'https://aaronsnowberger.com' },
-      { id: 'qr-asb-courses', url: 'https://aaronkr-courses.github.io/courses/' },
-    ];
+    document.querySelectorAll('[data-qr-url]').forEach(function (el) {
+      var url   = el.dataset.qrUrl;
+      var label = el.dataset.qrLabel || url;
+      if (!url) return;
 
-    targets.forEach(function (t) {
-      var el = document.getElementById(t.id);
-      if (el && !el.hasChildNodes()) {
-        new QRCode(el, Object.assign({}, opts, { text: t.url }));
+      // Generate QR if not already done
+      if (!el.hasChildNodes()) {
+        new QRCode(el, Object.assign({}, opts, { text: url }));
       }
+
+      // Click to open in lightbox
+      el.addEventListener('click', function () {
+        var canvas = this.querySelector('canvas');
+        if (!canvas) return;
+        openLightbox(canvas.toDataURL('image/png'), label + ' · ' + url);
+      });
     });
 
+    // Download button: downloads the first QR code found
     var dlBtn = document.getElementById('qrDlBtn');
     if (dlBtn) {
       dlBtn.addEventListener('click', function () {
-        var canvas = document.querySelector('#qr-asb-main canvas');
+        var canvas = document.querySelector('[data-qr-url] canvas');
         if (!canvas) return;
         var a = document.createElement('a');
         a.href     = canvas.toDataURL('image/png');
@@ -313,10 +365,11 @@
      falls back to initials avatar if unavailable.
   ──────────────────────────────────────────────────────────── */
   (function () {
-    var API_URL   = 'https://notes.aaron.kr/wp-json/wp/v2/testimonials?per_page=20&_embed';
+    var API_URL    = 'https://notes.aaron.kr/wp-json/wp/v2/testimonials?per_page=20&_embed';
     var MAX_SLIDES = 10;
-    var INTERVAL  = 6000;  // ms between auto-advances
-    var DURATION  = 6000;  // must match INTERVAL for progress bar
+    var MAX_CHARS  = 300;  // truncate quotes at this many chars (at sentence boundary)
+    var INTERVAL   = 6000; // ms between auto-advances
+    var DURATION   = 6000; // must match INTERVAL for progress bar
 
     var track    = document.getElementById('tsmTrack');
     var dotsWrap = document.getElementById('tsmDots');
@@ -363,12 +416,26 @@
           var quote     = (tmp.textContent || tmp.innerText || '').trim()
                             .replace(/\s+/g, ' ');
 
+          /* ── Truncate at sentence boundary ── */
+          if (quote.length > MAX_CHARS) {
+            var cutoff = quote.lastIndexOf('.', MAX_CHARS);
+            quote = (cutoff > MAX_CHARS * 0.5
+              ? quote.slice(0, cutoff + 1)
+              : quote.slice(0, MAX_CHARS)) + '\u2026';
+          }
+
           /* ── Featured photo URL ── */
+          /* Prefers custom REST field 'featured_image_url' added by mu-plugin.
+             Falls back to _embedded if not present. */
           var photoUrl = '';
           try {
-            var media = t._embedded && t._embedded['wp:featuredmedia'];
-            if (media && media[0] && media[0].source_url) {
-              photoUrl = media[0].source_url;
+            if (t.featured_image_url) {
+              photoUrl = t.featured_image_url;
+            } else {
+              var media = t._embedded && t._embedded['wp:featuredmedia'];
+              if (media && media[0] && media[0].source_url) {
+                photoUrl = media[0].source_url;
+              }
             }
           } catch (e) { /* fall through to initials */ }
 

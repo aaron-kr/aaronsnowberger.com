@@ -43,6 +43,11 @@ actions:
     icon:     "◻"
     label_en: "Download Photos"
     label_ko: "사진 다운로드"
+  - href:     "/cv"
+    class:    "btn-cv"
+    icon:     "↗"
+    label_en: "View CV"
+    label_ko: "이력서 보기"
 
 scroll_en: "Scroll"
 scroll_ko: "스크롤"

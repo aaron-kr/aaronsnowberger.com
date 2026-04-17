@@ -68,7 +68,11 @@
           <div class="qr-preview-wrap">
             {% for qr in a.qr_codes %}
             <div class="qr-preview">
-              <div class="qr-box-sm" id="{{ qr.id }}" title="{{ qr.url }}"></div>
+              <div class="qr-box-sm" id="{{ qr.id }}"
+                   data-qr-url="{{ qr.url }}"
+                   data-qr-label="{{ qr.label }}"
+                   title="Click to view · {{ qr.url }}"
+                   style="cursor:pointer"></div>
               <span class="qr-label">{{ qr.label }}</span>
             </div>
             {% endfor %}

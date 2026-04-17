@@ -50,11 +50,16 @@ stats:
 uni_label_en: "Teaching at"
 uni_label_ko: "강의 대학교"
 universities:
-  - "https://aaronkr-courses.github.io/assets/img/jbnu-logo-2.png"
-  - "Jeonju University"
-  - "Woosuk University"
-  - "Wonkwang University"
-  - "+ 1 more"
+  - name: "Jeonbuk National University"
+    logo: "https://aaronkr-courses.github.io/assets/img/jbnu-logo-2.png"
+  - name: "Jeonju University"
+    logo: ""
+  - name: "Woosuk University"
+    logo: ""
+  - name: "Wonkwang University"
+    logo: ""
+  - name: "+ 1 more"
+    logo: ""
 
 # ── Bio tabs ──────────────────────────────────────────────────
 # Each entry maps to a tab + pane.

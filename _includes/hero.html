@@ -31,7 +31,7 @@
     </div>
     <div class="hero-actions">
       {% for btn in h.actions %}
-      <a href="{{ btn.href }}" class="{{ btn.class }}">
+      <a href="{{ btn.href }}" class="{{ btn.class }}{% unless btn.class contains 'fs' %} fs{% endunless %}">
         {% if btn.icon %}<span>{{ btn.icon }}</span>{% endif %}
         <span class="en">{{ btn.label_en }}</span>
         <span class="ko">{{ btn.label_ko }}</span>

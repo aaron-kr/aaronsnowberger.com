@@ -16,7 +16,7 @@
     <div class="contact-actions rise rise-d2 in">
       {% for btn in c.buttons %}
       <a href="{{ btn.href }}"
-         class="{{ btn.class }}"
+         class="{{ btn.class }}{% unless btn.class contains 'fs' %} fs{% endunless %}"
          {% if btn.type == "external" %}target="_blank"{% endif %}>
         {% if btn.type == "email" %}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,12 2,6"></polyline></svg>
@@ -25,8 +25,9 @@
       </a>
       {% endfor %}
     </div>
+    {% assign cp = c.email | split: "@" %}
     <p class="contact-email rise rise-d3 in">
-      <a href="mailto:{{ c.email }}">{{ c.email }}</a>
+      <a href="mailto:{{ c.email }}">{{ cp[0] }}&#64;{{ cp[1] }}</a>
     </p>
   </div>
 </section>

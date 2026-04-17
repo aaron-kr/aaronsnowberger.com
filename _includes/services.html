@@ -25,6 +25,11 @@
       {% endif %}
 
       <div class="svc-card{% if service.primary %} svc-primary{% endif %} rise{% if service.delay != "" %} {{ service.delay }}{% endif %}">
+        {% if service.img %}
+        <div class="svc-img">
+          <img src="{{ service.img }}" alt="{{ service.title_en }}">
+        </div>
+        {% endif %}
         <div class="svc-header">
           <svg class="svc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="{{ svc_stroke }}" stroke-width="1.75">
             {% if service.icon_type == "chat" %}

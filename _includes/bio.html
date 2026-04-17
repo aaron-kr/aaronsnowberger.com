@@ -16,7 +16,7 @@
     <div class="bio-layout">
       <!-- ── Stat card ── -->
       <div class="stat-card rise">
-        <!-- <div class="stat-photo-frame"
+        <div class="stat-photo-frame stat-photo-sq"
              data-lightbox-src="{{ b.portrait_hires_src | relative_url }}"
              data-lightbox-caption="{{ b.portrait_caption }}">
           <img src="{{ b.portrait_src | relative_url }}"
@@ -26,7 +26,7 @@
             <span class="en">{{ b.view_full_en }}</span>
             <span class="ko">{{ b.view_full_ko }}</span>
           </div>
-        </div> -->
+        </div>
         <div class="stat-name">{{ b.stat_name }}</div>
         <div class="stat-ko">{{ b.stat_ko }}</div>
         <div class="stat-facts">
@@ -44,9 +44,10 @@
             <span class="sf-key"><span class="en">Site</span><span class="ko">사이트</span></span>
             <span class="sf-val"><a href="{{ site.profiles.academic_site }}" target="_blank">aaron.kr</a></span>
           </div>
+          {% assign ep = site.author.email | split: "@" %}
           <div class="sf-row">
             <span class="sf-key">Email</span>
-            <span class="sf-val"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></span>
+            <span class="sf-val"><a href="mailto:{{ site.author.email }}">{{ ep[0] }}&#64;{{ ep[1] }}</a></span>
           </div>
         </div>
         <div class="uni-strip">
@@ -54,7 +55,14 @@
             <span class="en">{{ b.uni_label_en }}</span><span class="ko">{{ b.uni_label_ko }}</span>
           </div>
           {% for u in b.universities %}
-          <span class="uni-name">{{ u }}</span>
+          {% if u.logo and u.logo != "" %}
+          <span class="uni-name" data-tip="{{ u.name }}">
+            <img src="{{ u.logo }}" alt="{{ u.name }}" class="uni-logo"
+                 onerror="this.style.display='none';this.parentElement.textContent='{{ u.name }}'">
+          </span>
+          {% else %}
+          <span class="uni-name">{{ u.name }}</span>
+          {% endif %}
           {% endfor %}
         </div>
       </div>
@@ -90,6 +98,7 @@
             <span class="bio-wc ko">{{ bio.wc_ko }}</span>
             <div class="bio-copy-btns">
               <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
+              <button class="copy-btn fs lang-flip-btn" style="--sf:var(--blue);border-color:var(--brd-b);color:var(--blue)"><span class="copy-icon">⇌</span> <span class="flip-label">한국어 보기</span></button>
               <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
             </div>
           </div>
