@@ -1,12 +1,26 @@
-# aaronsnowberger.com — Jekyll Press Kit Site
+# aaronsnowberger.com — Press Kit & Professional Profile
+
+A bilingual (EN/KO) static press kit site built with Jekyll and hosted on GitHub Pages.
+
+---
 
 ## Table of Contents
 1. [Project Structure](#project-structure)
 2. [Local Development](#local-development)
-3. [Deploying to GitHub Pages](#deploying-to-github-pages)
-4. [WordPress Migration: Full Consequences & Mitigation](#wordpress-migration)
-5. [DNS Setup](#dns-setup)
-6. [Updating Content](#updating-content)
+3. [Updating Content](#updating-content)
+   - [YAML basics](#yaml-basics)
+   - [Hero section](#hero-section)
+   - [Bio section](#bio-section)
+   - [Photos](#photos)
+   - [Assets & QR codes](#assets--qr-codes)
+   - [Links](#links)
+   - [Services](#services)
+   - [Testimonials](#testimonials-wordpress-rest-api)
+   - [Media appearances](#media-appearances)
+   - [Contact](#contact)
+   - [CV](#cv)
+4. [Bilingual system](#bilingual-system)
+5. [Adding a new section](#adding-a-new-section)
 
 ---
 
@@ -14,230 +28,253 @@
 
 ```
 aaronsnowberger.com/
-├── _config.yml              ← Site-wide settings, nav, profiles
+├── _config.yml              ← Site-wide settings, nav links, social profiles
+├── _data/                   ← All editable content lives here (YAML)
+│   ├── hero.yml             ← Hero: name, subtitle, pills, CTA buttons
+│   ├── bio.yml              ← Stat card, university logos, bio tab text
+│   ├── photos.yml           ← Headshot gallery cards
+│   ├── assets.yml           ← Brand colors, QR codes, downloadable files
+│   ├── links.yml            ← Social / professional link cards
+│   ├── services.yml         ← Professional services cards
+│   ├── testimonials.yml     ← Static fallback testimonials (not used; live data from WP)
+│   ├── testimonials_section.yml ← Testimonials section heading/labels
+│   ├── media.yml            ← Podcast, talk, press appearance cards
+│   └── contact.yml          ← Contact section heading, buttons, email
+├── _includes/               ← One HTML file per section (auto-included by index.html)
+│   ├── head.html            ← <head> meta, fonts, CSS
+│   ├── nav.html             ← Fixed navigation bar + mobile menu
+│   ├── hero.html            ← Hero section template
+│   ├── bio.html             ← Bio section: stat card + tabbed bio panes
+│   ├── photos.html          ← Photo gallery grid
+│   ├── assets-section.html  ← Brand assets: colors, QR codes, downloads
+│   ├── links.html           ← Link cards grid
+│   ├── services.html        ← Professional services grid
+│   ├── testimonials.html    ← Testimonials slider (populated from WP REST API)
+│   ├── media.html           ← Media appearances grid
+│   ├── contact.html         ← Contact section
+│   ├── footer.html          ← Footer
+│   └── lightbox.html        ← Modal lightbox (photos + QR codes)
 ├── _layouts/
-│   └── default.html         ← Master HTML shell
-├── _includes/               ← One file per section
-│   ├── head.html
-│   ├── nav.html
-│   ├── hero.html
-│   ├── bio.html
-│   ├── photos.html
-│   ├── assets-section.html
-│   ├── links.html
-│   ├── services.html
-│   ├── media.html
-│   ├── contact.html
-│   ├── footer.html
-│   └── lightbox.html
+│   ├── default.html         ← Main site shell (includes all sections)
+│   └── cv.html              ← CV page shell (toolbar + print button)
 ├── assets/
-│   ├── css/main.css         ← All styles
-│   ├── js/main.js           ← All JavaScript
-│   └── img/                 ← Your headshots, logos, etc.
-│       ├── aaron-portrait.jpg          ← Used in hero + stat card
-│       ├── aaron-portrait-hires.jpg    ← Lightbox full-size version
-│       └── wyoming_cowboys_no-txt.webp ← Wyoming logo (optional)
-├── index.html               ← Homepage (just Jekyll includes)
-├── CNAME                    ← Custom domain file
-├── Gemfile                  ← Ruby dependencies
+│   ├── css/
+│   │   ├── main.css         ← All styles for the main site
+│   │   └── cv.css           ← CV page styles + print styles
+│   ├── js/
+│   │   └── main.js          ← All JavaScript (tabs, copy, QR, lightbox, slider)
+│   └── img/                 ← Images: headshots, logos, bg textures
+├── cv.md                    ← CV page content (pulls from _data/cv.yml)
+├── index.html               ← Homepage (just Jekyll includes, no content here)
+├── CNAME                    ← Custom domain: aaronsnowberger.com
+├── Gemfile                  ← Ruby gem dependencies
 └── README.md
 ```
-
-**To add new sections:** create `_includes/my-section.html`,
-then add `{% include my-section.html %}` to `index.html`.
 
 ---
 
 ## Local Development
 
 ### Prerequisites
-- Ruby ≥ 3.1
+- Ruby ≥ 3.1  
 - Bundler: `gem install bundler`
 
-### Setup
+### Run the site locally
 ```bash
-git clone https://github.com/YOUR-USERNAME/aaronsnowberger.com.git
 cd aaronsnowberger.com
-bundle install
+bundle install          # first time only
 bundle exec jekyll serve --livereload
 ```
-Open `http://localhost:4000` in your browser.
+Open `http://localhost:4000` in your browser. The site auto-reloads when you save files.
 
-### Flags
+### Other useful commands
 ```bash
-bundle exec jekyll serve --draft      # show draft posts
-bundle exec jekyll build              # build to _site/ only
-JEKYLL_ENV=production bundle exec jekyll build   # production build
+bundle exec jekyll build                        # build to _site/ (no server)
+JEKYLL_ENV=production bundle exec jekyll build  # production build
 ```
 
----
-
-## Deploying to GitHub Pages
-
-### One-time setup
-1. Create a **new GitHub repository** named `aaronsnowberger.com`
-   (or any name — the CNAME file controls the domain).
-2. Push your code:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial Jekyll press kit"
-   git remote add origin https://github.com/YOUR-USERNAME/aaronsnowberger.com.git
-   git push -u origin main
-   ```
-3. In GitHub repo **Settings → Pages**:
-   - Source: **Deploy from a branch**
-   - Branch: `main` / `root`
-   - Click **Save**
-
-GitHub Pages will build automatically on every push to `main`.
-Builds usually take 1–3 minutes. Check progress under
-**Actions** tab → `pages-build-deployment`.
-
-### CNAME file
-The `CNAME` file in the repo root contains `aaronsnowberger.com`.
-Do NOT add `www.` — GitHub handles the redirect automatically.
-
----
-
-## WordPress Migration
-
-### ⚠️ What happens when you replace WP with Jekyll
-
-#### The good news
-- **Domain authority is preserved.** Your PageRank lives in the
-  domain name, not the WordPress install. Switching CMS does
-  not wipe your DA.
-- **The new site will be significantly faster**, which Google
-  rewards. Static HTML vs WordPress PHP = typically 10–50× faster
-  TTFB (time to first byte).
-- **Security improves.** No PHP, no database, no WordPress attack
-  surface.
-
-#### The risks you MUST mitigate
-
-| Risk | Impact | Fix |
-|------|--------|-----|
-| Old WP URLs (e.g. `/blog/post-slug/`) return 404 | Google deindexes those pages; inbound links break | 301 redirects (see below) |
-| Loss of indexed blog content | Lower organic search traffic | Decide: migrate posts to Jekyll, or keep WP at a subdomain |
-| XML sitemap gone | Google loses crawl map | `jekyll-sitemap` auto-generates `/sitemap.xml` |
-| RSS feed gone | Subscribers lose feed | Add a simple `/feed.xml` or use feedburner redirect |
-
-#### Your specific situation
-`aaronsnowberger.com` is currently a **design portfolio / older site**,
-not a high-traffic blog. The SEO risk is **low to moderate** because:
-- You don't appear to have hundreds of indexed blog posts there
-- Your primary SEO presence is `aaron.kr`
-- This site's new purpose (press kit) doesn't compete with its old purpose
-
-**Recommendation:** Do a full Google Search Console audit
-(`search.google.com/search-console`) for `aaronsnowberger.com`
-before migrating. Export all indexed URLs. If there are fewer
-than ~20 indexed pages, just proceed. If there are 50+, set up
-redirects first.
-
-### Setting up 301 redirects on GitHub Pages
-
-GitHub Pages doesn't support `.htaccess` or server-side redirects.
-Your options:
-
-#### Option A: Jekyll redirect-from plugin (easiest)
-Add to `Gemfile`:
-```ruby
-gem "jekyll-redirect-from"
-```
-Add to `_config.yml` plugins list:
-```yaml
-plugins:
-  - jekyll-redirect-from
-```
-Then create stub pages for old URLs:
-```yaml
-# _redirects/old-post.html
----
-redirect_from: /blog/old-post-slug/
-redirect_to: https://aaronsnowberger.com
----
-```
-
-#### Option B: Meta refresh HTML files
-For each old URL, create `old-url/index.html` with:
-```html
-<meta http-equiv="refresh" content="0; url=https://aaronsnowberger.com">
-<link rel="canonical" href="https://aaronsnowberger.com">
-```
-Not a true 301 (search engines see it as a soft redirect), but
-it prevents 404s and passes most link equity.
-
-#### Option C: Cloudflare redirect rules (best for many URLs)
-If you use Cloudflare for DNS (recommended), you can set up
-bulk 301 redirect rules in the Cloudflare dashboard without
-touching the Jekyll files at all. Free plan supports up to 3
-redirect rules (each can be a wildcard).
-
-**The most useful rule:**
-- Match: `aaronsnowberger.com/blog/*`
-- Redirect to: `https://aaronsnowberger.com` (301)
-
-This catches all old blog URLs in one rule.
-
----
-
-## DNS Setup
-
-### Pointing aaronsnowberger.com → GitHub Pages
-
-In your DNS provider (Namecheap, Cloudflare, GoDaddy, etc.),
-add these records:
-
-#### Root domain (aaronsnowberger.com)
-Add 4 A records pointing to GitHub Pages IPs:
-```
-Type  Host  Value
-A     @     185.199.108.153
-A     @     185.199.109.153
-A     @     185.199.110.153
-A     @     185.199.111.153
-```
-
-#### www subdomain
-```
-Type   Host  Value
-CNAME  www   YOUR-USERNAME.github.io
-```
-
-#### Verify in GitHub Settings → Pages
-After DNS propagates (5 min – 48 hrs), GitHub will verify the
-custom domain and provision a free TLS certificate automatically.
-Check the "Custom domain" box. Enable "Enforce HTTPS".
-
-### Using Cloudflare (recommended)
-1. Add your domain to Cloudflare (free plan is fine)
-2. Cloudflare handles DNS + CDN + redirect rules
-3. Set Cloudflare SSL to "Full" (not "Flexible")
-4. Set the GitHub Pages A records above in Cloudflare DNS
-5. You can now set up redirect rules for old WP URLs in the
-   Cloudflare dashboard
+> **Note:** The `_site/` folder is the built output — never edit files there directly, they get overwritten on every build.
 
 ---
 
 ## Updating Content
 
-### Adding a media appearance
-Edit `_includes/media.html`. Copy an existing `.media-card` block
-and update the type badge, title, host, and date.
+Almost everything is edited in `_data/*.yml`. You do **not** need to touch the HTML templates for normal content updates.
 
-### Adding a headshot
-Drop the file in `assets/img/` and update the `src` in
-`_includes/photos.html` and `_includes/bio.html`.
+### YAML basics
 
-### Changing your universities
-Edit the `.uni-name` items in `_includes/bio.html`.
+**Breaking long lines** — Inside a YAML block scalar (`|`), you can wrap lines freely. A single line break becomes a space in the rendered HTML; a blank line creates a new paragraph. This means you can write:
 
-### Changing links
-Edit `profiles:` in `_config.yml` — the footer and links section
-both pull from there via `{{ site.profiles.linkedin }}` etc.
+```yaml
+en: |
+  This is a very long sentence that I want to wrap
+  here for readability in my editor.
 
-### Adding a blog / posts
-Create `_posts/YYYY-MM-DD-title.md` with standard Jekyll frontmatter.
-Add a `blog.html` layout and `{% include blog.html %}` to `index.html`.
+  This blank line above starts a new paragraph.
+```
+
+Both wrapped and unwrapped lines render identically in the browser. **Do not add `<p>` tags** — the bio template wraps each paragraph automatically.
+
+**HTML in YAML values** — Inline HTML (bold, em, links) is fine inside YAML strings and block scalars. Use `&amp;` for `&` in regular YAML values (outside block scalars).
+
+**Bilingual fields** — Most fields come in `_en` / `_ko` pairs. Both are always present in the YAML; which one is shown is controlled by the language toggle.
+
+---
+
+### Hero section (`_data/hero.yml`)
+
+| Field | What it does |
+|-------|-------------|
+| `name` / `name_em` | Large heading: "Aaron *Snowberger*" |
+| `subtitle_en/ko` | Paragraph under the name |
+| `pills` | Small tag badges. Set `color: hp-t` (teal), `hp-b` (blue), or `hp-p` (purple). Leave empty for no color. |
+| `actions` | CTA buttons. Classes: `btn-primary` (teal), `btn-secondary` (blue), `btn-cv` (purple), `btn-pink` (pink). Add `fs` to the class for fill-slide hover. |
+| `portrait_src` | Cloudinary URL for the hero background photo |
+
+---
+
+### Bio section (`_data/bio.yml`)
+
+**Stat card**
+- `portrait_src` — Square headshot (shown in stat card)
+- `portrait_hires_src` — Full-size version opened by lightbox click
+- `stats` — Key/value rows in the card. Use `key`+`val` for single-language; `key_en`+`key_ko`+`val_en`+`val_ko` for bilingual.
+
+**University logos**
+```yaml
+universities:
+  - name: "University Full Name"
+    logo: "https://url-to-logo.png"   # shows as image with tooltip on hover
+  - name: "Text Only University"
+    logo: ""                          # shows as italic text
+```
+Add logos to `universities` (current) or `universities_previous` (past). The tooltip (university name on hover) is automatic when `logo` is set.
+
+**Bio tabs**
+Each tab has `id`, `tab_en/ko`, `wc_en/ko` (word count label), and `en`/`ko` block text. Add a new tab by copying an existing entry and giving it a unique `id`.
+
+The three buttons under each bio:
+- **Copy (EN)** — copies English paragraphs to clipboard
+- **⇌ (flip)** — toggles between EN and KO for this bio only (independent of site language)
+- **Copy (KO)** — copies Korean paragraphs to clipboard
+
+---
+
+### Photos (`_data/photos.yml`)
+
+Add a card:
+```yaml
+photos:
+  - name_en: "Conference Keynote"
+    name_ko: "학회 기조연설"
+    src: "https://cloudinary-url.jpg"
+    hires_src: "https://cloudinary-url-large.jpg"
+    spec: "JPEG · 4000×3000 · 3.2 MB"
+    dl_href: "https://direct-download-link.jpg"
+```
+`src` is the thumbnail; `hires_src` opens in the lightbox when clicked.
+
+---
+
+### Assets & QR codes (`_data/assets.yml`)
+
+**QR codes** — Add entries to `qr_codes`. Each entry needs a unique `id`, a `url`, and a `label`. The QR image is generated at runtime by JavaScript — no image files needed. To update a QR, just change the `url` value and rebuild.
+
+```yaml
+qr_codes:
+  - id:    "qr-asb-main"
+    url:   "https://aaron.kr"
+    label: "aaron.kr"
+```
+
+Click any QR code on the site to open it full-size in the lightbox. The download button saves the first QR as a PNG.
+
+**Color swatches** — Edit the `swatches` list. Click a swatch on the site to copy its HEX value.
+
+---
+
+### Links (`_data/links.yml`)
+
+Add a link card:
+```yaml
+- name: "Platform Name"
+  handle: "@username"
+  url: "https://..."
+  color: "t"   # t=teal, b=blue, p=purple
+```
+SVG icon is specified with `icon_type`. For a plain text/emoji icon, use `icon_glyph`.
+
+---
+
+### Services (`_data/services.yml`)
+
+Add/edit service cards. Optional `img` field adds a banner image above the card title:
+```yaml
+- id: my-service
+  img: "https://url-to-image.jpg"   # optional; omit if not needed
+  title_en: "Service Name"
+  ...
+```
+
+---
+
+### Testimonials (WordPress REST API)
+
+Testimonials are fetched **live** from `notes.aaron.kr/wp-json/wp/v2/testimonials` on every page load. No YAML editing needed.
+
+- To add a testimonial: create a post in the `testimonials` CPT in WordPress.
+- Quotes longer than 300 characters are automatically trimmed at the last sentence boundary.
+- To show a profile photo: set a featured image on the WP post. The mu-plugin must register a `featured_image_url` REST field (returns the URL directly, not just the ID).
+
+---
+
+### Media appearances (`_data/media.yml`)
+
+```yaml
+- type: "podcast"         # podcast | talk | press
+  title_en: "Episode Title"
+  title_ko: "에피소드 제목"
+  host_en: "Show Name"
+  date: "2025-03"
+  url: "https://..."
+  thumb: "https://thumbnail.jpg"   # optional
+```
+
+---
+
+### Contact (`_data/contact.yml`)
+
+Edit `buttons` to add/remove contact buttons. Button classes: `btn-primary`, `btn-secondary`, `btn-cv`, `btn-pink`. Type `email` adds an envelope icon; `external` adds `target="_blank"`.
+
+---
+
+### CV (`_data/cv.yml`)
+
+All CV content lives in `cv.yml`. Sections: `personal`, `education`, `employment`, `honors`, `certifications`, `publications` (theses/journals/conferences/books), `teaching`, `presentations`, `activities`, `languages`.
+
+**Print/PDF** — Click "Print / Save PDF" in the toolbar. Sections flow naturally across pages; individual entries (`cv-entry`, publications, course blocks) stay together and won't split mid-item.
+
+**Font** — Screen uses DM Sans; print uses Crimson Pro. To switch print font to Cardo, edit the `@import` line and `--cv-font-print` in `cv.css`.
+
+---
+
+## Bilingual system
+
+The site has a global EN/KO toggle (nav button). Any element with class `en` is hidden when Korean is active; elements with class `ko` are hidden when English is active.
+
+```html
+<span class="en">English text</span>
+<span class="ko">Korean text</span>
+```
+
+The bio section has an additional **per-pane flip button** (⇌) that toggles just the visible bio language, independently of the global toggle.
+
+---
+
+## Adding a new section
+
+1. Create `_includes/my-section.html`
+2. Create `_data/my-section.yml` with the content
+3. Add `{% include my-section.html %}` at the right position in `index.html`
+4. Add styles to `assets/css/main.css`
+5. Add a nav link to `_config.yml` under `nav_links`
