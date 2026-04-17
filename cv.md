@@ -1,7 +1,7 @@
 ---
 layout: cv
 title: "Curriculum Vitae"
-description: "Academic CV of Aaron Snowberger, Ph.D. — AI Researcher & CS Educator, Jeonju, South Korea."
+description: "Academic CV of Aaron Snowberger, Ph.D. — AI Researcher & CS Educator, Jeonju, South Korea"
 permalink: /cv/
 ---
 
