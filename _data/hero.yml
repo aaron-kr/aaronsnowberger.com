@@ -6,11 +6,11 @@
 eyebrow_en: "Press Kit &amp; Professional Profile"
 eyebrow_ko: "프레스 킷 &amp; 전문 프로필"
 
-name:    "Dr. Aaron"
+name:    "Aaron"
 name_em: "Snowberger"
 
-portrait_src:     "/assets/img/aaron-portrait.jpg"
-portrait_alt:     "Dr. Aaron Snowberger"
+portrait_src:     "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776424357/KakaoTalk_20260415_143420882_01_qln83u.jpg"
+portrait_alt:     "Aaron Snowberger lecturing"
 
 subtitle_en: "<strong>AI Researcher &amp; CS Educator</strong> bridging East–West technology at five Korean universities. Ph.D. in Information and Communications Engineering · MFA in Media Design."
 subtitle_ko: "<strong>AI 연구자 &amp; CS 교육자</strong> — 다섯 개 한국 대학에서 동서양 기술 교육을 연결합니다. 정보통신공학 박사 · 미디어 디자인 석사."

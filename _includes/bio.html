@@ -16,7 +16,7 @@
     <div class="bio-layout">
       <!-- ── Stat card ── -->
       <div class="stat-card rise">
-        <div class="stat-photo-frame"
+        <!-- <div class="stat-photo-frame"
              data-lightbox-src="{{ b.portrait_hires_src | relative_url }}"
              data-lightbox-caption="{{ b.portrait_caption }}">
           <img src="{{ b.portrait_src | relative_url }}"
@@ -26,7 +26,7 @@
             <span class="en">{{ b.view_full_en }}</span>
             <span class="ko">{{ b.view_full_ko }}</span>
           </div>
-        </div>
+        </div> -->
         <div class="stat-name">{{ b.stat_name }}</div>
         <div class="stat-ko">{{ b.stat_ko }}</div>
         <div class="stat-facts">
@@ -88,8 +88,10 @@
           <div class="bio-meta">
             <span class="bio-wc en">{{ bio.wc_en }}</span>
             <span class="bio-wc ko">{{ bio.wc_ko }}</span>
-            <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
-            <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
+            <div class="bio-copy-btns">
+              <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="en"><span class="copy-icon">⧉</span> <span class="en">Copy (EN)</span><span class="ko">복사 (EN)</span></button>
+              <button class="copy-btn fs" data-target="bio-{{ bio.id }}" data-lang-target="ko" style="--sf:var(--purple);border-color:var(--brd-p);color:var(--purple)"><span class="copy-icon">⧉</span> <span class="en">Copy (KO)</span><span class="ko">복사 (KO)</span></button>
+            </div>
           </div>
         </div>
         {% endfor %}

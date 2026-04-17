@@ -12,14 +12,14 @@ desc_en:    "Copy any version below for podcasts, conference programs, paper aut
 desc_ko:    "팟캐스트, 학회 프로그램, 논문 저자 소개, LinkedIn, 보도자료 등에 바로 사용할 수 있습니다."
 
 # ── Stat card ─────────────────────────────────────────────────
-portrait_src:        "/assets/img/aaron-portrait.jpg"
+portrait_src:        "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776419032/default_ps8fsj.jpg"
 portrait_hires_src:  "/assets/img/aaron-portrait-hires.jpg"
 portrait_alt:        "Aaron Snowberger headshot"
 portrait_caption:    "Aaron Snowberger, Ph.D. — Formal Portrait"
 view_full_en:        "View Full Size"
 view_full_ko:        "크게 보기"
 
-stat_name:    "Aaron Snowberger"
+stat_name:    "Aaron Snowberger · Ph.D."
 stat_ko:      "에런 스노우버거 · Ph.D."
 
 # key/key_en+key_ko, val/val_en+val_ko  (omit key_ko for degree keys like Ph.D.)
@@ -34,7 +34,7 @@ stats:
     val_en: "Jeonju, South Korea"
     val_ko: "전주, 대한민국"
   - key:    "Ph.D."
-    val_en: "Information &amp; Communications Engineering"
+    val_en: "Information &amp; Communication Engineering"
     val_ko: "정보통신공학"
   - key:    "MFA"
     val_en: "Media Design"
@@ -50,7 +50,7 @@ stats:
 uni_label_en: "Teaching at"
 uni_label_ko: "강의 대학교"
 universities:
-  - "Jeonbuk National"
+  - "https://aaronkr-courses.github.io/assets/img/jbnu-logo-2.png"
   - "Jeonju University"
   - "Woosuk University"
   - "Wonkwang University"
