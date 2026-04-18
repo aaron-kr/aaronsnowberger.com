@@ -264,13 +264,6 @@ nav.scrolled,
   color:var(--pink); border:1.5px solid var(--pink); transition:color .2s; --sf:var(--pink);
 }
 .btn-pink:hover { color:#0c0f0e; border-color:var(--pink); }
-.btn-pink {
-  display:inline-flex; align-items:center; gap:.5rem;
-  font-size:.78rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
-  padding:10px 26px; border-radius:8px; background:transparent;
-  color:var(--pink); border:1.5px solid rgba(232,121,249,.35); transition:color .2s; --sf:var(--pink);
-}
-.btn-pink:hover { color:#0c0f0e; border-color:var(--pink); }
 .cv-nav-btn { color:var(--teal) !important; border-color:var(--brd-t) !important; --sf:var(--teal) !important; }
 .hero-scroll {
   position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%); z-index:2;
