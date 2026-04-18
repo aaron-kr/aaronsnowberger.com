@@ -15,7 +15,7 @@ email: "hi@aaron.kr"
 
 # Buttons — type: email | external | internal
 buttons:
-  - href:     "mailto:hi@aaron.kr"
+  - href:     "mailto:hi&#64;aaron.kr"
     class:    "btn-primary"
     type:     "email"
     label_en: "Send an Email"

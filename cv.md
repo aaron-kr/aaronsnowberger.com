@@ -22,7 +22,7 @@ permalink: /cv/
       <span class="cv-sep">·</span>
       <span>{{ cv.personal.phone }}</span>
       <span class="cv-sep">·</span>
-      <a href="mailto:{{ c.email }}">{{ cp[0] }}&#64;{{ cp[1] }}</a>
+      <a href="mailto:{{ cp[0] }}&#64;{{ cp[1] }}">{{ cp[0] }}&#64;{{ cp[1] }}</a>
       <span class="cv-sep">·</span>
       <a href="{{ cv.personal.website }}" target="_blank">{{ cv.personal.website }}</a>
       <span class="cv-sep">·</span>
@@ -228,7 +228,7 @@ permalink: /cv/
   </section>
 
   <div class="cv-footer-note no-print">
-    <p>Last updated: April 2026 · <a href="{{ '/' | relative_url }}">aaronsnowberger.com</a> · <a href="mailto:{{ c.email }}">{{ cp[0] }}&#64;{{ cp[1] }}</a></p>
+    <p>Last updated: April 2026 · <a href="{{ '/' | relative_url }}">aaronsnowberger.com</a> · <a href="mailto:{{ cp[0] }}&#64;{{ cp[1] }}">{{ cp[0] }}&#64;{{ cp[1] }}</a></p>
   </div>
 
 </main>
