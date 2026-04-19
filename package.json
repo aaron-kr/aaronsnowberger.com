@@ -4,7 +4,7 @@
   "description": "A bilingual (EN/KO) static press kit site built with Jekyll and hosted on GitHub Pages.",
   "main": "index.js",
   "scripts": {
-    "lint:css": "stylelint assets/css/main.css assets/css/cv.css"
+    "lint:css": "stylelint assets/css/main.css assets/css/cv.css --fix"
   },
   "repository": {
     "type": "git",
