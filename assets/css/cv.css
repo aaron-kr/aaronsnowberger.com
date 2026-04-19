@@ -12,11 +12,10 @@
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
-  --cv-font-heading : 'Playfair Display', Georgia, serif;
+  --cv-font-heading : 'Playfair Display', georgia, serif;
   --cv-font-body    : 'DM Sans', system-ui, sans-serif;
-  --cv-font-print   : 'Crimson Pro', Georgia, serif;
+  --cv-font-print   : 'Crimson Pro', georgia, serif;
   --cv-font-mono    : 'JetBrains Mono', monospace;
-
   --cv-teal   : #2DD4BF;
   --cv-blue   : #38BDF8;
   --cv-purple : #A78BFA;
@@ -27,9 +26,8 @@
   --cv-text     : var(--fg,      #e8ede8);
   --cv-text2    : var(--t2,      #9aada8);
   --cv-text3    : var(--t3,      #5c7370);
-  --cv-brd      : var(--brd,     rgba(255,255,255,.08));
+  --cv-brd      : var(--brd,     rgb(255 255 255 / 8%));
   --cv-accent   : var(--teal,    #2DD4BF);
-
   --cv-max      : 860px;
   --cv-pad      : clamp(1.5rem, 5vw, 3.5rem);
   --cv-section-gap : 2.4rem;
@@ -65,7 +63,7 @@
   background      : var(--cv-bg2);
   border-bottom   : 1px solid var(--cv-brd);
   backdrop-filter : blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   font-size       : .82rem;
 }
 
@@ -228,8 +226,8 @@
 
 .cv-award {
   display        : inline-block;
-  background     : rgba(45,212,191,.10);
-  border         : 1px solid rgba(45,212,191,.25);
+  background     : rgb(45 212 191 / 10%);
+  border         : 1px solid rgb(45 212 191 / 25%);
   border-radius  : 4px;
   color          : var(--cv-teal);
   font-size      : .68rem;
@@ -272,8 +270,8 @@
 
 .cv-badge-deg {
   display       : inline-block;
-  background    : rgba(56,189,248,.08);
-  border        : 1px solid rgba(56,189,248,.2);
+  background    : rgb(56 189 248 / 8%);
+  border        : 1px solid rgb(56 189 248 / 20%);
   border-radius : 4px;
   color         : var(--cv-blue);
   font-size     : .66rem;
@@ -394,7 +392,7 @@
   --cv-text : #1a1f1e;
   --cv-text2: #4a5754;
   --cv-text3: #8a9a97;
-  --cv-brd  : rgba(0,0,0,.1);
+  --cv-brd  : rgb(0 0 0 / 10%);
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -462,14 +460,14 @@
     border-bottom  : 0.5pt solid #ccc;
     margin-bottom  : 6pt;
     padding-bottom : 2pt;
-    page-break-after: avoid;
+    break-after: avoid;
   }
 
   .cv-subsection {
     font-size    : 8.5pt;
     color        : #444;
     margin       : 8pt 0 4pt;
-    page-break-after: avoid;
+    break-after: avoid;
   }
 
   .cv-entry {
@@ -478,7 +476,7 @@
     margin-bottom: 5pt;
     padding-bottom: 5pt;
     border-bottom: 0.3pt solid #ddd;
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .cv-entry-meta  { font-size: 7.5pt; color: #666; }
@@ -498,7 +496,7 @@
     margin-bottom: 4pt;
     padding-bottom: 4pt;
     border-bottom: 0.3pt solid #eee;
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .cv-pub-num   { color: #888; width: 1.2rem; }
@@ -517,7 +515,7 @@
     margin-bottom : 8pt;
     padding-bottom: 8pt;
     border-bottom : 0.3pt solid #ddd;
-    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   .cv-teach-inst { font-size: 9pt; color: #111; }
@@ -550,7 +548,7 @@
 }
 
 /* ── Responsive ────────────────────────────────────────────────── */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .cv-entry {
     grid-template-columns: 1fr;
   }
