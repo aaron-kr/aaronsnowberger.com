@@ -62,7 +62,6 @@
   padding         : .55rem var(--cv-pad);
   background      : var(--cv-bg2);
   border-bottom   : 1px solid var(--cv-brd);
-  backdrop-filter : blur(12px);
   backdrop-filter: blur(12px);
   font-size       : .82rem;
 }
