@@ -1,0 +1,25 @@
+{
+  "name": "aaronsnowberger.com",
+  "version": "1.0.0",
+  "description": "A bilingual (EN/KO) static press kit site built with Jekyll and hosted on GitHub Pages.",
+  "main": "index.js",
+  "scripts": {
+    "lint:css": "stylelint assets/css/main.css assets/css/cv.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaron-kr/aaronsnowberger.com.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aaron-kr/aaronsnowberger.com/issues"
+  },
+  "homepage": "https://github.com/aaron-kr/aaronsnowberger.com#readme",
+  "devDependencies": {
+    "stylelint": "^17.8.0",
+    "stylelint-config-standard": "^40.0.0"
+  }
+}

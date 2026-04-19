@@ -91,7 +91,10 @@ Open `http://localhost:4000` in your browser. The site auto-reloads when you sav
 ```bash
 bundle exec jekyll build                        # build to _site/ (no server)
 JEKYLL_ENV=production bundle exec jekyll build  # production build
+npm run lint:css                                # Stylelint (assets/css/main.css + cv.css)
 ```
+
+CI runs Stylelint on every push to `main` (`.github/workflows/lint.yml`). Run `npm install` first if you haven't.
 
 > **Note:** The `_site/` folder is the built output — never edit files there directly, they get overwritten on every build.
 

@@ -159,6 +159,33 @@ Used in: `contact.html`, `bio.html`, `cv.md`.
 
 ---
 
+## Code quality
+
+**Stylelint** — `.stylelintrc.json` (extends `stylelint-config-standard`). Checks `assets/css/main.css` and `assets/css/cv.css`. Several formatting-preference rules are disabled (`no-descending-specificity`, `declaration-block-single-line-max-declarations`, `rule-empty-line-before`, `at-rule-empty-line-before`, `comment-empty-line-before`) because they conflict with the project's dense inline style without adding correctness value.
+
+**GitHub Actions CI** — `.github/workflows/lint.yml`. Runs Stylelint on every push/PR to `main`.
+
+```bash
+npm run lint:css      # Stylelint over assets/css/main.css and cv.css
+```
+
+**History (April 2026):** Fixed 3 duplicate `backdrop-filter` copy-paste bugs (nav scrolled, mob-menu, lightbox); merged duplicate `section` and `footer` selectors into their first occurrence; fixed `.hero-pill` shorthand property override (`border-color` then `border: 1px solid` → `border: 1px solid #e6efec`); modernized rgba → `rgb()` notation throughout.
+
+---
+
+## AI-assisted development
+
+When using Claude Code or any AI assistant on this codebase:
+
+- **Content changes are almost always YAML-only** — `_data/*.yml` files. Rarely need to touch HTML templates or CSS.
+- **Run `npm run lint:css` after any CSS change** — or let CI catch it on push.
+- **The `--sf` fill-slide pattern is intentional** — do not refactor it away; it drives all button hover animations site-wide. Each button sets `--sf` to its fill color.
+- **Never edit `_site/`** — build output, always overwritten by Jekyll.
+- **No custom Ruby plugins** — `safe: true` in `_config.yml` for GitHub Pages. Do not suggest Jekyll plugins that require custom gems.
+- **Keep CLAUDE.md current** — when adding a new section or data pattern, document it here for future AI sessions.
+
+---
+
 ## Common Gotchas
 
 - Never edit files in `_site/` — it's the build output and gets overwritten
