@@ -1,0 +1,10 @@
+---
+layout: null
+permalink: /bio.json
+---
+{%- assign mb = site.data.bio.bios[1] -%}
+{
+  "role": "{{ site.author.title }}",
+  "bio_en": {{ mb.en | strip_newlines | strip | jsonify }},
+  "bio_ko": {{ mb.ko | strip_newlines | strip | jsonify }}
+}
