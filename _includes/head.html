@@ -1,8 +1,5 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{{ page.description | default: site.description }}">
-<link rel="canonical" href="{{ page.url | prepend: site.url }}">
 
 <!-- Favicon — place favicon files in /assets/img/favicon/ -->
 <link rel="icon" type="image/png" sizes="32x32"   href="{{ '/assets/img/favicon/favicon-32x32.png'   | relative_url }}">
@@ -35,5 +32,46 @@
 
 <!-- SEO (jekyll-seo-tag) -->
 {% seo %}
+
+<!-- Structured data: Person schema (supplements jekyll-seo-tag's WebSite schema) -->
+{% if page.url == "/" or page.url == "" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aaron Snowberger",
+  "alternateName": "에런 스노버거",
+  "url": "{{ site.url }}",
+  "image": "https://res.cloudinary.com/dobann7wi/image/upload/q_auto/f_auto/v1776424357/KakaoTalk_20260415_143420882_01_qln83u.jpg",
+  "jobTitle": "AI Researcher & CS Educator",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "PAI Lab",
+    "url": "https://pailab.io"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Wyoming"
+  },
+  "knowsAbout": ["Artificial Intelligence", "Computer Science Education", "Physical AI", "Computer Vision", "Hangul Recognition"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Jeonju",
+    "addressCountry": "KR"
+  },
+  "email": "hi@aaron.kr",
+  "sameAs": [
+    "https://linkedin.com/in/aaronsnowberger/",
+    "https://github.com/jekkilekki",
+    "https://twitter.com/aaronsnowberger",
+    "https://scholar.google.com/citations?user=JCbnnvUAAAAJ",
+    "https://orcid.org/0000-0001-8652-0936",
+    "https://www.researchgate.net/profile/Aaron-Snowberger",
+    "https://youtube.com/@aaronsnowberger",
+    "https://aaron.kr"
+  ]
+}
+</script>
+{% endif %}
 
 <!-- Sitemap (jekyll-sitemap adds sitemap.xml automatically) -->

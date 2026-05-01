@@ -63,6 +63,32 @@ profiles:
   courses:          "https://aaronkr-courses.github.io/courses/"
   twitter:          "https://twitter.com/aaronsnowberger"
 
+# ── jekyll-seo-tag configuration ──────────────────────────────
+# og:image and twitter card — Cloudinary portrait, 1200×630 crop
+image:
+  path:   "https://res.cloudinary.com/dobann7wi/image/upload/c_fill,w_1200,h_630,g_face/q_auto/f_auto/v1776424357/KakaoTalk_20260415_143420882_01_qln83u.jpg"
+  alt:    "Aaron Snowberger, Ph.D. — AI Researcher & CS Educator"
+  width:  1200
+  height: 630
+
+# Twitter card — upgrade to summary_large_image so the portrait fills the card
+twitter:
+  username: "aaronsnowberger"
+  card:     "summary_large_image"
+
+# Structured data sameAs links (used in JSON-LD Person schema)
+social:
+  name:  "Aaron Snowberger"
+  links:
+    - "https://linkedin.com/in/aaronsnowberger/"
+    - "https://github.com/jekkilekki"
+    - "https://twitter.com/aaronsnowberger"
+    - "https://scholar.google.com/citations?user=JCbnnvUAAAAJ"
+    - "https://orcid.org/0000-0001-8652-0936"
+    - "https://www.researchgate.net/profile/Aaron-Snowberger"
+    - "https://youtube.com/@aaronsnowberger"
+    - "https://aaron.kr"
+
 # ── Build settings ────────────────────────────────────────────
 markdown:    kramdown
 highlighter: rouge
@@ -78,7 +104,11 @@ plugins:
 exclude:
   - README.md
   - CLAUDE.md
+  - ACCESSIBILITY_AUDIT.md
+  - SEO_AUDIT.md
+  - SECURITY-NOTES.md
   - Gemfile
   - Gemfile.lock
   - node_modules
+  - scripts
   - "*.sh"
