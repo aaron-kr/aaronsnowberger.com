@@ -1,4 +1,4 @@
-<footer class="ms">
+<footer class="ms" aria-label="Site footer">
   <div class="foot-inner">
     <!-- LEFT -->
     <div class="foot-left">
@@ -13,44 +13,45 @@
     </div>
 
     <!-- CENTER: Wyoming cowboy hat -->
-    <div className="foot-center">
+    <div class="foot-center">
       <a
         href="https://en.wikipedia.org/wiki/Wyoming"
         class="wy-logo"
         target="_blank"
         rel="noopener noreferrer"
         title="Wyoming, USA — Big Sky Country"
+        aria-label="Wyoming, USA — Big Sky Country (opens Wikipedia)"
       >
         <img
-          class="wy-logo-img"  
+          class="wy-logo-img"
           src="{{ '/assets/img/wyoming_cowboys_no-txt.webp' | relative_url }}"
-          alt="Wyoming Cowboy"
+          alt="Wyoming Cowboys logo"
           loading="lazy"
         />
       </a>
     </div>
 
     <!-- RIGHT: links -->
-    <div class="foot-right">
+    <div class="foot-right" aria-label="Social and professional links">
       <div class="fl-row">
-        <a href="{{ site.profiles.linkedin }}" class="fl t" target="_blank">LinkedIn</a>
-        <a href="{{ site.profiles.github }}" class="fl t" target="_blank">GitHub</a>
-        <a href="{{ site.profiles.courses }}" class="fl t" target="_blank">Courses</a>
+        <a href="{{ site.profiles.linkedin }}" class="fl t" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)">LinkedIn</a>
+        <a href="{{ site.profiles.github }}" class="fl t" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)">GitHub</a>
+        <a href="{{ site.profiles.courses }}" class="fl t" target="_blank" rel="noopener noreferrer" aria-label="Courses (opens in new tab)">Courses</a>
       </div>
       <div class="fl-row">
-        <a href="{{ site.profiles.researchgate }}" class="fl b" target="_blank">ResearchGate</a>
-        <a href="{{ site.profiles.google_scholar }}" class="fl b" target="_blank">Scholar</a>
-        <a href="{{ site.profiles.orcid }}" class="fl b" target="_blank">ORCID</a>
+        <a href="{{ site.profiles.researchgate }}" class="fl b" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate (opens in new tab)">ResearchGate</a>
+        <a href="{{ site.profiles.google_scholar }}" class="fl b" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar (opens in new tab)">Scholar</a>
+        <a href="{{ site.profiles.orcid }}" class="fl b" target="_blank" rel="noopener noreferrer" aria-label="ORCID (opens in new tab)">ORCID</a>
       </div>
       <div class="fl-row">
-        <a href="{{ site.profiles.kspai }}" class="fl p" target="_blank">KSPAI</a>
-        <a href="{{ site.profiles.naver }}" class="fl p" target="_blank">Naver</a>
-        <a href="{{ site.profiles.academic_site }}/content" class="fl p" target="_blank">Blog</a>
+        <a href="{{ site.profiles.kspai }}" class="fl p" target="_blank" rel="noopener noreferrer" aria-label="KSPAI (opens in new tab)">KSPAI</a>
+        <a href="{{ site.profiles.naver }}" class="fl p" target="_blank" rel="noopener noreferrer" aria-label="Naver Blog (opens in new tab)">Naver</a>
+        <a href="{{ site.profiles.academic_site }}/content" class="fl p" target="_blank" rel="noopener noreferrer" aria-label="Blog on aaron.kr (opens in new tab)">Blog</a>
       </div>
       <div class="fl-row">
-        <a href="{{ '/cv/' | relative_url }}" class="fl t">CV</a>
-        <a href="{{ site.profiles.academic_site }}" class="fl t" target="_blank">aaron.kr</a>
-        <a href="{{ site.profiles.lab_site }}" class="fl t" target="_blank">Lab</a>
+        <a href="{{ '/cv/' | relative_url }}" class="fl t" aria-label="View Curriculum Vitae">CV</a>
+        <a href="{{ site.profiles.academic_site }}" class="fl t" target="_blank" rel="noopener noreferrer" aria-label="aaron.kr personal site (opens in new tab)">aaron.kr</a>
+        <a href="{{ site.profiles.lab_site }}" class="fl t" target="_blank" rel="noopener noreferrer" aria-label="PAI Lab site (opens in new tab)">Lab</a>
       </div>
     </div>
   </div>

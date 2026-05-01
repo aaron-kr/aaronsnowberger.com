@@ -1,9 +1,10 @@
 {% assign h = site.data.hero %}
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-portrait">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-portrait" aria-hidden="true">
     <img src="{{ h.portrait_src | relative_url }}"
-         alt="{{ h.portrait_alt }}"
+         alt=""
+         role="presentation"
          onerror="this.style.display='none'">
     <div class="hero-portrait-overlay"></div>
   </div>
@@ -39,7 +40,7 @@
       {% endfor %}
     </div>
   </div>
-  <div class="hero-scroll">
+  <div class="hero-scroll" aria-hidden="true">
     <div class="scroll-line"></div>
     <span class="en">{{ h.scroll_en }}</span>
     <span class="ko">{{ h.scroll_ko }}</span>

@@ -27,11 +27,11 @@
       <div class="svc-card{% if service.primary %} svc-primary{% endif %} rise{% if service.delay != "" %} {{ service.delay }}{% endif %}">
         {% if service.img %}
         <div class="svc-img big">
-          <img src="{{ service.img }}" alt="{{ service.title_en }}">
+          <img src="{{ service.img }}" alt="{{ service.img_alt | default: service.title_en }}">
         </div>
         {% endif %}
         <div class="svc-header">
-          <svg class="svc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="{{ svc_stroke }}" stroke-width="1.75">
+          <svg class="svc-icon-svg" viewBox="0 0 24 24" fill="none" stroke="{{ svc_stroke }}" stroke-width="1.75" aria-hidden="true">
             {% if service.icon_type == "chat" %}
               <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
             {% elsif service.icon_type == "clock" %}

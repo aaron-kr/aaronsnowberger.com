@@ -11,7 +11,7 @@
 /* ══ TOKENS ══════════════════════════════════════════════════ */
 [data-theme="dark"] {
   --bg:#0c0f0e; --bg-soft:#101614; --bg-muted:#131a18; --bg-card:#141d1a;
-  --t1:#e6efec; --t2:#7ea89e; --t3:#3e5852;
+  --t1:#e6efec; --t2:#7ea89e; --t3:#5c7a72;
   --brd:#1b2825; --brd2:#243530; --rule:rgb(255 255 255 / 6%);
   --nav-bg:rgb(12 15 14 / 92%);
   --teal:#2dd4bf; --blue:#38bdf8; --purple:#a78bfa; --pink:#e879f9;
@@ -23,7 +23,7 @@
 
 [data-theme="light"] {
   --bg:#f8faf9; --bg-soft:#fff; --bg-muted:#eef5f2; --bg-card:#fff;
-  --t1:#101814; --t2:#3e5750; --t3:#8aa29b;
+  --t1:#101814; --t2:#3e5750; --t3:#4a6861;
   --brd:#d6e6e0; --brd2:#c2d6d0; --rule:rgb(0 0 0 / 7%);
   --nav-bg:rgb(248 250 249 / 93%);
   --teal:#0a8c78; --blue:#0369a1; --purple:#6d28d9; --pink:#a21caf;
@@ -82,6 +82,25 @@ footer::before {
 }
 .fs:hover::before, .fss:hover::before { transform:translateX(0); }
 .fs:hover { color:var(--bg) !important; border-color:var(--sf,var(--teal)) !important; }
+
+/* ══ SKIP LINK ═══════════════════════════════════════════════ */
+.skip-link {
+  position:absolute; top:-100%; left:1rem; z-index:9999;
+  padding:.5rem 1rem; border-radius:0 0 8px 8px;
+  background:var(--teal,#2dd4bf); color:#0c0f0e;
+  font-size:.85rem; font-weight:700; text-decoration:none;
+  transition:top .2s;
+}
+.skip-link:focus { top:0; }
+
+/* ══ FOCUS STYLES ════════════════════════════════════════════ */
+:focus-visible {
+  outline:2px solid var(--teal,#2dd4bf);
+  outline-offset:3px;
+  border-radius:4px;
+}
+/* Remove default outline for mouse users, keep for keyboard */
+:focus:not(:focus-visible) { outline:none; }
 
 /* ══ RESET & BASE ════════════════════════════════════════════ */
 *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
@@ -946,6 +965,15 @@ a.media-card:hover .media-hover-label { opacity:1; transform:translateY(0); }
 
 [data-tip]:hover::before, [data-tip]:hover::after {
   opacity: 1; transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .tip-below::before {

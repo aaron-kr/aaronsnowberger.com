@@ -67,3 +67,6 @@ coverage/
 # Uncomment if you want per-machine configs ignored
 
 # .bundle/config
+
+# Image compression backups
+scripts/image-originals/

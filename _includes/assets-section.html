@@ -18,11 +18,11 @@
       <div class="asset-card rise {% if card.delay %}{{ card.delay }} {% endif %}in">
         <div class="asset-header">
           <!-- Icon: glyph emoji, or SVG for special types -->
-          <div class="asset-icon {{ card.icon_class }}">
+          <div class="asset-icon {{ card.icon_class }}" aria-hidden="true">
             {% if card.icon_type == "qr" %}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="15" y="15" width="3" height="3" rx=".5"></rect><rect x="19" y="15" width="2" height="2" rx=".5"></rect><rect x="15" y="19" width="2" height="2" rx=".5"></rect><rect x="18" y="18" width="3" height="3" rx=".5"></rect></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect><rect x="15" y="15" width="3" height="3" rx=".5"></rect><rect x="19" y="15" width="2" height="2" rx=".5"></rect><rect x="15" y="19" width="2" height="2" rx=".5"></rect><rect x="18" y="18" width="3" height="3" rx=".5"></rect></svg>
             {% elsif card.icon_type == "box" %}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path></svg>
             {% else %}
             {{ card.icon_glyph }}
             {% endif %}
@@ -43,7 +43,7 @@
         <div class="asset-dl-row">
           {% for dl in card.downloads %}
           <a href="{{ dl.href }}" class="asset-dl fs" download>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             {{ dl.label }}
           </a>
           {% endfor %}
@@ -72,6 +72,9 @@
                    data-qr-url="{{ qr.url }}"
                    data-qr-label="{{ qr.label }}"
                    title="Click to view · {{ qr.url }}"
+                   role="img"
+                   aria-label="QR code for {{ qr.label }}: {{ qr.url }}"
+                   tabindex="0"
                    style="cursor:pointer"></div>
               <span class="qr-label">{{ qr.label }}</span>
             </div>

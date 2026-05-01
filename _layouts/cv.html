@@ -11,14 +11,14 @@
 
 <!-- ── CV toolbar (hidden on print) ──────────────────────── -->
 <div class="cv-toolbar no-print">
-  <a href="{{ '/' | relative_url }}" class="cv-back">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+  <a href="{{ '/' | relative_url }}" class="cv-back" aria-label="Back to aaronsnowberger.com">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
     aaronsnowberger.com
   </a>
   <div class="cv-toolbar-actions">
-    <button class="nbtn fs" id="themeBtn">☀</button>
-    <button class="cv-print-btn" onclick="window.print()">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    <button class="nbtn fs" id="themeBtn" aria-label="Switch to light mode">☀</button>
+    <button class="cv-print-btn" onclick="window.print()" aria-label="Print or save as PDF">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       Print / Save PDF
     </button>
   </div>

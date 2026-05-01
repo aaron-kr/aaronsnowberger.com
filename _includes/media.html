@@ -19,7 +19,7 @@
         {% assign mt_class = "mt-talk" %}
       {% endif %}
 
-      <a href="{{ item.url }}" target="_blank" class="media-card rise{% if item.delay != "" %} {{ item.delay }}{% endif %} in">
+      <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="media-card rise{% if item.delay != "" %} {{ item.delay }}{% endif %} in" aria-label="{{ item.title_en }}{% if item.type_en %} — {{ item.type_en }}{% endif %} (opens in new tab)">
         <div class="media-thumb">
           <img src="{{ item.img }}" alt="{{ item.img_alt }}">
           <div class="media-hover-label"><span class="en">{{ item.label_en }}</span><span class="ko">{{ item.label_ko }}</span></div>
@@ -43,7 +43,7 @@
       {% endfor %}
     </div>
     <div class="media-cta-row rise in">
-      <a href="{{ site.profiles.academic_site }}" target="_blank" class="media-see-all fs">
+      <a href="{{ site.profiles.academic_site }}" target="_blank" rel="noopener noreferrer" class="media-see-all fs" aria-label="See all media appearances on aaron.kr (opens in new tab)">
         <span class="en">See all appearances on aaron.kr →</span>
         <span class="ko">aaron.kr에서 전체 목록 보기 →</span>
       </a>

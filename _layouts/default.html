@@ -7,11 +7,16 @@
   {% include head.html %}
 </head>
 <body>
-<div id="prog"></div>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div id="prog" aria-hidden="true"></div>
 
 {% include nav.html %}
 
+<main id="main-content">
+
 {{ content }}
+
+</main>
 
 {% include footer.html %}
 {% include lightbox.html %}

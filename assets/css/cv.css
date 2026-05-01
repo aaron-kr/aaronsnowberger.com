@@ -33,6 +33,14 @@
   --cv-section-gap : 2.4rem;
 }
 
+/* ── Focus styles ───────────────────────────────────────────── */
+.cv-page :focus-visible {
+  outline       : 2px solid var(--cv-teal, #2DD4BF);
+  outline-offset: 3px;
+  border-radius : 4px;
+}
+.cv-page :focus:not(:focus-visible) { outline: none; }
+
 /* ── Base ───────────────────────────────────────────────────── */
 .cv-page {
   background : var(--cv-bg);
